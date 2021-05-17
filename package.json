@@ -1,0 +1,19 @@
+{
+  "name": "planwithus-logic",
+  "version": "0.0.1",
+  "description": "JavaScript library for course requirements specification in plaNwithUS.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wei2912/planwithus-logic.git"
+  },
+  "author": "Ng Wei En, Benjamin Tan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wei2912/planwithus-logic/issues"
+  },
+  "homepage": "https://github.com/wei2912/planwithus-logic#readme"
+}
