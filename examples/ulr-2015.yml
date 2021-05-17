@@ -1,0 +1,39 @@
+name: University Level Requirements
+ay: 2015
+mc: ">=20"
+assign:
+  - geh
+  - geq
+  - ger
+  - ges
+  - get
+
+geh:
+  name: "Human Cultures"
+  mc: "<=4"
+  assign:
+    - any: "GEH*"
+
+geq:
+  name: "Asking Questions"
+  mc: "<=4"
+  assign:
+    - any: "GEQ*"
+
+ger:
+  name: "Quantitative Reasoning"
+  mc: "<=4"
+  assign:
+    - any: "GER*"
+
+ges:
+  name: "Singapore Studies"
+  mc: "<=4"
+  assign:
+    - any: "GES*"
+
+get:
+  name: "Thinking and Expression"
+  mc: "<=4"
+  assign:
+    - any: "GET*"

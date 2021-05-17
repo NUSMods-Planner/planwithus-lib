@@ -1,0 +1,113 @@
+name: "Computer Science (Hons)"
+ay: 2020
+mc: ">=160"
+ref: https://www.comp.nus.edu.sg/programmes/ug/cs/curr/
+assign:
+  - ulr-2015
+  - found
+  - bd
+  - ind
+  - it-prof
+  - math-sci
+  - ue
+match: bachelor-hons-2016
+
+found:
+  name: "Foundation"
+  assign:
+    - all:
+      - CS1101S
+      - CS1231S
+      - CS2030S
+      - CS2040S
+      - CS2100
+      - or:
+        - CS2103
+        - CS2103T:
+          info: "Students taking CS2103T Software Engineering must take CS2101 Effective Communication for Computing Professionals in the same semester."
+      - CS2106
+      - CS3230
+
+bd:
+  name: "Breadth & Depth"
+  mc: ">=28"
+  assign:
+    - fa
+    - cp
+    - team
+
+  fa:
+    name: "Focus Areas"
+    assign:
+      - cs-hons-2020/fa-alg
+      - cs-hons-2020/fa-ai
+    match-one:
+      - cs-hons-2020/fa-alg/prim-match
+      - cs-hons-2020/fa-ai/prim-match
+    match: fa-4k
+
+  fa-4k:
+    name: "Focus Areas (Level-4000 modules)"
+    mc: ">=12"
+    assign:
+      - cs-hons-2020/fa-alg/prim-4k
+      - cs-hons-2020/fa-ai/prim-4k
+
+  cp:
+    name: "CP-coded modules"
+    mc: "<=12"
+    assign:
+      - any:
+        - CP3106
+        - CP3209
+        - CP4101
+        - CP4106
+
+  team:
+    name: "Computer Systems Team Project"
+    mc: ">=8"
+    assign:
+      - any:
+        - CS3203
+        - and:
+          - CS3216
+          - CS3217
+        - and:
+          - CS3281
+          - CS3282
+
+ind:
+  name: "Industrial Experience Requirement"
+  mc: ">=12"
+  assign:
+    - any:
+      - CP3880
+      - CP3200
+      - CP3202
+      - CP3107
+      - CP3110
+      - IS4010
+      - TR3202
+
+it-prof:
+  name: "IT Professionalism"
+  assign:
+    - all:
+      - IS1103
+      - CS2101
+      - ES2660
+
+math-sci:
+  name: "Mathematics & Sciences"
+  assign:
+    - all:
+      - MA1521
+      - MA1101R
+      - ST2334
+
+ue:
+  name: "Unrestricted Electives"
+  mc: ">=32"
+  info: "Students without A-level or H2 Mathematics are required to complete the bridging module MA1301/X as part of the Unrestricted Electives."
+  assign:
+    - any: *

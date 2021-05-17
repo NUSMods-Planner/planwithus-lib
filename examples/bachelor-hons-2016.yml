@@ -1,0 +1,32 @@
+name: "Bachelor (Hons)"
+ay: 2016
+mc: ">=160"
+ref: https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/degree-requirements
+assign:
+  - 1k-exception
+  - 1k
+  - other
+
+1k-exception:
+  name: "Level-1000 modules, exceptions to 60 MCs limit"
+  assign:
+    any:
+      - CFG1010
+      - CFG1002
+      - ES1103
+
+1k:
+  name: "Level-1000 modules"
+  mc: "<=60"
+  assign:
+    any: "*1xxx*"
+
+other:
+  name: "Level-2000 and above modules"
+  assign:
+    any:
+      - "*2xxx*"
+      - "*3xxx*"
+      - "*4xxx*"
+      - "*5xxx*"
+      - "*6xxx*"
