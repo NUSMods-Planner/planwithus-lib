@@ -110,4 +110,4 @@ ue:
   mc: ">=32"
   info: "Students without A-level or H2 Mathematics are required to complete the bridging module MA1301/X as part of the Unrestricted Electives."
   assign:
-    - any: *
+    - any: "*"
