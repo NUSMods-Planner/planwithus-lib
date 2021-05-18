@@ -31,10 +31,11 @@ bd-fa:
   assign:
     - cs-hons-2020/fa-alg
     - cs-hons-2020/fa-ai
-  satisfy: bd-fa-4k
-  satisfy-any:
-    - cs-hons-2020/fa-alg/prim-match
-    - cs-hons-2020/fa-ai/prim-match
+  satisfy:
+    - bd-fa-4k
+    - or:
+        - cs-hons-2020/fa-alg/prim-match
+        - cs-hons-2020/fa-ai/prim-match
 
 bd-fa-4k:
   name: Focus Areas (Level-4000 modules)
