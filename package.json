@@ -4,6 +4,7 @@
   "description": "JavaScript library for course requirements specification in plaNwithUS.",
   "main": "src/index.js",
   "scripts": {
+    "build": "npx ts-node test.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
@@ -32,6 +33,7 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "2.3.0",
+    "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   },
   "lint-staged": {
