@@ -16,17 +16,17 @@ found:
   name: "Foundation"
   assign:
     - all:
-      - CS1101S
-      - CS1231S
-      - CS2030S
-      - CS2040S
-      - CS2100
-      - or:
-        - CS2103
-        - CS2103T:
-          info: "Students taking CS2103T Software Engineering must take CS2101 Effective Communication for Computing Professionals in the same semester."
-      - CS2106
-      - CS3230
+        - CS1101S
+        - CS1231S
+        - CS2030S
+        - CS2040S
+        - CS2100
+        - or:
+            - CS2103
+            - CS2103T:
+              info: "Students taking CS2103T Software Engineering must take CS2101 Effective Communication for Computing Professionals in the same semester."
+        - CS2106
+        - CS3230
 
 bd:
   name: "Breadth & Depth"
@@ -58,52 +58,52 @@ bd:
     mc: "<=12"
     assign:
       - any:
-        - CP3106
-        - CP3209
-        - CP4101
-        - CP4106
+          - CP3106
+          - CP3209
+          - CP4101
+          - CP4106
 
   team:
     name: "Computer Systems Team Project"
     mc: ">=8"
     assign:
       - any:
-        - CS3203
-        - and:
-          - CS3216
-          - CS3217
-        - and:
-          - CS3281
-          - CS3282
+          - CS3203
+          - and:
+              - CS3216
+              - CS3217
+          - and:
+              - CS3281
+              - CS3282
 
 ind:
   name: "Industrial Experience Requirement"
   mc: ">=12"
   assign:
     - any:
-      - CP3880
-      - CP3200
-      - CP3202
-      - CP3107
-      - CP3110
-      - IS4010
-      - TR3202
+        - CP3880
+        - CP3200
+        - CP3202
+        - CP3107
+        - CP3110
+        - IS4010
+        - TR3202
 
 it-prof:
   name: "IT Professionalism"
   assign:
     - all:
-      - IS1103
-      - CS2101
-      - ES2660
+        - IS1103
+        - CS2101
+        - ES2660
 
 math-sci:
   name: "Mathematics & Sciences"
   assign:
     - all:
-      - MA1521
-      - MA1101R
-      - ST2334
+        - MA1521
+        - MA1101R
+        - ST2334
 
 ue:
   name: "Unrestricted Electives"

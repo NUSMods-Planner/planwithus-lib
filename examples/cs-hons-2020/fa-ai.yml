@@ -8,33 +8,33 @@ prim-4k:
   name: "Primaries (Level-4000 and above modules)"
   assign:
     - any:
-      - CS4243
-      - CS4244
-      - CS4246
-      - CS4248
+        - CS4243
+        - CS4244
+        - CS4246
+        - CS4248
 
 prim-other:
   name: "Primaries (Other modules)"
   assign:
     - any:
-      - CS3243
-      - CS3244
+        - CS3243
+        - CS3244
 
 elec:
   name: "Electives"
   assign:
     - any:
-      - CS4220
-      - CS4261
-      - CS4269
-      - CS4277
-      - CS4278
-      - CS5215
-      - CS5228
-      - CS5242
-      - CS5260
-      - CS5340
-      - CS5339
+        - CS4220
+        - CS4261
+        - CS4269
+        - CS4277
+        - CS4278
+        - CS5215
+        - CS5228
+        - CS5242
+        - CS5260
+        - CS5340
+        - CS5339
 
 prim-match:
   mc: ">=12"

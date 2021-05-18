@@ -8,9 +8,9 @@ prim-4k:
   name: "Primaries (Level-4000 and above modules)"
   assign:
     - any:
-      - CS4231
-      - CS4232
-      - CS4234
+        - CS4231
+        - CS4232
+        - CS4234
 
 prim-other:
   name: "Primaries (Other modules)"
@@ -21,18 +21,18 @@ elec:
   name: "Electives"
   assign:
     - any:
-      - CS3233
-      - CS4257
-      - CS4261
-      - CS4268
-      - CS4269 
-      - CS4330 
-      - CS5230 
-      - CS5234 
-      - CS5236 
-      - CS5237 
-      - CS5238 
-      - CS5330 
+        - CS3233
+        - CS4257
+        - CS4261
+        - CS4268
+        - CS4269
+        - CS4330
+        - CS5230
+        - CS5234
+        - CS5236
+        - CS5237
+        - CS5238
+        - CS5330
 
 prim-match:
   mc: ">=8" # CS3230 fulfils primary requirements
