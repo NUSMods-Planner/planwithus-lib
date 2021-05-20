@@ -17,7 +17,7 @@ const METADATA_PROPERTIES = ["info"];
 
 type Metadata = { info?: string };
 
-type Pattern = string | { [pattern: string]: Partial<Metadata> };
+type Pattern = string;
 
 const MATCH_RULE_PROPERTIES = ["and", "or", "info", ...METADATA_PROPERTIES];
 
