@@ -19,12 +19,13 @@ type Metadata = { info?: string };
 
 type Pattern = string;
 
-const MATCH_RULE_PROPERTIES = ["and", "or", "info", ...METADATA_PROPERTIES];
+const MATCH_RULE_PROPERTIES = ["and", "exclude", "or", ...METADATA_PROPERTIES];
 
 type MatchRule =
   | Pattern
   | { and: MatchRule[] }
   | { or: MatchRule[] }
+  | { exclude: Pattern }
   | ({ pattern: Pattern } & Partial<Metadata>);
 
 type AtMost = {
@@ -113,6 +114,11 @@ const parseMatchRules = (contents: unknown): MatchRule[] => {
       const [key, entry] = Object.entries(properties)[0];
       if (key === "and" || key === "or") {
         return [{ [key]: parseMatchRules(entry) } as MatchRule];
+      } else if (key === "exclude") {
+        if (typeof entry !== "string") {
+          throw new Error("exclude pattern is of foreign type");
+        }
+        return [{ exclude: entry } as MatchRule];
       } else if (RESERVED_PROPERTIES.includes(key)) {
         throw new Error("key is a reserved keyword");
       }

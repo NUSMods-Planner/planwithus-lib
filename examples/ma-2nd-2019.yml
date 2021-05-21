@@ -1,0 +1,67 @@
+name: "Mathematics (2nd Major)"
+ay: 2019
+url: https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/second-major-in-mathematics/
+assign: [1k, 2k, 3k-above]
+satisfy: 2nd-2014
+
+1k:
+  name: Level-1000 modules
+  assign: [1k-req, 1k-add]
+  satisfy:
+    - mc: "<=14" # if MA1513 is taken
+
+  1k-req:
+    match:
+      - and:
+          - or: [MA1100, CS1231, CS1231S]
+          - or:
+              - MA1101R
+              - MA1506
+              - MA1508
+              - MA1508E
+              - MA1513:
+                info: "One additional module from List II needs to be taken along with MA1513."
+          - or:
+              - MA1102R
+              - MA1505
+              - MA1507
+              - MA1521
+              - and:
+                  - MA1511
+                  - MA1512
+
+  1k-add:
+    assign: [ma-hons-2019/ii, ma-hons-2019/iii, ma-hons-2019/iv]
+
+2k:
+  name: Level-2000 modules
+  assign: [2k-req, 2k-add]
+  satisfy:
+    - mc: ">=24"
+
+  2k-req:
+    match:
+      - and:
+          - or: [MA2101, MA2101S]
+          - MA2104
+          - or: [MA2108, MA2108S]
+          - or: [MA2202, MA2202S]
+          - or: [MA2216, ST2131, ST2334]
+
+  2k-add:
+    assign: [ma-hons-2019/ii, ma-hons-2019/iii, ma-hons-2019/iv]
+    satisfy:
+      - mc: "<=5" # 1 module that is <= 5 MCs
+
+3k-above:
+  name: Level-3000 and above modules
+  assign: [ma-hons-2019/iii, ma-hons-2019/iv]
+  satisfy:
+    - mc: ">=16"
+    - ma-match
+
+  ma-match:
+    name: MA-coded modules
+    match: "MA*"
+    satisfy:
+      - mc: ">=8"

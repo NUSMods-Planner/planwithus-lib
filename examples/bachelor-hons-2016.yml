@@ -1,7 +1,7 @@
 name: "Bachelor (Hons)"
 ay: 2016
 url: https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/degree-requirements
-assign: [1k-exception, 1k, other]
+assign: [1k-exception, 1k, 2k-above]
 satisfy:
   - mc: ">=160"
 
@@ -15,6 +15,6 @@ satisfy:
   satisfy:
     - mc: "<=60"
 
-other:
+2k-above:
   name: Level-2000 and above modules
   match: ["*2xxx*", "*3xxx*", "*4xxx*", "*5xxx*", "*6xxx*"]
