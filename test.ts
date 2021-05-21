@@ -77,7 +77,7 @@ const BLOCK_PROPERTIES = [
 ];
 
 type Block = {
-  name: string;
+  name?: string;
   ay?: number;
   assign?: BlockId | BlockId[];
   match?: MatchRule | MatchRule[];
