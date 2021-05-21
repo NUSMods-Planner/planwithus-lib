@@ -1,0 +1,38 @@
+name: Focus Area (Algorithms & Theory)
+assign: [prim, elec]
+
+prim:
+  name: Primaries
+  match:
+    - CS3236
+    - CS4231
+    - CS4232
+    - CS4234
+
+elec:
+  name: Electives
+  match:
+    - CS3233
+    - CS4257
+    - CS4261
+    - CS4268
+    - CS4269
+    - CS4330
+    - CS5230
+    - CS5234
+    - CS5236
+    - CS5237
+    - CS5238
+    - CS5330
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=8" # CS3230 fulfils primary requirements
+    - 4k
+
+  4k:
+    match:
+      - or: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
