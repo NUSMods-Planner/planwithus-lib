@@ -32,15 +32,14 @@ bd:
       - alg
       - ai
     satisfy:
-      - 4k
+      - 4k-above
       - or:
           - alg/prim-match
           - ai/prim-match
 
-    4k:
+    4k-above:
       name: Focus Areas (Level-4000 and above modules)
-      match:
-        - or: ["*4xxx*", "*5xxx*", "*6xxx*"]
+      match: ["*4xxx*", "*5xxx*", "*6xxx*"]
       satisfy:
         - mc: ">=12"
 

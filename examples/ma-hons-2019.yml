@@ -1,0 +1,143 @@
+name: "Mathematics (Hons)"
+ay: 2019
+url: https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/ma-major/
+assign: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015, ue]
+satisfy: bachelor-hons-2016
+
+1k:
+  name: Level-1000 modules
+  match:
+    - and:
+        - or: [MA1100, MA110T]
+        - or: [MA1101R, MA2001]
+        - or: [MA1102R, MA2002]
+        - or: [CS1010, CS1010E, CS1010S, CS1010X, CS1101S]
+
+2k:
+  name: Level-2000 modules
+  assign: [2k-req, 2k-add]
+  satisfy:
+    - mc: ">=24"
+
+  2k-req:
+    match:
+      - and:
+          - or: [MA2101, MA2101S]
+          - MA2104
+          - or: [MA2108, MA2108S]
+          - or: [MA2202, MA2202S]
+          - or: [MA2216, MA2116, ST2131]
+
+  2k-add:
+    assign: [ii, iii, iv]
+    satisfy:
+      - mc: "<=5" # 1 module that is <= 5 MCs
+
+3k:
+  name: Level-3000 modules
+  assign: [ma3, 3k-add]
+  satisfy:
+    - mc: ">=20"
+
+  ma3:
+    name: List MA3
+    match:
+      - MA3110
+      - MA3110S
+      - MA3210
+      - MA3111
+      - MA3111S
+      - MA3211
+      - MA3211S
+      - MA3201
+      - MA3205
+      - MA3209
+      - MA3265
+    satisfy:
+      - mc: ">=12"
+
+  3k-add:
+    assign: [iii, iv]
+    satisfy:
+      - mc: "<=10" # 2 modules of <= 5 MCs each
+
+4k:
+  name: Level-4000 modules
+  assign: [ma4, iv]
+  satisfy:
+    - mc: ">=20"
+
+  ma4:
+    name: List MA4
+    match:
+      - MA4203
+      - MA4207
+      - MA4221
+      - MA4229
+      - MA4262
+      - MA4271
+      - MA4273
+    satisfy:
+      - mc: ">=12"
+
+ii:
+  name: List II
+  match:
+    - MA2288:
+      info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
+    - MA2289:
+      info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
+    - "MA2xxx*"
+    - exclude: "MA23xx*"
+    - PC2130
+    - PC2132
+    - ST2132
+    - EC2101
+
+iii:
+  name: List III
+  match:
+    - MA3288:
+      info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
+    - MA3289:
+      info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
+    - "MA3xxx*"
+    - exclude: "MA33xx*"
+    - BSE3703
+    - CS3230
+    - CS3231
+    - CS3234
+    - DSA3102
+    - EC3101
+    - EC3303
+    - PC3130
+    - PC3236
+    - PC3238
+    - ST3131
+    - ST3236
+
+iv:
+  name: List IV
+  match:
+    - "MA4xxx*"
+    - "MA5xxx*"
+    - "MA6xxx*"
+    - CS4232
+    - CS4234
+    - CS4236
+    - CS5230
+    - CS5237
+    - DSA4211
+    - DSA4212
+    - EC4301
+    - EC5104
+    - EC5104R
+    - PC4248
+    - PC4274
+    - PC5274
+    - ST4238
+    - ST4245
+
+ue:
+  name: Unrestricted Electives
+  match: "*"
