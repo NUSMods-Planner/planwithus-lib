@@ -1,0 +1,72 @@
+name: Faculty of Science Requirements
+ay: 2015
+url: https://www.science.nus.edu.sg/wp-content/uploads/2019/11/FacultyRequirements.pdf
+assign: [comp, chem, life, mss, phy, misc]
+info: "Please refer to the URL to verify that you meet the Faculty Requirements. Take note that some modules might fall under multiple subject groups."
+
+comp:
+  name: Computing Sciences
+  match:
+    - CZxxxx
+    - "CSxxxx*"
+    - COS2000
+    - "IT1001*"
+    - "IT1002*"
+    - "IT1006*"
+    - QFxxxx
+    - ZBxxxx
+    - CM3267
+
+chem:
+  name: Chemical Sciences
+  match:
+    - CMxxxx
+    - FSTxxxx
+    - PHSxxxx
+    - PRxxxx
+
+life:
+  name: Life Sciences
+  match:
+    - FSTxxxx
+    - LSMxxxx
+    - PHSxxxx
+    - PRxxxx
+
+mss:
+  name: Mathematical & Statistical Sciences
+  match:
+    - CZxxxx
+    - MAxxxx
+    - STxxxx
+    - QFxxxx
+    - DSAxxxx
+
+phy:
+  name: Physical Sciences
+  match: PCxxxx
+
+misc:
+  name: Multidisciplinary & Interdisciplinary Sciences
+  match:
+    - SP1201
+    - "FMS12xxB"
+    - "FMS12xxC"
+    - "FMS12xxM"
+    - "FMS12xxP"
+    - "FMS12xxS"
+    - FMS1201D
+    - SP1202
+    - SP1203
+    - SP2251
+    - SP3201
+    - SP3202
+    - SP3203
+    - SP3277
+    - SP1541
+    - SP2201
+    - SP4261
+    - SP4262
+    - SP4263
+    - SP4264
+    - SP4265
