@@ -5,8 +5,8 @@ import yaml from "js-yaml";
 
 const PATH_PREFIX = path.join(__dirname, "examples");
 
-const pathToBlockName = (fileName: string) =>
-  path.relative(PATH_PREFIX, fileName).replace(/\.yml$/g, "");
+const pathToBlockName = (type: string, fileName: string) =>
+  path.relative(path.join(PATH_PREFIX, type), fileName).replace(/\.yml$/g, "");
 
 type BlockId = string;
 
@@ -266,7 +266,12 @@ const parseBlock = (
   );
 };
 
-const parseFile = (blocks: Blocks, fileName: string, contents: string) => {
+const parseFile = (
+  blocks: Blocks,
+  type: string,
+  fileName: string,
+  contents: string
+) => {
   console.log(fileName);
   const parsedYaml = yaml.load(contents);
 
@@ -277,12 +282,12 @@ const parseFile = (blocks: Blocks, fileName: string, contents: string) => {
   parseBlock(
     blocks,
     parsedYaml as Record<string, unknown>,
-    pathToBlockName(fileName)
+    pathToBlockName(type, fileName)
   );
 };
 
-const loadBlocks = async () => {
-  const files = await glob(`${PATH_PREFIX}/**/*.yml`);
+const loadPrimaryBlocks = async () => {
+  const files = await glob(`${PATH_PREFIX}/primary/**/*.yml`);
   const fileContents = await Promise.all(
     files.map((fileName) => {
       return fs.readFile(fileName, "utf8");
@@ -290,12 +295,14 @@ const loadBlocks = async () => {
   );
 
   const blocks = {} as Blocks;
-  files.forEach((file, i) => parseFile(blocks, file, fileContents[i]));
+  files.forEach((file, i) =>
+    parseFile(blocks, "primary", file, fileContents[i])
+  );
   return blocks;
 };
 
 const main = async () => {
-  const blocks = await loadBlocks();
+  const blocks = await loadPrimaryBlocks();
   console.log(blocks);
   const matchRules = blocks["cs-hons-2020/found"].match as MatchRule[];
   console.log(matchRules);
