@@ -22,43 +22,42 @@ found:
 
 bd:
   name: Breadth & Depth
-  assign: [bd-fa, bd-cp, bd-team]
+  assign: [fa, cp, team]
   satisfy:
     - mc: ">=28"
 
-bd-fa:
-  name: Focus Areas
-  assign:
-    - cs-hons-2020/fa-alg
-    - cs-hons-2020/fa-ai
-  satisfy:
-    - bd-fa-4k
-    - or:
-        - cs-hons-2020/fa-alg/prim-match
-        - cs-hons-2020/fa-ai/prim-match
+  fa:
+    name: Focus Areas
+    assign:
+      - alg
+      - ai
+    satisfy:
+      - 4k
+      - or:
+          - alg/prim-match
+          - ai/prim-match
 
-bd-fa-4k:
-  name: Focus Areas (Level-4000 modules)
-  assign:
-    - cs-hons-2020/fa-alg/prim-4k
-    - cs-hons-2020/fa-ai/prim-4k
-  satisfy:
-    - mc: ">=12"
+    4k:
+      name: Focus Areas (Level-4000 and above modules)
+      match:
+        - or: ["*4xxx*", "*5xxx*", "*6xxx*"]
+      satisfy:
+        - mc: ">=12"
 
-bd-cp:
-  name: CP-coded modules
-  match: [CP3106, CP3209, CP4101, CP4106]
-  satisfy:
-    - mc: "<=12"
+  cp:
+    name: CP-coded modules
+    match: [CP3106, CP3209, CP4101, CP4106]
+    satisfy:
+      - mc: "<=12"
 
-bd-team:
-  name: Computer Systems Team Project
-  match:
-    - CS3203
-    - and: [CS3216, CS3217]
-    - and: [CS3281, CS3282]
-  satisfy:
-    - mc: ">=8"
+  team:
+    name: Computer Systems Team Project
+    match:
+      - CS3203
+      - and: [CS3216, CS3217]
+      - and: [CS3281, CS3282]
+    satisfy:
+      - mc: ">=8"
 
 ind:
   name: Industrial Experience Requirement
@@ -80,5 +79,3 @@ ue:
   name: Unrestricted Electives
   info: "Students without A-level or H2 Mathematics are required to complete the bridging module MA1301/X as part of the Unrestricted Electives."
   match: "*"
-  satisfy:
-    - mc: ">=32"
