@@ -72,7 +72,35 @@ it-prof:
 math-sci:
   name: Mathematics & Sciences
   match:
-    - and: [MA1521, MA1101R, ST2334]
+    - and:
+        - MA1521
+        - MA1101R
+        - ST2334
+        - or:
+            - CM1121
+            - CM1131
+            - CM1417
+            - LSM1102
+            - LSM1105
+            - LSM1106
+            - LSM1301
+            - LSM1306
+            - PC1141
+            - PC1142
+            - PC1143
+            - PC1144
+            - PC1221
+            - PC1222
+            - PC1432
+            - CM1111
+            - CM1191
+            - CM1401
+            - CM1402
+            - CM1501
+            - LSM1303
+            - PC1421
+            - PC1431
+            - PC1433
 
 ue:
   name: Unrestricted Electives
