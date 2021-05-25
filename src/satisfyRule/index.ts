@@ -1,22 +1,86 @@
-import { BlockId } from "../block";
-import { Info, INFO_PROPERTIES } from "../info";
+import { JSONSchemaType } from "ajv";
 
-import { Inequality } from "./inequality";
+import type { Info } from "../info";
+import type { BlockId } from "../block/blockId";
+import { blockIdSchema } from "../block/blockId";
 
-const SATISFY_RULE_PROPERTIES = ["and", "mc", "or", ...INFO_PROPERTIES];
+type BlockIdSatisfyRule = { blockId: BlockId } & Partial<Info>;
 
-type BlockIdSatisfyRule =
-  | BlockId
-  | ({ [blockId: string]: null } & Partial<Info>);
-type MCSatisfyRule = { mc: number | Inequality };
+const blockIdSatisfyRuleSchema: JSONSchemaType<BlockIdSatisfyRule> = {
+  type: "object",
+  required: ["blockId"],
+  properties: {
+    blockId: blockIdSchema,
+    info: { type: "string", nullable: true },
+  },
+};
+
+// TODO: Implement separate inequality type & schema
+type MCSatisfyRule = { mc: number | string };
+
+const MCSatisfyRuleSchema: JSONSchemaType<MCSatisfyRule> = {
+  type: "object",
+  required: ["mc"],
+  properties: {
+    mc: {
+      anyOf: [{ type: "integer" }, { type: "string", pattern: "^[<>]=\\d+" }],
+    },
+  },
+};
+
 type AndSatisfyRule = { and: SatisfyRule[] };
+
+const andSatisfyRuleSchema: JSONSchemaType<AndSatisfyRule> = {
+  type: "object",
+  required: ["and"],
+  properties: {
+    and: {
+      type: "array",
+      items: {
+        anyOf: [
+          blockIdSchema,
+          { type: "object", required: [], $ref: "satisfyRule" },
+        ],
+      },
+    },
+  },
+};
+
 type OrSatisfyRule = { or: SatisfyRule[] };
 
+const orSatisfyRuleSchema: JSONSchemaType<OrSatisfyRule> = {
+  type: "object",
+  required: ["or"],
+  properties: {
+    or: {
+      type: "array",
+      items: {
+        anyOf: [
+          blockIdSchema,
+          { type: "object", required: [], $ref: "satisfyRule" },
+        ],
+      },
+    },
+  },
+};
+
 type SatisfyRule =
+  | BlockId
   | BlockIdSatisfyRule
   | MCSatisfyRule
   | AndSatisfyRule
   | OrSatisfyRule;
 
+const satisfyRuleSchema: JSONSchemaType<SatisfyRule> = {
+  $id: "satisfyRule",
+  anyOf: [
+    { type: "string" },
+    blockIdSatisfyRuleSchema,
+    MCSatisfyRuleSchema,
+    andSatisfyRuleSchema,
+    orSatisfyRuleSchema,
+  ],
+};
+
 export type { SatisfyRule };
-export { SATISFY_RULE_PROPERTIES };
+export { satisfyRuleSchema };

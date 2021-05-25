@@ -15,7 +15,7 @@ found:
         - CS2100
         - or:
             - CS2103
-            - CS2103T:
+            - pattern: CS2103T
               info: "Students taking CS2103T Software Engineering must take CS2101 Effective Communication for Computing Professionals in the same semester."
         - CS2106
         - CS3230

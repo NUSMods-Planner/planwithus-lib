@@ -1,13 +1,14 @@
-import { BLOCK_PROPERTIES } from "./block";
-import { INFO_PROPERTIES } from "./info";
-import { MATCH_RULE_PROPERTIES } from "./matchRule";
-import { SATISFY_RULE_PROPERTIES } from "./satisfyRule";
+import Ajv from "ajv";
 
-const RESERVED_PROPERTIES = [
-  ...BLOCK_PROPERTIES,
-  ...INFO_PROPERTIES,
-  ...MATCH_RULE_PROPERTIES,
-  ...SATISFY_RULE_PROPERTIES,
-];
+import { blockSchema } from "./block";
+import { matchRuleSchema } from "./matchRule";
+import { satisfyRuleSchema } from "./satisfyRule";
 
-export { RESERVED_PROPERTIES };
+const ajv = new Ajv({
+  strict: true,
+  allowUnionTypes: true,
+  schemas: [matchRuleSchema, satisfyRuleSchema],
+});
+const validate = ajv.compile(blockSchema);
+
+export { validate };

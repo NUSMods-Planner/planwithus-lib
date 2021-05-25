@@ -8,7 +8,7 @@ satisfy: bachelor-hons-2016
   name: Level-1000 modules
   match:
     - and:
-        - or: [MA1100, MA110T]
+        - or: [MA1100, MA1100T]
         - or: [MA1101R, MA2001]
         - or: [MA1102R, MA2002]
         - or: [CS1010, CS1010E, CS1010S, CS1010X, CS1101S]
@@ -83,9 +83,9 @@ satisfy: bachelor-hons-2016
 ii:
   name: List II
   match:
-    - MA2288:
+    - pattern: MA2288
       info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
-    - MA2289:
+    - pattern: MA2289
       info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
     - "MA2xxx*"
     - exclude: "MA23xx*"
@@ -97,9 +97,9 @@ ii:
 iii:
   name: List III
   match:
-    - MA3288:
+    - pattern: MA3288
       info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
-    - MA3289:
+    - pattern: MA3289
       info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
     - "MA3xxx*"
     - exclude: "MA33xx*"

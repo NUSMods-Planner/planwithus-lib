@@ -1,19 +1,89 @@
-import { Info, INFO_PROPERTIES } from "../info";
+import { JSONSchemaType } from "ajv";
 
-type Pattern = string;
+import type { Info } from "../info";
 
-const MATCH_RULE_PROPERTIES = ["and", "or", "exclude", ...INFO_PROPERTIES];
+import type { Pattern } from "./pattern";
+import { patternSchema } from "./pattern";
 
-type PatternMatchRule = Pattern | ({ [pattern: string]: null } & Partial<Info>);
+type PatternMatchRule = { pattern: Pattern } & Partial<Info>;
+
+const patternMatchRuleSchema: JSONSchemaType<PatternMatchRule> = {
+  type: "object",
+  required: ["pattern"],
+  properties: {
+    pattern: patternSchema,
+    info: { type: "string", nullable: true },
+  },
+};
+
 type AndMatchRule = { and: MatchRule[] };
+
+const andMatchRuleSchema: JSONSchemaType<AndMatchRule> = {
+  type: "object",
+  required: ["and"],
+  properties: {
+    and: {
+      type: "array",
+      items: {
+        anyOf: [
+          patternSchema,
+          { type: "object", required: [], $ref: "matchRule" },
+        ],
+      },
+    },
+  },
+};
+
 type OrMatchRule = { or: MatchRule[] };
+
+const orMatchRuleSchema: JSONSchemaType<OrMatchRule> = {
+  type: "object",
+  required: ["or"],
+  properties: {
+    or: {
+      type: "array",
+      items: {
+        anyOf: [
+          patternSchema,
+          { type: "object", required: [], $ref: "matchRule" },
+        ],
+      },
+    },
+  },
+};
+
 type ExcludeMatchRule = { exclude: MatchRule };
 
+const excludeMatchRuleSchema: JSONSchemaType<ExcludeMatchRule> = {
+  type: "object",
+  required: ["exclude"],
+  properties: {
+    exclude: {
+      anyOf: [
+        patternSchema,
+        { type: "object", required: [], $ref: "matchRule" },
+      ],
+    },
+  },
+};
+
 type MatchRule =
+  | Pattern
   | PatternMatchRule
   | AndMatchRule
   | OrMatchRule
   | ExcludeMatchRule;
 
-export type { Pattern, MatchRule };
-export { MATCH_RULE_PROPERTIES };
+const matchRuleSchema: JSONSchemaType<MatchRule> = {
+  $id: "matchRule",
+  anyOf: [
+    patternSchema,
+    patternMatchRuleSchema,
+    andMatchRuleSchema,
+    orMatchRuleSchema,
+    excludeMatchRuleSchema,
+  ],
+};
+
+export type { MatchRule };
+export { matchRuleSchema };
