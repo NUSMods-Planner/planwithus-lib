@@ -4,7 +4,7 @@
   "description": "JavaScript library for course requirements specification in plaNwithUS.",
   "main": "src/index.js",
   "scripts": {
-    "build": "npx ts-node test.ts",
+    "build": "npx ts-node src/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/wei2912/planwithus-lib#readme",
   "dependencies": {
+    "ajv": "^8.5.0",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
