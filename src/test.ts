@@ -3,97 +3,23 @@ import path from "path";
 import glob from "globby";
 import yaml from "js-yaml";
 
-const PATH_PREFIX = path.join(__dirname, "examples");
+import { RESERVED_PROPERTIES } from "./";
+import { Block, BlockId } from "./block";
+import { MatchRule, Pattern } from "./matchRule";
+import { SatisfyRule } from "./satisfyRule";
+import { parseInequality } from "./satisfyRule/inequality";
+
+const PATH_PREFIX = path.join(__dirname, "../examples");
 
 const pathToBlockName = (type: string, fileName: string) =>
   path.relative(path.join(PATH_PREFIX, type), fileName).replace(/\.yml$/g, "");
 
-type BlockId = string;
-
 const isBlockIdArray = (x: unknown): x is BlockId[] =>
   Array.isArray(x) && x.every((y) => typeof y === "string");
-
-const METADATA_PROPERTIES = ["info"];
-
-type Metadata = { info?: string };
-
-type Pattern = string;
-
-const MATCH_RULE_PROPERTIES = ["and", "exclude", "or", ...METADATA_PROPERTIES];
-
-type MatchRule =
-  | Pattern
-  | { and: MatchRule[] }
-  | { or: MatchRule[] }
-  | { exclude: Pattern }
-  | ({ pattern: Pattern } & Partial<Metadata>);
-
-type AtMost = {
-  key: "AT_MOST";
-  value: number;
-};
-
-type AtLeast = {
-  key: "AT_LEAST";
-  value: number;
-};
-
-type Inequality = AtMost | AtLeast;
-
-const parseInequality = (str: string): Inequality => {
-  const match = str.match(/^([<>]=)(\d+)$/);
-  if (match === null) {
-    throw new Error("inequality is invalid; only <= and >= allowed");
-  }
-  const [, sym, num] = match;
-  return sym === "<="
-    ? {
-        key: "AT_MOST",
-        value: parseInt(num),
-      }
-    : {
-        key: "AT_LEAST",
-        value: parseInt(num),
-      };
-};
-
-const SATISFY_RULE_PROPERTIES = ["and", "mc", "or", ...METADATA_PROPERTIES];
-
-type SatisfyRule =
-  | BlockId
-  | { mc: number | Inequality }
-  | { and: SatisfyRule[] }
-  | { or: SatisfyRule[] }
-  | ({ blockId: BlockId } & Partial<Metadata>);
-
-const BLOCK_PROPERTIES = [
-  "assign",
-  "ay",
-  "match",
-  "name",
-  "satisfy",
-  "url",
-  ...METADATA_PROPERTIES,
-];
-
-type Block = {
-  name?: string;
-  ay?: number;
-  assign?: BlockId | BlockId[];
-  match?: MatchRule | MatchRule[];
-  satisfy?: SatisfyRule | SatisfyRule[];
-  url?: string;
-} & Partial<Metadata>;
 
 type Blocks = {
   [blockName: string]: Block;
 };
-
-const RESERVED_PROPERTIES = [
-  ...BLOCK_PROPERTIES,
-  ...MATCH_RULE_PROPERTIES,
-  ...SATISFY_RULE_PROPERTIES,
-];
 
 const parseMatchRules = (contents: unknown): MatchRule[] => {
   if (contents === null) {
@@ -302,6 +228,7 @@ const loadPrimaryBlocks = async () => {
 };
 
 const main = async () => {
+  console.log(PATH_PREFIX);
   const blocks = await loadPrimaryBlocks();
   console.log(blocks);
   const matchRules = blocks["cs-hons-2020/found"].match as MatchRule[];
