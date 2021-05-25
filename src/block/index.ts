@@ -1,6 +1,7 @@
-import { Info, INFO_PROPERTIES } from "../info";
-import { MatchRule } from "../matchRule";
-import { SatisfyRule } from "../satisfyRule";
+import { INFO_PROPERTIES } from "../info";
+import type { Info } from "../info";
+import type { MatchRule } from "../matchRule";
+import type { SatisfyRule } from "../satisfyRule";
 
 const BLOCK_PROPERTIES = [
   "assign",
@@ -23,4 +24,5 @@ type Block = {
   url?: string;
 } & Partial<Info>;
 
-export { Block, BlockId, BLOCK_PROPERTIES };
+export type { Block, BlockId };
+export { BLOCK_PROPERTIES };

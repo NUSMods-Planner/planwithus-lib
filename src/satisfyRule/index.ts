@@ -5,7 +5,9 @@ import { Inequality } from "./inequality";
 
 const SATISFY_RULE_PROPERTIES = ["and", "mc", "or", ...INFO_PROPERTIES];
 
-type BlockIdSatisfyRule = BlockId | ({ blockId: BlockId } & Partial<Info>);
+type BlockIdSatisfyRule =
+  | BlockId
+  | ({ [blockId: string]: null } & Partial<Info>);
 type MCSatisfyRule = { mc: number | Inequality };
 type AndSatisfyRule = { and: SatisfyRule[] };
 type OrSatisfyRule = { or: SatisfyRule[] };
@@ -16,4 +18,5 @@ type SatisfyRule =
   | AndSatisfyRule
   | OrSatisfyRule;
 
-export { SatisfyRule, SATISFY_RULE_PROPERTIES };
+export type { SatisfyRule };
+export { SATISFY_RULE_PROPERTIES };

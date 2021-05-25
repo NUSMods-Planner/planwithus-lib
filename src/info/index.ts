@@ -1,4 +1,5 @@
 type Info = { info?: string };
 const INFO_PROPERTIES = ["info"];
 
-export { Info, INFO_PROPERTIES };
+export type { Info };
+export { INFO_PROPERTIES };
