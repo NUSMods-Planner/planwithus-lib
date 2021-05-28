@@ -10,6 +10,7 @@ type PatternMatchRule = { pattern: Pattern } & Partial<Info>;
 const patternMatchRuleSchema: JSONSchemaType<PatternMatchRule> = {
   type: "object",
   required: ["pattern"],
+  additionalProperties: false,
   properties: {
     pattern: patternSchema,
     info: { type: "string", nullable: true },
@@ -21,6 +22,7 @@ type AndMatchRule = { and: MatchRule[] };
 const andMatchRuleSchema: JSONSchemaType<AndMatchRule> = {
   type: "object",
   required: ["and"],
+  additionalProperties: false,
   properties: {
     and: {
       type: "array",
@@ -39,6 +41,7 @@ type OrMatchRule = { or: MatchRule[] };
 const orMatchRuleSchema: JSONSchemaType<OrMatchRule> = {
   type: "object",
   required: ["or"],
+  additionalProperties: false,
   properties: {
     or: {
       type: "array",
@@ -57,6 +60,7 @@ type ExcludeMatchRule = { exclude: MatchRule };
 const excludeMatchRuleSchema: JSONSchemaType<ExcludeMatchRule> = {
   type: "object",
   required: ["exclude"],
+  additionalProperties: false,
   properties: {
     exclude: {
       anyOf: [
