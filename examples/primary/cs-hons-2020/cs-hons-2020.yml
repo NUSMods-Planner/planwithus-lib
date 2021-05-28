@@ -29,13 +29,13 @@ bd:
   fa:
     name: Focus Areas
     assign:
-      - alg
-      - ai
+      - cs-hons-2020-alg
+      - cs-hons-2020-ai
     satisfy:
       - 4k-above
       - or:
-          - alg/prim-match
-          - ai/prim-match
+          - cs-hons-2020-alg/prim-match
+          - cs-hons-2020-ai/prim-match
 
     4k-above:
       name: Focus Areas (Level-4000 and above modules)

@@ -8,12 +8,6 @@ import type { MatchRule } from "./matchRule";
 
 const PATH_PREFIX = path.join(__dirname, "../examples");
 
-const pathToBlockName = (type: string, fileName: string) =>
-  path
-    .relative(path.join(PATH_PREFIX, type), fileName)
-    .replace(/\.yml$/g, "")
-    .replace(/^\//g, "");
-
 const loadBlocks = async (type: string) => {
   const files = await glob(`${PATH_PREFIX}/${type}/**/*.yml`);
   const fileContents = await Promise.all(
@@ -24,7 +18,11 @@ const loadBlocks = async (type: string) => {
 
   return files.reduce((accBlocks, filename, i) => {
     console.log(filename);
-    return parse(accBlocks, pathToBlockName(type, filename), fileContents[i]);
+    return parse(
+      accBlocks,
+      path.basename(filename).replace(/\.yml$/, ""),
+      fileContents[i]
+    );
   }, {} as Record<string, Block>);
 };
 
