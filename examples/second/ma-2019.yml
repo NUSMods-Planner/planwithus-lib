@@ -2,7 +2,7 @@ name: "Mathematics (2nd Major)"
 ay: 2019
 url: https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/second-major-in-mathematics/
 assign: [1k, 2k, 3k-above]
-satisfy: 2nd-2014
+satisfy: second-maj-2014
 
 1k:
   name: Level-1000 modules
@@ -19,7 +19,7 @@ satisfy: 2nd-2014
               - MA1506
               - MA1508
               - MA1508E
-              - MA1513:
+              - pattern: MA1513
                 info: "One additional module from List II needs to be taken along with MA1513."
           - or:
               - MA1102R
