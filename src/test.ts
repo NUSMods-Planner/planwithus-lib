@@ -30,6 +30,9 @@ const main = async () => {
   const primaryBlocks = await loadBlocks("primary");
   console.log(JSON.stringify(primaryBlocks, null, 2));
   console.log("---");
+  const secondBlocks = await loadBlocks("second");
+  console.log(JSON.stringify(secondBlocks, null, 2));
+  console.log("---");
   const matchRules = primaryBlocks["cs-hons-2020/found"].match as MatchRule[];
   console.log(matchRules);
   if (typeof matchRules[0] === "object" && "and" in matchRules[0]) {
