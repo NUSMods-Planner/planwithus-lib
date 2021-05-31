@@ -3,7 +3,7 @@ name: Run ESLint & Prettier
 on: [push, pull_request]
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
