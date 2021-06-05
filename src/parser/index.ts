@@ -1,4 +1,5 @@
 import Ajv from "ajv";
+import ajvErrors from "ajv-errors";
 import yaml from "js-yaml";
 
 import type { Block } from "../block";
@@ -7,9 +8,11 @@ import { matchRuleSchema } from "../matchRule";
 import { satisfyRuleSchema } from "../satisfyRule";
 
 const ajv = new Ajv({
+  allErrors: true, // necessary for ajv-errors
   allowUnionTypes: true,
   schemas: [matchRuleSchema, satisfyRuleSchema],
 });
+ajvErrors(ajv);
 const ajvValidate = ajv.compile(blockSchema);
 
 const parse = (block: unknown): Block => {

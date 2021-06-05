@@ -1,6 +1,14 @@
+import Ajv from "ajv";
+import ajvErrors from "ajv-errors";
 import { should } from "chai";
 
 import { initVerifiers } from "./";
+
+const ajv = new Ajv({
+  allErrors: true, // necessary for ajv-errors
+  allowUnionTypes: true,
+});
+ajvErrors(ajv);
 
 should();
 
@@ -15,3 +23,5 @@ describe("initVerifiers", () => {
     verifiers.should.have.property("minor");
   });
 });
+
+export { ajv };
