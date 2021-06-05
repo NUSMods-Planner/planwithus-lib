@@ -1,5 +1,5 @@
-import type { Block } from "./block";
-import { decomposeBlock } from "./block";
+import type { Block } from "../block";
+import { decomposeBlock } from "../block";
 
 class Blocks {
   blocks: Record<string, Block>;
