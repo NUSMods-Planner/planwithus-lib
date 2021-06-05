@@ -6,7 +6,7 @@ import type { MatchRule } from "./matchRule";
 import { parseYAML } from "./";
 import { Verifier } from "./verifier";
 
-const PATH_PREFIX = path.join(__dirname, "../examples");
+const PATH_PREFIX = path.join(__dirname, "../blocks");
 
 const loadBlocks = async (type: string): Promise<Verifier> => {
   const files = await glob(`${PATH_PREFIX}/${type}/**/*.yml`);
