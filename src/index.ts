@@ -31,4 +31,4 @@ const initVerifiers = async (): Promise<Record<string, Verifier>> => {
   );
 };
 
-export { BLOCK_CLASSES, initVerifiers, parseYAML };
+export { BLOCK_CLASSES, initVerifiers };
