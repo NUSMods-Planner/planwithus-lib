@@ -4,7 +4,6 @@ import glob from "globby";
 
 import { parse } from "./";
 import { Blocks } from "./blocks";
-import type { Block } from "./block";
 import type { MatchRule } from "./matchRule";
 
 const PATH_PREFIX = path.join(__dirname, "../examples");
@@ -18,8 +17,10 @@ const loadBlocks = async (type: string) => {
   const blocks = new Blocks();
   files.forEach((filename, i) => {
     console.log(filename);
-    const block = parse(fileContents[i]);
-    blocks.addBlock(path.basename(filename).replace(/\.yml$/, ""), block);
+    blocks.addBlock(
+      path.basename(filename).replace(/\.yml$/, ""),
+      parse(fileContents[i])
+    );
   });
   return blocks;
 };
