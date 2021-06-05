@@ -20,6 +20,7 @@
   "homepage": "https://github.com/wei2912/planwithus-lib#readme",
   "dependencies": {
     "ajv": "^8.5.0",
+    "globby": "^11.0.3",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
@@ -30,7 +31,6 @@
     "@typescript-eslint/parser": "^4.26.0",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
-    "globby": "^11.0.3",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "2.3.0",
