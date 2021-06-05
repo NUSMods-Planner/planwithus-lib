@@ -25,11 +25,13 @@
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.1",
+    "@types/chai": "^4.2.18",
     "@types/js-yaml": "^4.0.1",
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.9.0",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
+    "chai": "^4.3.4",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
