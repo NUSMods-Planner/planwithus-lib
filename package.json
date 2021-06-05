@@ -4,8 +4,8 @@
   "description": "JavaScript library for course requirements specification in plaNwithUS.",
   "main": "src/index.js",
   "scripts": {
-    "build": "npx ts-node src/",
-    "test": "npx ts-node src/test.ts",
+    "build": "ts-node src/",
+    "test": "mocha -r ts-node/register src/**/*.test.ts",
     "prepare": "husky install"
   },
   "repository": {
