@@ -2,38 +2,38 @@ import fs from "fs/promises";
 import path from "path";
 import glob from "globby";
 
-import { parse } from "./";
-import type { Block } from "./block";
 import type { MatchRule } from "./matchRule";
+import { parseYAML } from "./";
+import { Verifier } from "./verifier";
 
 const PATH_PREFIX = path.join(__dirname, "../examples");
 
-const loadBlocks = async (type: string) => {
+const loadBlocks = async (type: string): Promise<Verifier> => {
   const files = await glob(`${PATH_PREFIX}/${type}/**/*.yml`);
   const fileContents = await Promise.all(
-    files.map((fileName) => {
-      return fs.readFile(fileName, "utf8");
-    })
+    files.map((fileName) => fs.readFile(fileName, "utf8"))
   );
 
-  return files.reduce((accBlocks, filename, i) => {
+  const verifier = new Verifier();
+  files.forEach((filename, i) => {
     console.log(filename);
-    return parse(
-      accBlocks,
+    verifier.addBlock(
       path.basename(filename).replace(/\.yml$/, ""),
-      fileContents[i]
+      parseYAML(fileContents[i])
     );
-  }, {} as Record<string, Block>);
+  });
+  return verifier;
 };
 
 const main = async () => {
-  const primaryBlocks = await loadBlocks("primary");
-  console.log(JSON.stringify(primaryBlocks, null, 2));
+  const primaryVerifier = await loadBlocks("primary");
+  console.log(JSON.stringify(primaryVerifier.blocks, null, 2));
   console.log("---");
-  const secondBlocks = await loadBlocks("second");
-  console.log(JSON.stringify(secondBlocks, null, 2));
+  const secondVerifier = await loadBlocks("second");
+  console.log(JSON.stringify(secondVerifier.blocks, null, 2));
   console.log("---");
-  const matchRules = primaryBlocks["cs-hons-2020/found"].match as MatchRule[];
+  const matchRules = primaryVerifier.find("cs-hons-2020/found")
+    .match as MatchRule[];
   console.log(matchRules);
   if (typeof matchRules[0] === "object" && "and" in matchRules[0]) {
     const andRules = matchRules[0].and as MatchRule[];
