@@ -1,0 +1,12 @@
+name: "Minor"
+ay: 2019
+url: https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/special-programmes/minor-programmes
+satisfy:
+  - mc:
+      ">=20" # while the website states >=24, various minors e.g. mathematics,
+      # computer science have a requirement of >=20
+info: "At least 12 MCs for any Minor programme must be taken from outside the entire set of modules that are listed for the major(s)/another minor that the student is taking/ has taken. A minimum 16 MCs of the Minor requirements must be earned from modules read in NUS. Please refer to the URL for more details."
+
+double-count:
+  satisfy:
+    - mc: "<=8"
