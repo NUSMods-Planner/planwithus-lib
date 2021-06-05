@@ -1,7 +1,7 @@
 import type { Block } from "../block";
 import { decomposeBlock } from "../block";
 
-class Blocks {
+class Verifier {
   blocks: Record<string, Block>;
 
   constructor() {
@@ -32,4 +32,4 @@ class Blocks {
   }
 }
 
-export { Blocks };
+export { Verifier };

@@ -12,7 +12,7 @@ const ajv = new Ajv({
 });
 const ajvValidate = ajv.compile(blockSchema);
 
-const parse = (contents: string): Block => {
+const parseYAML = (contents: string): Block => {
   const block = yaml.load(contents);
   if (typeof block !== "object" || !block) {
     throw new Error(`unexpected type: ${typeof block}`);
@@ -23,4 +23,4 @@ const parse = (contents: string): Block => {
   return block;
 };
 
-export { parse };
+export { parseYAML };
