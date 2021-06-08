@@ -1,7 +1,7 @@
 import { JSONSchemaType } from "ajv";
 
-import type { Info } from "../info";
-import type { MatchRule } from "../matchRule";
+import type { Info } from "../info/types";
+import type { MatchRule } from "../matchRule/types";
 import type { SatisfyRule } from "../satisfyRule";
 
 import type { BlockId } from "./blockId";

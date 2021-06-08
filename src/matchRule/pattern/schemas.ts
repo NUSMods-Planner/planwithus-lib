@@ -1,6 +1,6 @@
 import { JSONSchemaType } from "ajv";
 
-type Pattern = string;
+import type { Pattern } from "./types";
 
 const patternSchema: JSONSchemaType<Pattern> = {
   type: "string",
@@ -9,5 +9,4 @@ const patternSchema: JSONSchemaType<Pattern> = {
     "pattern should be a non-empty string composed of A-Z, 0-9, x or *",
 };
 
-export type { Pattern };
 export { patternSchema };
