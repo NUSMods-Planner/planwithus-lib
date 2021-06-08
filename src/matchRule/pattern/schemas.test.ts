@@ -1,8 +1,8 @@
 import { should } from "chai";
 import { assert, constantFrom, property, stringOf, tuple } from "fast-check";
 
-import { ajv } from "../index.test";
-import { patternSchema } from "./pattern";
+import { ajv } from "../../index.test";
+import { patternSchema } from "./schemas";
 
 const ajvValidate = ajv.compile(patternSchema);
 

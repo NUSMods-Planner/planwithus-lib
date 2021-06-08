@@ -1,6 +1,6 @@
 import { JSONSchemaType } from "ajv";
 
-import type { Info } from "../info";
+import type { Info } from "../info/types";
 import type { BlockId } from "../block/blockId";
 import { blockIdSchema } from "../block/blockId";
 
