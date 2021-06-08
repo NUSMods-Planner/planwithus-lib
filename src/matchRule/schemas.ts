@@ -20,99 +20,138 @@ import type {
 } from "./types";
 
 const matchRuleRecursiveSchema: JSONSchemaType<MatchRule> = {
-  anyOf: [matchRuleTypeSchema],
-  if: patternTypeSchema,
-  then: patternSchema,
-  else: {
-    if: matchRuleObjectTypeSchema,
-    then: { type: "object", required: [], $ref: "matchRule" },
-  },
+  ...matchRuleTypeSchema,
+  $ref: "matchRule",
 };
 
 const patternMatchRuleSchema: JSONSchemaType<PatternMatchRule> = {
-  type: "object",
-  required: ["pattern"],
+  ...patternMatchRuleTypeSchema,
   additionalProperties: false,
   properties: {
     pattern: patternSchema,
-    info: { type: "string", nullable: true },
+    info: {
+      type: "string",
+      nullable: true,
+      errorMessage: { type: "property 'info' should be a string" },
+    },
+  },
+  errorMessage: {
+    additionalProperties:
+      "pattern match rule should have properties 'pattern' and 'info' (optional) only",
   },
 };
 
 const andMatchRuleSchema: JSONSchemaType<AndMatchRule> = {
-  type: "object",
-  required: ["and"],
+  ...andMatchRuleTypeSchema,
+  additionalProperties: false,
   properties: {
     and: {
       type: "array",
       items: matchRuleRecursiveSchema,
+      minItems: 1,
+      errorMessage: {
+        type: "property 'and' should be a non-empty array of match rules",
+        minItems: "property 'and' should not be an empty array",
+      },
     },
+  },
+  errorMessage: {
+    additionalProperties: "and match rule should have property 'and' only",
   },
 };
 
 const orMatchRuleSchema: JSONSchemaType<OrMatchRule> = {
-  type: "object",
-  required: ["or"],
+  ...orMatchRuleTypeSchema,
   additionalProperties: false,
   properties: {
     or: {
       type: "array",
       items: matchRuleRecursiveSchema,
+      minItems: 1,
+      errorMessage: {
+        type: "property 'or' should be a non-empty array of match rules",
+        minItems: "property 'or' should not be an empty array",
+      },
     },
+  },
+  errorMessage: {
+    additionalProperties: "or match rule should have property 'or' only",
   },
 };
 
 const excludeMatchRuleSchema: JSONSchemaType<ExcludeMatchRule> = {
-  type: "object",
-  required: ["exclude"],
+  ...excludeMatchRuleTypeSchema,
   additionalProperties: false,
   properties: {
     exclude: matchRuleRecursiveSchema,
   },
+  errorMessage: {
+    additionalProperties:
+      "exclude match rule should have property 'exclude' only",
+  },
 };
 
 const matchRuleObjectSchema: JSONSchemaType<MatchRuleObject> = {
-  type: "object",
-  required: [],
-  anyOf: [
+  ...matchRuleObjectTypeSchema,
+  oneOf: [
     patternMatchRuleTypeSchema,
     andMatchRuleTypeSchema,
     orMatchRuleTypeSchema,
     excludeMatchRuleTypeSchema,
   ],
-  if: patternMatchRuleTypeSchema,
-  then: patternMatchRuleSchema,
-  else: {
-    if: andMatchRuleTypeSchema,
-    then: andMatchRuleSchema,
+  if: {
+    oneOf: [
+      patternMatchRuleTypeSchema,
+      andMatchRuleTypeSchema,
+      orMatchRuleTypeSchema,
+      excludeMatchRuleTypeSchema,
+    ],
+  },
+  then: {
+    if: patternMatchRuleTypeSchema,
+    then: patternMatchRuleSchema,
     else: {
-      if: orMatchRuleTypeSchema,
-      then: orMatchRuleSchema,
+      if: andMatchRuleTypeSchema,
+      then: andMatchRuleSchema,
       else: {
-        if: excludeMatchRuleTypeSchema,
-        then: excludeMatchRuleSchema,
+        if: orMatchRuleTypeSchema,
+        then: orMatchRuleSchema,
+        else: {
+          if: excludeMatchRuleTypeSchema,
+          then: excludeMatchRuleSchema,
+        },
       },
     },
+  },
+  errorMessage: {
+    oneOf:
+      "match rule should have only one of properties 'pattern', 'and', 'or', 'exclude'",
   },
 };
 
 const matchRuleSchema: JSONSchemaType<MatchRule> = {
+  ...matchRuleTypeSchema,
   $id: "matchRule",
-  anyOf: [patternTypeSchema, matchRuleObjectTypeSchema],
-  if: patternTypeSchema,
-  then: patternSchema,
-  else: {
-    if: matchRuleObjectTypeSchema,
-    then: matchRuleObjectSchema,
+  if: matchRuleTypeSchema,
+  then: {
+    if: patternTypeSchema,
+    then: patternSchema,
+    else: {
+      if: matchRuleObjectTypeSchema,
+      then: matchRuleObjectSchema,
+    },
   },
-  errorMessage: "invalid match rule",
+  errorMessage: {
+    type: "match rule should be either a string or an object",
+    _: "invalid match rule", // suppress unnecessary error messages
+  },
 };
 
 export {
-  patternMatchRuleSchema,
   andMatchRuleSchema,
-  orMatchRuleSchema,
   excludeMatchRuleSchema,
   matchRuleObjectSchema,
   matchRuleSchema,
+  orMatchRuleSchema,
+  patternMatchRuleSchema,
 };
