@@ -1,4 +1,5 @@
-import { should } from "chai";
+import chai from "chai";
+import chaiSubset from "chai-subset";
 import { assert, constantFrom, integer, property, tuple } from "fast-check";
 
 import { ajv } from "../../index.test";
@@ -10,7 +11,8 @@ const inequality = tuple(constantFrom("<=", ">="), integer({ min: 1 })).map(
   ([sign, n]: [string, number]) => `${sign}${n}`
 );
 
-should();
+chai.use(chaiSubset);
+chai.should();
 
 const isInvalidInequality = (inequalityStr: string) => {
   ajvValidate(inequalityStr).should.be.false;
