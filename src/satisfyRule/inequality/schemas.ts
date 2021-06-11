@@ -6,7 +6,7 @@ import type { Inequality } from "./types";
 const inequalitySchema: JSONSchemaType<Inequality> = {
   ...inequalityTypeSchema,
   if: inequalityTypeSchema,
-  then: { pattern: "^[<>]=\\d+" },
+  then: { pattern: "^[<>]=\\d+$" },
   errorMessage:
     "inequality should be a string in the form of '>=n' or '<=n' for some positive integer n",
 };
