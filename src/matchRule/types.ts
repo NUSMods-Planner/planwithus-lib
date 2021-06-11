@@ -14,7 +14,7 @@ type MatchRuleObject =
 
 type MatchRule = Pattern | MatchRuleObject;
 
-export {
+export type {
   AndMatchRule,
   ExcludeMatchRule,
   MatchRule,
