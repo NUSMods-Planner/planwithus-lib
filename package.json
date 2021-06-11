@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "ts-node src/",
-    "test": "mocha -r ts-node/register src/**/*.test.ts",
+    "test": "mocha -r ts-node/register 'src/**/*.test.ts'",
     "coverage": "nyc npm run test"
   },
   "repository": {
