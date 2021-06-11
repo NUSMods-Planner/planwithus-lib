@@ -3,6 +3,8 @@ import { JSONSchemaType } from "ajv";
 import type { Info } from "../info/types";
 import type { BlockId } from "../block/blockId";
 import { blockIdSchema } from "../block/blockId";
+import { inequalitySchema } from "./inequality/schemas";
+import type { Inequality } from "./inequality/types";
 
 type BlockIdSatisfyRule = { blockId: BlockId } & Partial<Info>;
 
@@ -16,8 +18,7 @@ const blockIdSatisfyRuleSchema: JSONSchemaType<BlockIdSatisfyRule> = {
   },
 };
 
-// TODO: Implement separate inequality type & schema
-type MCSatisfyRule = { mc: number | string };
+type MCSatisfyRule = { mc: number | Inequality };
 
 const MCSatisfyRuleSchema: JSONSchemaType<MCSatisfyRule> = {
   type: "object",
@@ -25,7 +26,7 @@ const MCSatisfyRuleSchema: JSONSchemaType<MCSatisfyRule> = {
   additionalProperties: false,
   properties: {
     mc: {
-      anyOf: [{ type: "integer" }, { type: "string", pattern: "^[<>]=\\d+" }],
+      anyOf: [{ type: "integer", exclusiveMinimum: 0 }, inequalitySchema],
     },
   },
 };
