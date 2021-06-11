@@ -5,6 +5,8 @@ import type { BlockId } from "../block/blockId/types";
 import { inequalitySchema } from "./inequality/schemas";
 import type { Inequality } from "./inequality/types";
 
+const SATISFY_RULE_SCHEMA_ID = "satisfyRule";
+
 type MCSatisfyRule = { mc: number | Inequality };
 
 const MCSatisfyRuleSchema: JSONSchemaType<MCSatisfyRule> = {
@@ -30,7 +32,7 @@ const andSatisfyRuleSchema: JSONSchemaType<AndSatisfyRule> = {
       items: {
         anyOf: [
           blockIdSchema,
-          { type: "object", required: [], $ref: "satisfyRule" },
+          { type: "object", required: [], $ref: SATISFY_RULE_SCHEMA_ID },
         ],
       },
     },
@@ -49,7 +51,7 @@ const orSatisfyRuleSchema: JSONSchemaType<OrSatisfyRule> = {
       items: {
         anyOf: [
           blockIdSchema,
-          { type: "object", required: [], $ref: "satisfyRule" },
+          { type: "object", required: [], $ref: SATISFY_RULE_SCHEMA_ID },
         ],
       },
     },
@@ -59,7 +61,7 @@ const orSatisfyRuleSchema: JSONSchemaType<OrSatisfyRule> = {
 type SatisfyRule = BlockId | MCSatisfyRule | AndSatisfyRule | OrSatisfyRule;
 
 const satisfyRuleSchema: JSONSchemaType<SatisfyRule> = {
-  $id: "satisfyRule",
+  $id: SATISFY_RULE_SCHEMA_ID,
   anyOf: [
     { type: "string" },
     MCSatisfyRuleSchema,
@@ -69,4 +71,4 @@ const satisfyRuleSchema: JSONSchemaType<SatisfyRule> = {
 };
 
 export type { SatisfyRule };
-export { satisfyRuleSchema };
+export { SATISFY_RULE_SCHEMA_ID, satisfyRuleSchema };

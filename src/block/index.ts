@@ -2,7 +2,9 @@ import { JSONSchemaType } from "ajv";
 
 import { infoSchema } from "../info/schemas";
 import type { Info } from "../info/types";
+import { MATCH_RULE_SCHEMA_ID } from "../matchRule/schemas";
 import type { MatchRule } from "../matchRule/types";
+import { SATISFY_RULE_SCHEMA_ID } from "../satisfyRule";
 import type { SatisfyRule } from "../satisfyRule";
 import { blockIdSchema } from "./blockId/schemas";
 import type { BlockId } from "./blockId/types";
@@ -24,21 +26,21 @@ type MatchRules = MatchRule | MatchRule[];
 
 const matchRulesSchema: JSONSchemaType<MatchRules> = {
   anyOf: [
-    { type: "string", $ref: "matchRule" },
+    { type: "string", $ref: MATCH_RULE_SCHEMA_ID },
     {
       type: "object",
       required: [],
-      $ref: "matchRule",
+      $ref: MATCH_RULE_SCHEMA_ID,
     },
     {
       type: "array",
       items: {
         anyOf: [
-          { type: "string", $ref: "matchRule" },
+          { type: "string", $ref: MATCH_RULE_SCHEMA_ID },
           {
             type: "object",
             required: [],
-            $ref: "matchRule",
+            $ref: MATCH_RULE_SCHEMA_ID,
           },
         ],
       },
@@ -50,21 +52,21 @@ type SatisfyRules = SatisfyRule | SatisfyRule[];
 
 const satisfyRulesSchema: JSONSchemaType<SatisfyRules> = {
   anyOf: [
-    { type: "string", $ref: "satisfyRule" },
+    { type: "string", $ref: SATISFY_RULE_SCHEMA_ID },
     {
       type: "object",
       required: [],
-      $ref: "satisfyRule",
+      $ref: SATISFY_RULE_SCHEMA_ID,
     },
     {
       type: "array",
       items: {
         anyOf: [
-          { type: "string", $ref: "satisfyRule" },
+          { type: "string", $ref: SATISFY_RULE_SCHEMA_ID },
           {
             type: "object",
             required: [],
-            $ref: "satisfyRule",
+            $ref: SATISFY_RULE_SCHEMA_ID,
           },
         ],
       },
