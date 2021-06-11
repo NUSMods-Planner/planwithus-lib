@@ -1,9 +1,9 @@
 import { JSONSchemaType } from "ajv";
 
+import { infoSchema } from "../info/schemas";
 import type { Info } from "../info/types";
 import type { MatchRule } from "../matchRule/types";
 import type { SatisfyRule } from "../satisfyRule";
-
 import { blockIdSchema } from "./blockId/schemas";
 import type { BlockId } from "./blockId/types";
 
@@ -79,10 +79,11 @@ type Block = {
   match?: MatchRules;
   satisfy?: SatisfyRules;
   url?: string;
+  info?: Info;
   // the following line is used to prevent compilation errors due to the
   // oddities of JSONSchemaType
   [blockId: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-} & Partial<Info>;
+};
 
 const blockSchema: JSONSchemaType<Block> = {
   $id: "block",
@@ -107,7 +108,7 @@ const blockSchema: JSONSchemaType<Block> = {
       nullable: true,
     },
     url: { type: "string", nullable: true },
-    info: { type: "string", nullable: true },
+    info: { ...infoSchema, nullable: true },
   },
   additionalProperties: {
     type: "object",

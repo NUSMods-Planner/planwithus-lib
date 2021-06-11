@@ -1,7 +1,7 @@
 import type { Info } from "../info/types";
 import type { Pattern } from "./pattern/types";
 
-type PatternMatchRule = { pattern: Pattern } & Partial<Info>;
+type PatternMatchRule = { pattern: Pattern; info?: Info };
 type AndMatchRule = { and: MatchRule[] };
 type OrMatchRule = { or: MatchRule[] };
 type ExcludeMatchRule = { exclude: MatchRule };

@@ -1,3 +1,3 @@
-type Info = { info: string };
+type Info = string;
 
 export type { Info };
