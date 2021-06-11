@@ -20,9 +20,11 @@ import type {
   PatternMatchRule,
 } from "./types";
 
+const MATCH_RULE_SCHEMA_ID = "matchRule";
+
 const matchRuleRecursiveSchema: JSONSchemaType<MatchRule> = {
   ...matchRuleTypeSchema,
-  $ref: "matchRule",
+  $ref: MATCH_RULE_SCHEMA_ID,
 };
 
 const patternMatchRuleSchema: JSONSchemaType<PatternMatchRule> = {
@@ -128,7 +130,7 @@ const matchRuleObjectSchema: JSONSchemaType<MatchRuleObject> = {
 
 const matchRuleSchema: JSONSchemaType<MatchRule> = {
   ...matchRuleTypeSchema,
-  $id: "matchRule",
+  $id: MATCH_RULE_SCHEMA_ID,
   if: matchRuleTypeSchema,
   then: {
     if: patternTypeSchema,
@@ -145,6 +147,7 @@ const matchRuleSchema: JSONSchemaType<MatchRule> = {
 };
 
 export {
+  MATCH_RULE_SCHEMA_ID,
   andMatchRuleSchema,
   excludeMatchRuleSchema,
   matchRuleObjectSchema,
