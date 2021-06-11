@@ -1,8 +1,8 @@
 import { JSONSchemaType } from "ajv";
 
 import type { Info } from "../info/types";
-import type { BlockId } from "../block/blockId";
-import { blockIdSchema } from "../block/blockId";
+import { blockIdSchema } from "../block/blockId/schemas";
+import type { BlockId } from "../block/blockId/types";
 import { inequalitySchema } from "./inequality/schemas";
 import type { Inequality } from "./inequality/types";
 

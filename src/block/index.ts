@@ -4,8 +4,8 @@ import type { Info } from "../info/types";
 import type { MatchRule } from "../matchRule/types";
 import type { SatisfyRule } from "../satisfyRule";
 
-import type { BlockId } from "./blockId";
-import { blockIdSchema } from "./blockId";
+import { blockIdSchema } from "./blockId/schemas";
+import type { BlockId } from "./blockId/types";
 
 type BlockIds = BlockId | BlockId[];
 
