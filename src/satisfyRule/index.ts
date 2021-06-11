@@ -1,12 +1,13 @@
 import { JSONSchemaType } from "ajv";
 
+import { infoSchema } from "../info/schemas";
 import type { Info } from "../info/types";
 import { blockIdSchema } from "../block/blockId/schemas";
 import type { BlockId } from "../block/blockId/types";
 import { inequalitySchema } from "./inequality/schemas";
 import type { Inequality } from "./inequality/types";
 
-type BlockIdSatisfyRule = { blockId: BlockId } & Partial<Info>;
+type BlockIdSatisfyRule = { blockId: BlockId; info?: Info };
 
 const blockIdSatisfyRuleSchema: JSONSchemaType<BlockIdSatisfyRule> = {
   type: "object",
@@ -14,7 +15,7 @@ const blockIdSatisfyRuleSchema: JSONSchemaType<BlockIdSatisfyRule> = {
   additionalProperties: false,
   properties: {
     blockId: blockIdSchema,
-    info: { type: "string", nullable: true },
+    info: { ...infoSchema, nullable: true },
   },
 };
 
