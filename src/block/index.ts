@@ -4,8 +4,8 @@ import { infoSchema } from "../info/schemas";
 import type { Info } from "../info/types";
 import { MATCH_RULE_SCHEMA_ID } from "../matchRule/schemas";
 import type { MatchRule } from "../matchRule/types";
-import { SATISFY_RULE_SCHEMA_ID } from "../satisfyRule";
-import type { SatisfyRule } from "../satisfyRule";
+import { SATISFY_RULE_SCHEMA_ID } from "../satisfyRule/schemas";
+import type { SatisfyRule } from "../satisfyRule/types";
 import { blockIdSchema } from "./blockId/schemas";
 import type { BlockId } from "./blockId/types";
 
