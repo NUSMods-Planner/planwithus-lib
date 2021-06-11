@@ -58,13 +58,13 @@ const isInvalidRule = (
 
 describe("matchRuleSchema", () => {
   it("should validate match rule with valid pattern", () =>
-    assert(property(pattern, (patternStr) => ajvValidate(patternStr))));
+    assert(property(pattern, ajvValidate)));
 
   it("should validate match rules with valid pattern and info", () =>
-    assert(property(patternMatchRule, (rule) => ajvValidate(rule))));
+    assert(property(patternMatchRule, ajvValidate)));
 
   it("should validate valid recursive match rules", () =>
-    assert(property(matchRule, (rule) => ajvValidate(rule))));
+    assert(property(matchRule, ajvValidate)));
 
   it("should not validate non-string/object", () => {
     const error = {
@@ -132,14 +132,13 @@ describe("matchRuleSchema", () => {
     );
   });
 
-  it("should not validate pattern match rule with non-string info", () =>
+  it("should not validate pattern match rule with non-string info", () => {
+    const message = "property 'info' should be a string";
     isInvalidRule(
       { pattern: "CS210#T", info: 42 },
-      {
-        instancePath: "/info",
-        message: "property 'info' should be a string",
-      }
-    ));
+      { instancePath: "/info", message }
+    );
+  });
 
   it("should not validate and match rules with non-array property", () => {
     const message = "property 'and' should be a non-empty array of match rules";
