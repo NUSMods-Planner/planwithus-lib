@@ -5,7 +5,7 @@ import yaml from "js-yaml";
 import type { Block } from "../block";
 import { blockSchema } from "../block";
 import { matchRuleSchema } from "../matchRule/schemas";
-import { satisfyRuleSchema } from "../satisfyRule";
+import { satisfyRuleSchema } from "../satisfyRule/schemas";
 
 const ajv = new Ajv({
   allErrors: true, // necessary for ajv-errors
