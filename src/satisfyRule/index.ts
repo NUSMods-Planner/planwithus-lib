@@ -1,23 +1,9 @@
 import { JSONSchemaType } from "ajv";
 
-import { infoSchema } from "../info/schemas";
-import type { Info } from "../info/types";
 import { blockIdSchema } from "../block/blockId/schemas";
 import type { BlockId } from "../block/blockId/types";
 import { inequalitySchema } from "./inequality/schemas";
 import type { Inequality } from "./inequality/types";
-
-type BlockIdSatisfyRule = { blockId: BlockId; info?: Info };
-
-const blockIdSatisfyRuleSchema: JSONSchemaType<BlockIdSatisfyRule> = {
-  type: "object",
-  required: ["blockId"],
-  additionalProperties: false,
-  properties: {
-    blockId: blockIdSchema,
-    info: { ...infoSchema, nullable: true },
-  },
-};
 
 type MCSatisfyRule = { mc: number | Inequality };
 
@@ -70,18 +56,12 @@ const orSatisfyRuleSchema: JSONSchemaType<OrSatisfyRule> = {
   },
 };
 
-type SatisfyRule =
-  | BlockId
-  | BlockIdSatisfyRule
-  | MCSatisfyRule
-  | AndSatisfyRule
-  | OrSatisfyRule;
+type SatisfyRule = BlockId | MCSatisfyRule | AndSatisfyRule | OrSatisfyRule;
 
 const satisfyRuleSchema: JSONSchemaType<SatisfyRule> = {
   $id: "satisfyRule",
   anyOf: [
     { type: "string" },
-    blockIdSatisfyRuleSchema,
     MCSatisfyRuleSchema,
     andSatisfyRuleSchema,
     orSatisfyRuleSchema,
