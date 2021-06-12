@@ -25,15 +25,17 @@ const { mcSatisfyRule, andSatisfyRule, orSatisfyRule, satisfyRule } = letrec(
   (tie) => ({
     blockId,
     mcSatisfyRule: record(
-      { mc: oneof(integer({ min: 1 }), inequality) },
+      { mc: oneof(integer({ min: 1, max: 200 }), inequality) },
       { requiredKeys: ["mc"] }
     ),
     andSatisfyRule: record({
-      and: array(tie("satisfyRule"), { minLength: 1 }),
+      and: array(tie("satisfyRule"), { minLength: 1, maxLength: 5 }),
     }),
-    orSatisfyRule: record({ or: array(tie("satisfyRule"), { minLength: 1 }) }),
+    orSatisfyRule: record({
+      or: array(tie("satisfyRule"), { minLength: 1, maxLength: 5 }),
+    }),
     satisfyRule: oneof(
-      { depthFactor: 0.6, withCrossShrink: true },
+      { depthFactor: 0.8, withCrossShrink: true },
       tie("blockId"),
       tie("mcSatisfyRule"),
       tie("andSatisfyRule"),
