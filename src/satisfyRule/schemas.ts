@@ -20,7 +20,7 @@ import type {
 
 const SATISFY_RULE_SCHEMA_ID = "satisfyRule";
 
-const satisfyRuleRecursiveSchema: JSONSchemaType<SatisfyRule> = {
+const satisfyRuleRefSchema: JSONSchemaType<SatisfyRule> = {
   ...satisfyRuleTypeSchema,
   $ref: SATISFY_RULE_SCHEMA_ID,
 };
@@ -55,7 +55,7 @@ const andSatisfyRuleSchema: JSONSchemaType<AndSatisfyRule> = {
   properties: {
     and: {
       type: "array",
-      items: satisfyRuleRecursiveSchema,
+      items: satisfyRuleRefSchema,
       minItems: 1,
       errorMessage: {
         type: "property 'and' should be a non-empty array of satisfy rules",
@@ -74,7 +74,7 @@ const orSatisfyRuleSchema: JSONSchemaType<OrSatisfyRule> = {
   properties: {
     or: {
       type: "array",
-      items: satisfyRuleRecursiveSchema,
+      items: satisfyRuleRefSchema,
       minItems: 1,
       errorMessage: {
         type: "property 'or' should be a non-empty array of satisfy rules",
@@ -137,10 +137,10 @@ const satisfyRuleSchema: JSONSchemaType<SatisfyRule> = {
 };
 
 export {
-  SATISFY_RULE_SCHEMA_ID,
   MCSatisfyRuleSchema,
   andSatisfyRuleSchema,
   orSatisfyRuleSchema,
   satisfyRuleObjectSchema,
+  satisfyRuleRefSchema,
   satisfyRuleSchema,
 };

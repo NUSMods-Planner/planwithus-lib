@@ -22,7 +22,7 @@ import type {
 
 const MATCH_RULE_SCHEMA_ID = "matchRule";
 
-const matchRuleRecursiveSchema: JSONSchemaType<MatchRule> = {
+const matchRuleRefSchema: JSONSchemaType<MatchRule> = {
   ...matchRuleTypeSchema,
   $ref: MATCH_RULE_SCHEMA_ID,
 };
@@ -46,7 +46,7 @@ const andMatchRuleSchema: JSONSchemaType<AndMatchRule> = {
   properties: {
     and: {
       type: "array",
-      items: matchRuleRecursiveSchema,
+      items: matchRuleRefSchema,
       minItems: 1,
       errorMessage: {
         type: "property 'and' should be a non-empty array of match rules",
@@ -65,7 +65,7 @@ const orMatchRuleSchema: JSONSchemaType<OrMatchRule> = {
   properties: {
     or: {
       type: "array",
-      items: matchRuleRecursiveSchema,
+      items: matchRuleRefSchema,
       minItems: 1,
       errorMessage: {
         type: "property 'or' should be a non-empty array of match rules",
@@ -81,9 +81,7 @@ const orMatchRuleSchema: JSONSchemaType<OrMatchRule> = {
 const excludeMatchRuleSchema: JSONSchemaType<ExcludeMatchRule> = {
   ...excludeMatchRuleTypeSchema,
   additionalProperties: false,
-  properties: {
-    exclude: matchRuleRecursiveSchema,
-  },
+  properties: { exclude: matchRuleRefSchema },
   errorMessage: {
     additionalProperties:
       "exclude match rule should have property 'exclude' only",
@@ -147,10 +145,10 @@ const matchRuleSchema: JSONSchemaType<MatchRule> = {
 };
 
 export {
-  MATCH_RULE_SCHEMA_ID,
   andMatchRuleSchema,
   excludeMatchRuleSchema,
   matchRuleObjectSchema,
+  matchRuleRefSchema,
   matchRuleSchema,
   orMatchRuleSchema,
   patternMatchRuleSchema,
