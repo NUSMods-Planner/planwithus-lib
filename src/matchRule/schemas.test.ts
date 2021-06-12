@@ -31,11 +31,15 @@ const {
     { pattern, info: string() },
     { requiredKeys: ["pattern"] }
   ),
-  andMatchRule: record({ and: array(tie("matchRule"), { minLength: 1 }) }),
-  orMatchRule: record({ or: array(tie("matchRule"), { minLength: 1 }) }),
+  andMatchRule: record({
+    and: array(tie("matchRule"), { minLength: 1, maxLength: 5 }),
+  }),
+  orMatchRule: record({
+    or: array(tie("matchRule"), { minLength: 1, maxLength: 5 }),
+  }),
   excludeMatchRule: record({ exclude: tie("matchRule") }),
   matchRule: oneof(
-    { depthFactor: 0.6, withCrossShrink: true },
+    { depthFactor: 0.8, withCrossShrink: true },
     tie("pattern"),
     tie("patternMatchRule"),
     tie("andMatchRule"),
