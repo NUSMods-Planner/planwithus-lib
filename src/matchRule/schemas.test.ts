@@ -112,7 +112,7 @@ describe("matchRuleSchema", () => {
       {
         or: [
           { pattern: "CS1231", exclude: "CS2040" },
-          { and: [{ and: "abc", or: "def" }] },
+          { and: [{ and: ["abc"], or: ["def"] }] },
           { exclude: { and: ["CS1231"], or: ["CS2040"] } },
         ],
       },
@@ -143,7 +143,7 @@ describe("matchRuleSchema", () => {
   it("should not validate and match rules with non-array property", () => {
     const message = "property 'and' should be a non-empty array of match rules";
     isInvalidRule(
-      { or: [{ and: {} }, { or: [{ and: {} }] }, { exclude: { and: {} } }] },
+      { or: [{ and: {} }, { or: [{ and: 3 }] }, { exclude: { and: "abc" } }] },
       { instancePath: "/or/0/and", message },
       { instancePath: "/or/1/or/0/and", message },
       { instancePath: "/or/2/exclude/and", message }
@@ -163,7 +163,7 @@ describe("matchRuleSchema", () => {
   it("should not validate or match rules with non-array property", () => {
     const message = "property 'or' should be a non-empty array of match rules";
     isInvalidRule(
-      { or: [{ or: {} }, { and: [{ or: {} }] }, { exclude: { or: {} } }] },
+      { or: [{ or: {} }, { and: [{ or: 3 }] }, { exclude: { or: "abc" } }] },
       { instancePath: "/or/0/or", message },
       { instancePath: "/or/1/and/0/or", message },
       { instancePath: "/or/2/exclude/or", message }
