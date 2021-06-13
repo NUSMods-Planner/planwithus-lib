@@ -8,11 +8,10 @@ import {
   oneof,
   property,
   record,
-  sample,
+  string,
 } from "fast-check";
 
 import { ajv } from "../index.test";
-import { blockId } from "../block/blockId/schemas.test";
 import { inequality } from "./inequality/schemas.test";
 import { satisfyRuleSchema } from "./schemas";
 
@@ -21,9 +20,9 @@ chai.should();
 
 const ajvValidate = ajv.compile(satisfyRuleSchema);
 
-const { mcSatisfyRule, andSatisfyRule, orSatisfyRule, satisfyRule } = letrec(
-  (tie) => ({
-    blockId,
+const { blockId, mcSatisfyRule, andSatisfyRule, orSatisfyRule, satisfyRule } =
+  letrec((tie) => ({
+    blockId: string(),
     mcSatisfyRule: record(
       { mc: oneof(integer({ min: 1, max: 200 }), inequality) },
       { requiredKeys: ["mc"] }
@@ -41,8 +40,7 @@ const { mcSatisfyRule, andSatisfyRule, orSatisfyRule, satisfyRule } = letrec(
       tie("andSatisfyRule"),
       tie("orSatisfyRule")
     ),
-  })
-);
+  }));
 
 const isInvalidRule = (
   rule: unknown,
@@ -57,8 +55,6 @@ const isInvalidRule = (
 };
 
 describe("satisfyRuleSchema", () => {
-  sample(satisfyRule, 4);
-
   it("should validate satisfy rule with valid block id", () =>
     assert(property(blockId, ajvValidate)));
 
