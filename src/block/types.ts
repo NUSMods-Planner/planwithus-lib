@@ -1,4 +1,3 @@
-import type { Info } from "../info/types";
 import type { MatchRule } from "../matchRule/types";
 import type { SatisfyRule } from "../satisfyRule/types";
 import type { Some } from "../some/types";
@@ -11,7 +10,7 @@ type Block = {
   match?: Some<MatchRule>;
   satisfy?: Some<SatisfyRule>;
   url?: string;
-  info?: Info;
+  info?: string;
   // the following line is used to prevent compilation errors due to the
   // oddities of JSONSchemaType
   [blockId: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any

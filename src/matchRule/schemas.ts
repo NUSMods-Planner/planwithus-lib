@@ -1,6 +1,5 @@
 import { JSONSchemaType } from "ajv";
 
-import { infoSchema } from "../info/schemas";
 import { patternSchema } from "./pattern/schemas";
 import { patternTypeSchema } from "./pattern/typeSchemas";
 import {
@@ -32,7 +31,11 @@ const patternMatchRuleSchema: JSONSchemaType<PatternMatchRule> = {
   additionalProperties: false,
   properties: {
     pattern: patternSchema,
-    info: { ...infoSchema, nullable: true },
+    info: {
+      type: "string",
+      nullable: true,
+      errorMessage: { type: "property 'info' should be a string" },
+    },
   },
   errorMessage: {
     additionalProperties:

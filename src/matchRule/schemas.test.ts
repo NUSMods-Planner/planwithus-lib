@@ -137,7 +137,7 @@ describe("matchRuleSchema", () => {
   });
 
   it("should not validate pattern match rule with non-string info", () => {
-    const message = "info message should be a string";
+    const message = "property 'info' should be a string";
     isInvalidRule(
       { pattern: "CS2101", info: 42 },
       { instancePath: "/info", message }

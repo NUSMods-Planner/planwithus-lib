@@ -1,6 +1,5 @@
 import { JSONSchemaType } from "ajv";
 
-import { infoSchema } from "../info/schemas";
 import { matchRuleRefSchema } from "../matchRule/schemas";
 import { matchRuleTypeSchema } from "../matchRule/typeSchemas";
 import { satisfyRuleRefSchema } from "../satisfyRule/schemas";
@@ -32,7 +31,7 @@ const blockSchema: JSONSchemaType<Block> = {
         nullable: true,
       },
       url: { type: "string", nullable: true },
-      info: { ...infoSchema, nullable: true },
+      info: { type: "string", nullable: true },
     },
     additionalProperties: {
       ...blockTypeSchema.additionalProperties,
