@@ -32,10 +32,10 @@ const {
     { requiredKeys: ["pattern"] }
   ),
   andMatchRule: record({
-    and: array(tie("matchRule"), { minLength: 1, maxLength: 5 }),
+    and: array(tie("matchRule"), { maxLength: 5 }),
   }),
   orMatchRule: record({
-    or: array(tie("matchRule"), { minLength: 1, maxLength: 5 }),
+    or: array(tie("matchRule"), { maxLength: 5 }),
   }),
   excludeMatchRule: record({ exclude: tie("matchRule") }),
   matchRule: oneof(
@@ -145,7 +145,7 @@ describe("matchRuleSchema", () => {
   });
 
   it("should not validate and match rules with non-array property", () => {
-    const message = "property 'and' should be a non-empty array of match rules";
+    const message = "property 'and' should be an array of match rules";
     isInvalidRule(
       { or: [{ and: {} }, { or: [{ and: 3 }] }, { exclude: { and: "abc" } }] },
       { instancePath: "/or/0/and", message },
@@ -154,30 +154,10 @@ describe("matchRuleSchema", () => {
     );
   });
 
-  it("should not validate and match rules with empty array property", () => {
-    const message = "property 'and' should not be an empty array";
-    isInvalidRule(
-      { or: [{ and: [] }, { and: [{ and: [] }] }, { exclude: { and: [] } }] },
-      { instancePath: "/or/0/and", message },
-      { instancePath: "/or/1/and/0/and", message },
-      { instancePath: "/or/2/exclude/and", message }
-    );
-  });
-
   it("should not validate or match rules with non-array property", () => {
-    const message = "property 'or' should be a non-empty array of match rules";
+    const message = "property 'or' should be an array of match rules";
     isInvalidRule(
       { or: [{ or: {} }, { and: [{ or: 3 }] }, { exclude: { or: "abc" } }] },
-      { instancePath: "/or/0/or", message },
-      { instancePath: "/or/1/and/0/or", message },
-      { instancePath: "/or/2/exclude/or", message }
-    );
-  });
-
-  it("should not validate or match rules with empty array property", () => {
-    const message = "property 'or' should not be an empty array";
-    isInvalidRule(
-      { or: [{ or: [] }, { and: [{ or: [] }] }, { exclude: { or: [] } }] },
       { instancePath: "/or/0/or", message },
       { instancePath: "/or/1/and/0/or", message },
       { instancePath: "/or/2/exclude/or", message }

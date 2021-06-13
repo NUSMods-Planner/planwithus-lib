@@ -28,10 +28,10 @@ const { blockId, mcSatisfyRule, andSatisfyRule, orSatisfyRule, satisfyRule } =
       { requiredKeys: ["mc"] }
     ),
     andSatisfyRule: record({
-      and: array(tie("satisfyRule"), { minLength: 1, maxLength: 5 }),
+      and: array(tie("satisfyRule"), { maxLength: 5 }),
     }),
     orSatisfyRule: record({
-      or: array(tie("satisfyRule"), { minLength: 1, maxLength: 5 }),
+      or: array(tie("satisfyRule"), { maxLength: 5 }),
     }),
     satisfyRule: oneof(
       { depthFactor: 0.8, withCrossShrink: true },
@@ -114,8 +114,7 @@ describe("satisfyRuleSchema", () => {
   });
 
   it("should not validate and satisfy rules with non-array property", () => {
-    const message =
-      "property 'and' should be a non-empty array of satisfy rules";
+    const message = "property 'and' should be an array of satisfy rules";
     isInvalidRule(
       { or: [{ and: {} }, { or: [{ and: 3 }] }] },
       { instancePath: "/or/0/and", message },
@@ -123,29 +122,10 @@ describe("satisfyRuleSchema", () => {
     );
   });
 
-  it("should not validate and satisfy rules with empty array property", () => {
-    const message = "property 'and' should not be an empty array";
-    isInvalidRule(
-      { or: [{ and: [] }, { or: [{ and: [] }] }] },
-      { instancePath: "/or/0/and", message },
-      { instancePath: "/or/1/or/0/and", message }
-    );
-  });
-
   it("should not validate or satisfy rules with non-array property", () => {
-    const message =
-      "property 'or' should be a non-empty array of satisfy rules";
+    const message = "property 'or' should be an array of satisfy rules";
     isInvalidRule(
       { and: [{ or: {} }, { and: [{ or: 3 }] }] },
-      { instancePath: "/and/0/or", message },
-      { instancePath: "/and/1/and/0/or", message }
-    );
-  });
-
-  it("should not validate or satisfy rules with empty array property", () => {
-    const message = "property 'or' should not be an empty array";
-    isInvalidRule(
-      { and: [{ or: [] }, { and: [{ or: [] }] }] },
       { instancePath: "/and/0/or", message },
       { instancePath: "/and/1/and/0/or", message }
     );
