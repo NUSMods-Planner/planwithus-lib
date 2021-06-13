@@ -54,10 +54,8 @@ const andSatisfyRuleSchema: JSONSchemaType<AndSatisfyRule> = {
     and: {
       type: "array",
       items: satisfyRuleRefSchema,
-      minItems: 1,
       errorMessage: {
-        type: "property 'and' should be a non-empty array of satisfy rules",
-        minItems: "property 'and' should not be an empty array",
+        type: "property 'and' should be an array of satisfy rules",
       },
     },
   },
@@ -73,10 +71,8 @@ const orSatisfyRuleSchema: JSONSchemaType<OrSatisfyRule> = {
     or: {
       type: "array",
       items: satisfyRuleRefSchema,
-      minItems: 1,
       errorMessage: {
-        type: "property 'or' should be a non-empty array of satisfy rules",
-        minItems: "property 'or' should not be an empty array",
+        type: "property 'or' should be an array of satisfy rules",
       },
     },
   },

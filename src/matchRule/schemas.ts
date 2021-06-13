@@ -50,10 +50,8 @@ const andMatchRuleSchema: JSONSchemaType<AndMatchRule> = {
     and: {
       type: "array",
       items: matchRuleRefSchema,
-      minItems: 1,
       errorMessage: {
-        type: "property 'and' should be a non-empty array of match rules",
-        minItems: "property 'and' should not be an empty array",
+        type: "property 'and' should be an array of match rules",
       },
     },
   },
@@ -69,10 +67,8 @@ const orMatchRuleSchema: JSONSchemaType<OrMatchRule> = {
     or: {
       type: "array",
       items: matchRuleRefSchema,
-      minItems: 1,
       errorMessage: {
-        type: "property 'or' should be a non-empty array of match rules",
-        minItems: "property 'or' should not be an empty array",
+        type: "property 'or' should be an array of match rules",
       },
     },
   },
