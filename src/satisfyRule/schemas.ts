@@ -1,7 +1,5 @@
 import { JSONSchemaType } from "ajv";
 
-import { blockIdSchema } from "../block/blockId/schemas";
-import { blockIdTypeSchema } from "../block/blockId/typeSchemas";
 import { inequalitySchema } from "./inequality/schemas";
 import {
   MCSatisfyRuleTypeSchema,
@@ -123,8 +121,7 @@ const satisfyRuleSchema: JSONSchemaType<SatisfyRule> = {
   $id: SATISFY_RULE_SCHEMA_ID,
   if: satisfyRuleTypeSchema,
   then: {
-    if: blockIdTypeSchema,
-    then: blockIdSchema,
+    if: { type: "string" },
     else: {
       if: satisfyRuleObjectTypeSchema,
       then: satisfyRuleObjectSchema,

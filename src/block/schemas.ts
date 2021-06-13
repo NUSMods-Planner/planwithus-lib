@@ -6,8 +6,6 @@ import { matchRuleTypeSchema } from "../matchRule/typeSchemas";
 import { satisfyRuleRefSchema } from "../satisfyRule/schemas";
 import { satisfyRuleTypeSchema } from "../satisfyRule/typeSchemas";
 import { someSchema } from "../some/schemas";
-import { blockIdSchema } from "./blockId/schemas";
-import { blockIdTypeSchema } from "./blockId/typeSchemas";
 import { blockTypeSchema } from "./typeSchemas";
 import type { Block } from "./types";
 
@@ -20,7 +18,7 @@ const blockSchema: JSONSchemaType<Block> = {
       name: { type: "string", nullable: true },
       ay: { type: "integer", nullable: true },
       assign: {
-        ...someSchema(blockIdTypeSchema, blockIdSchema, { minItems: 1 }),
+        ...someSchema({ type: "string" }, { type: "string" }, { minItems: 1 }),
         nullable: true,
       },
       match: {

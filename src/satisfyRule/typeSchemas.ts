@@ -1,6 +1,5 @@
 import { JSONSchemaType } from "ajv";
 
-import { blockIdTypeSchema } from "../block/blockId/typeSchemas";
 import type {
   AndSatisfyRule,
   MCSatisfyRule,
@@ -31,7 +30,7 @@ const satisfyRuleObjectTypeSchema: JSONSchemaType<SatisfyRuleObject> = {
 
 const satisfyRuleTypeSchema: JSONSchemaType<SatisfyRule> = {
   type: ["string", "object"],
-  anyOf: [blockIdTypeSchema, satisfyRuleObjectTypeSchema],
+  anyOf: [{ type: "string" }, satisfyRuleObjectTypeSchema],
 };
 
 export {
