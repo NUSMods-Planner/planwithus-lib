@@ -7,50 +7,54 @@ satisfy: bachelor-hons-2016
 1k:
   name: Level-1000 modules
   match:
-    - and:
-        - or: [CS1010, CS1010S, CS1010X]
-        - DSA1101
-        - or: [MA1101R, MA2001]
-        - or: [MA1102R, MA2002]
+    - or: [CS1010, CS1010S, CS1010X]
+    - DSA1101
+    - or: [MA1101R, MA2001]
+    - or: [MA1102R, MA2002]
+  satisfy:
+    - mc: 16
 
 2k:
   name: Level-2000 modules
   match:
-    - and:
-        - CS2040
-        - DSA2101
-        - DSA2102
-        - or: [MA2311, MA2104]
-        - or: [ST2131, MA2116, MA2216]
-        - ST2132
+    - CS2040
+    - DSA2101
+    - DSA2102
+    - or: [MA2311, MA2104]
+    - or: [ST2131, MA2116, MA2216]
+    - ST2132
+  satisfy:
+    - mc: 24
 
 3k-4k:
   name: Level-3000 and 4000 modules
   match:
-    - and:
-        - CS3244
-        - DSA3101
-        - DSA3102
-        - ST3131
-        - or: [DSA4199, DSA4299]
+    - CS3244
+    - DSA3101
+    - DSA3102
+    - ST3131
+    - or: [DSA4199, DSA4299]
+  satisfy:
+    - mc: 20
+    - list-ab
 
   list-ab:
     name: "List A/DSA426x & List B1/2"
     assign: [a-dsa426x, b]
     satisfy:
-      - mc: ">=24"
+      - mc: 24
       - 4k
 
     4k:
       match: ["*4xxx*", "*5xxx*", "*6xxx*"]
       satisfy:
-        - mc: ">=16"
+        - mc: 16
 
     a-dsa426x:
       name: List A/DSA426x
       assign: [a, dsa426x]
       satisfy:
-        - mc: ">=8"
+        - mc: 8
 
       a:
         name: List A - DSA modules
@@ -66,7 +70,7 @@ satisfy: bachelor-hons-2016
       name: List B - DSA-recognised modules
       assign: [b1, b2]
       satisfy:
-        - mc: ">=8"
+        - mc: 8
 
       b1:
         name: List B1 - DSA-recognised modules (no hidden pre-requisites)

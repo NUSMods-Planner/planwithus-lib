@@ -3,7 +3,7 @@ ay: 2016
 url: https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/degree-requirements
 assign: [1k-exception, 1k, 2k-above]
 satisfy:
-  - mc: ">=160"
+  - mc: 160
 
 1k-exception:
   name: Level-1000 modules, exceptions to 60 MCs limit

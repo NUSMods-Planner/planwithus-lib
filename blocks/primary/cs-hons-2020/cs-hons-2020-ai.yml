@@ -29,11 +29,10 @@ elec:
 prim-match:
   assign: prim
   satisfy:
-    - mc: ">=12"
+    - mc: 12
     - 4k
 
   4k:
-    match:
-      - or: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
     satisfy:
       - mc: ">=4"

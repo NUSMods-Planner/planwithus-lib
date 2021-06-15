@@ -3,7 +3,7 @@ ay: 2014
 url: https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/special-programmes/double-major-programmes
 assign: [2k-below, 3k-above]
 satisfy:
-  - mc: ">=48"
+  - mc: 48
 info: "A minimum 60% of the Second Major requirements must be earned from modules read in NUS. Please refer to the URL for more details."
 
 2k-below:
@@ -14,7 +14,7 @@ info: "A minimum 60% of the Second Major requirements must be earned from module
   name: Level-3000 modules and above
   match: ["*3xxx*", "*4xxx*", "*5xxx*", "*6xxx*"]
   satisfy:
-    - mc: ">=16"
+    - mc: 16
 
 double-count:
   satisfy:
