@@ -2,7 +2,7 @@ import Ajv from "ajv";
 import ajvErrors from "ajv-errors";
 import { should } from "chai";
 
-import { initVerifiers } from "./";
+import { initDirectories } from "./";
 
 const ajv = new Ajv({
   allErrors: true, // necessary for ajv-errors
@@ -12,15 +12,15 @@ ajvErrors(ajv);
 
 should();
 
-describe("initVerifiers", () => {
+describe("initDirectories", () => {
   it("should parse all blocks with no errors", () =>
-    initVerifiers.should.not.throw());
+    initDirectories.should.not.throw());
 
-  it("should produce primary, second & minor verifiers", async () => {
-    const verifiers = await initVerifiers();
-    verifiers.should.have.property("primary");
-    verifiers.should.have.property("second");
-    verifiers.should.have.property("minor");
+  it("should produce primary, second & minor directories", async () => {
+    const directories = await initDirectories();
+    directories.should.have.property("primary");
+    directories.should.have.property("second");
+    directories.should.have.property("minor");
   });
 });
 

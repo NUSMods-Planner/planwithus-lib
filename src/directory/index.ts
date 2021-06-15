@@ -1,7 +1,7 @@
 import { decomposeBlock } from "../block";
 import type { Block } from "../block/types";
 
-class Verifier {
+class Directory {
   blocks: Record<string, Block>;
 
   constructor() {
@@ -11,14 +11,14 @@ class Verifier {
   addBlock(prefix: string, block: Block): void {
     const [mainBlock, flatSubblocks] = decomposeBlock(block);
     if (prefix in Object.keys(this.blocks)) {
-      throw new Error(`block "${prefix}" already exists`);
+      throw new Error(`block '${prefix}' already exists`);
     }
 
     this.blocks[prefix] = mainBlock;
     Object.entries(flatSubblocks).forEach(([name, block]) => {
       const newName = prefix + name;
       if (newName in Object.keys(this.blocks)) {
-        throw new Error(`block "${prefix}" already exists`);
+        throw new Error(`block '${prefix}' already exists`);
       }
       this.blocks[newName] = block as Block;
     });
@@ -26,10 +26,10 @@ class Verifier {
 
   find(prefix: string): Block {
     if (prefix in Object.keys(this.blocks)) {
-      throw new Error(`block "${prefix}" does not exist`);
+      throw new Error(`block '${prefix}' does not exist`);
     }
     return this.blocks[prefix];
   }
 }
 
-export { Verifier };
+export { Directory };
