@@ -11,6 +11,7 @@ import {
 } from "fast-check";
 
 import { ajv } from "../index.test";
+import { some } from "../some/schemas.test";
 import { pattern } from "./pattern/schemas.test";
 import { matchRuleSchema } from "./schemas";
 
@@ -19,34 +20,31 @@ chai.should();
 
 const ajvValidate = ajv.compile(matchRuleSchema);
 
-const {
-  patternMatchRule,
-  andMatchRule,
-  orMatchRule,
-  excludeMatchRule,
-  matchRule,
-} = letrec((tie) => ({
-  pattern,
-  patternMatchRule: record(
-    { pattern, info: string() },
-    { requiredKeys: ["pattern"] }
-  ),
-  andMatchRule: record({
-    and: array(tie("matchRule"), { maxLength: 5 }),
-  }),
-  orMatchRule: record({
-    or: array(tie("matchRule"), { maxLength: 5 }),
-  }),
-  excludeMatchRule: record({ exclude: tie("matchRule") }),
-  matchRule: oneof(
-    { depthFactor: 0.8, withCrossShrink: true },
-    tie("pattern"),
-    tie("patternMatchRule"),
-    tie("andMatchRule"),
-    tie("orMatchRule"),
-    tie("excludeMatchRule")
-  ),
-}));
+const { patternMatchRule, andMatchRule, orMatchRule, matchRule } = letrec(
+  (tie) => ({
+    patternMatchRule: record(
+      {
+        pattern,
+        exclude: some(pattern, { maxLength: 5 }),
+        info: string(),
+      },
+      { requiredKeys: ["pattern"] }
+    ),
+    andMatchRule: record({
+      and: array(tie("matchRule"), { maxLength: 5 }),
+    }),
+    orMatchRule: record({
+      or: array(tie("matchRule"), { maxLength: 5 }),
+    }),
+    matchRule: oneof(
+      { depthFactor: 0.8, withCrossShrink: true },
+      pattern,
+      tie("patternMatchRule"),
+      tie("andMatchRule"),
+      tie("orMatchRule")
+    ),
+  })
+);
 
 const isInvalidRule = (
   rule: unknown,
@@ -84,24 +82,17 @@ describe("matchRuleSchema", () => {
   it("should not validate match rules with extra properties", () =>
     isInvalidRule(
       {
-        and: [
-          { or: [{ pattern: "CS2103T", info2: "foobar" }], abc: "def" },
-          { exclude: "CS2101", ghi: "jkl" },
-        ],
+        and: [{ or: [{ pattern: "CS2103T", info2: "foobar" }], abc: "def" }],
         mno: "pqr",
       },
       {
         instancePath: "/and/0/or/0",
         message:
-          "pattern match rule should have properties 'pattern' and 'info' (optional) only",
+          "pattern match rule should have properties 'pattern', 'exclude' (optional) and 'info' (optional) only",
       },
       {
         instancePath: "/and/0",
         message: "or match rule should have property 'or' only",
-      },
-      {
-        instancePath: "/and/1",
-        message: "exclude match rule should have property 'exclude' only",
       },
       {
         instancePath: "",
@@ -111,28 +102,51 @@ describe("matchRuleSchema", () => {
 
   it("should not validate ambiguous match rules", () => {
     const message =
-      "match rule should have only one of properties 'pattern', 'and', 'or', 'exclude'";
+      "match rule should have only one of properties 'pattern', 'and', 'or'";
     isInvalidRule(
       {
         or: [
-          { pattern: "CS1231", exclude: "CS2040" },
+          { pattern: "CS1231", and: [] },
+          { pattern: "CS1231", or: [] },
           { and: [{ and: ["abc"], or: ["def"] }] },
-          { exclude: { and: ["CS1231"], or: ["CS2040"] } },
         ],
       },
       { instancePath: "/or/0", message },
-      { instancePath: "/or/1/and/0", message },
-      { instancePath: "/or/2/exclude", message }
+      { instancePath: "/or/1", message },
+      { instancePath: "/or/2/and/0", message }
     );
   });
 
-  it("should not validate pattern match rule with invalid pattern", () => {
+  it("should not validate pattern match rule with invalid patterns", () => {
     const message =
       "pattern should be a non-empty string composed of A-Z, 0-9, x or *";
     isInvalidRule(
-      { and: ["CS210c", { pattern: "CS210#T", info: "foobar" }] },
+      {
+        and: [
+          "CS210c",
+          { pattern: "CS2100", exclude: "CS1231s" },
+          { pattern: "CS210#T", exclude: ["CS1231", "CS21%"] },
+        ],
+      },
       { instancePath: "/and/0", message },
-      { instancePath: "/and/1/pattern", message }
+      { instancePath: "/and/1/exclude", message },
+      { instancePath: "/and/2/pattern", message },
+      { instancePath: "/and/2/exclude/1", message }
+    );
+  });
+
+  it("should not validate pattern match rule with non-string/array exclude", () => {
+    const message =
+      "property 'exclude' should be either a pattern or an array of patterns";
+    isInvalidRule(
+      {
+        or: [
+          { pattern: "CS2101", exclude: {} },
+          { pattern: "CS2101", exclude: 5 },
+        ],
+      },
+      { instancePath: "/or/0/exclude", message },
+      { instancePath: "/or/1/exclude", message }
     );
   });
 
@@ -147,28 +161,20 @@ describe("matchRuleSchema", () => {
   it("should not validate and match rules with non-array property", () => {
     const message = "property 'and' should be an array of match rules";
     isInvalidRule(
-      { or: [{ and: {} }, { or: [{ and: 3 }] }, { exclude: { and: "abc" } }] },
+      { or: [{ and: {} }, { or: [{ and: 3 }] }] },
       { instancePath: "/or/0/and", message },
-      { instancePath: "/or/1/or/0/and", message },
-      { instancePath: "/or/2/exclude/and", message }
+      { instancePath: "/or/1/or/0/and", message }
     );
   });
 
   it("should not validate or match rules with non-array property", () => {
     const message = "property 'or' should be an array of match rules";
     isInvalidRule(
-      { or: [{ or: {} }, { and: [{ or: 3 }] }, { exclude: { or: "abc" } }] },
+      { or: [{ or: {} }, { and: [{ or: 3 }] }] },
       { instancePath: "/or/0/or", message },
-      { instancePath: "/or/1/and/0/or", message },
-      { instancePath: "/or/2/exclude/or", message }
+      { instancePath: "/or/1/and/0/or", message }
     );
   });
 });
 
-export {
-  andMatchRule,
-  excludeMatchRule,
-  matchRule,
-  orMatchRule,
-  patternMatchRule,
-};
+export { andMatchRule, matchRule, orMatchRule, patternMatchRule };

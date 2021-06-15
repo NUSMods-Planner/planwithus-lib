@@ -7,31 +7,30 @@ satisfy: minor-2019
 1k:
   name: Level-1000 modules
   match:
-    - "MA1xxx*"
+    - pattern: "MA1xxx*"
+      exclude: "MA1301*"
     - "MA20xx*"
     - CS1231
     - CS1231S
-    - exclude: "MA1301*"
   satisfy:
     - mc: 8
 
 2k:
   name: Level-2000 modules
   match:
-    - "MA2xxx*"
+    - pattern: "MA2xxx*"
+      exclude: "MA20xx*"
     - ST2131
-    - exclude: "MA20xx*"
   satisfy:
     - mc: 8
 
 3k-above:
   name: Level-3000 and above modules
   match:
-    - "MA3xxx*"
-    - "MA4xxx*"
+    - pattern: "MA3xxx*"
+      exclude: [MA3238, "MA33xx*"]
+    - pattern: "MA4xxx*"
+      exclude: MA4251
     - "MA5xxx*"
-    - exclude: "MA33xx*"
-    - exclude: ST3236
-    - exclude: ST4238
   satisfy:
     - mc: 4

@@ -1,10 +1,10 @@
 import { JSONSchemaType } from "ajv";
 
+import { someSchema } from "../some/schemas";
 import { patternSchema } from "./pattern/schemas";
 import { patternTypeSchema } from "./pattern/typeSchemas";
 import {
   andMatchRuleTypeSchema,
-  excludeMatchRuleTypeSchema,
   matchRuleObjectTypeSchema,
   matchRuleTypeSchema,
   orMatchRuleTypeSchema,
@@ -12,7 +12,6 @@ import {
 } from "./typeSchemas";
 import type {
   AndMatchRule,
-  ExcludeMatchRule,
   MatchRule,
   MatchRuleObject,
   OrMatchRule,
@@ -31,6 +30,13 @@ const patternMatchRuleSchema: JSONSchemaType<PatternMatchRule> = {
   additionalProperties: false,
   properties: {
     pattern: patternSchema,
+    exclude: {
+      ...someSchema(patternTypeSchema, patternSchema, {}),
+      nullable: true,
+      errorMessage: {
+        type: "property 'exclude' should be either a pattern or an array of patterns",
+      },
+    },
     info: {
       type: "string",
       nullable: true,
@@ -39,7 +45,7 @@ const patternMatchRuleSchema: JSONSchemaType<PatternMatchRule> = {
   },
   errorMessage: {
     additionalProperties:
-      "pattern match rule should have properties 'pattern' and 'info' (optional) only",
+      "pattern match rule should have properties 'pattern', 'exclude' (optional) and 'info' (optional) only",
   },
 };
 
@@ -77,30 +83,18 @@ const orMatchRuleSchema: JSONSchemaType<OrMatchRule> = {
   },
 };
 
-const excludeMatchRuleSchema: JSONSchemaType<ExcludeMatchRule> = {
-  ...excludeMatchRuleTypeSchema,
-  additionalProperties: false,
-  properties: { exclude: matchRuleRefSchema },
-  errorMessage: {
-    additionalProperties:
-      "exclude match rule should have property 'exclude' only",
-  },
-};
-
 const matchRuleObjectSchema: JSONSchemaType<MatchRuleObject> = {
   ...matchRuleObjectTypeSchema,
   oneOf: [
     patternMatchRuleTypeSchema,
     andMatchRuleTypeSchema,
     orMatchRuleTypeSchema,
-    excludeMatchRuleTypeSchema,
   ],
   if: {
     oneOf: [
       patternMatchRuleTypeSchema,
       andMatchRuleTypeSchema,
       orMatchRuleTypeSchema,
-      excludeMatchRuleTypeSchema,
     ],
   },
   then: {
@@ -112,16 +106,12 @@ const matchRuleObjectSchema: JSONSchemaType<MatchRuleObject> = {
       else: {
         if: orMatchRuleTypeSchema,
         then: orMatchRuleSchema,
-        else: {
-          if: excludeMatchRuleTypeSchema,
-          then: excludeMatchRuleSchema,
-        },
       },
     },
   },
   errorMessage: {
     oneOf:
-      "match rule should have only one of properties 'pattern', 'and', 'or', 'exclude'",
+      "match rule should have only one of properties 'pattern', 'and', 'or'",
   },
 };
 
@@ -145,7 +135,6 @@ const matchRuleSchema: JSONSchemaType<MatchRule> = {
 
 export {
   andMatchRuleSchema,
-  excludeMatchRuleSchema,
   matchRuleObjectSchema,
   matchRuleRefSchema,
   matchRuleSchema,

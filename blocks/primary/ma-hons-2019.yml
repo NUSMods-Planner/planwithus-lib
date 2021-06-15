@@ -87,8 +87,8 @@ ii:
       info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
     - pattern: MA2289
       info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
-    - "MA2xxx*"
-    - exclude: "MA23xx*"
+    - pattern: "MA2xxx*"
+      exclude: "MA23xx*"
     - PC2130
     - PC2132
     - ST2132
@@ -101,8 +101,8 @@ iii:
       info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
     - pattern: MA3289
       info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
-    - "MA3xxx*"
-    - exclude: "MA33xx*"
+    - pattern: "MA3xxx*"
+      exclude: "MA33xx*"
     - BSE3703
     - CS3230
     - CS3231
