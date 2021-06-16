@@ -80,15 +80,7 @@ describe("patternMatcher", () => {
   it("should match all modules with *", () => {
     const matcher = patternMatcher("*");
     evaluateMatcher(modulesList1, matcher).should.eql({
-      matched: [
-        "CS2100",
-        "GER1000",
-        "CS2040S",
-        "ST2131",
-        "MA1521",
-        "CS1231",
-        "CS2030",
-      ],
+      matched: modulesList1,
       remaining: [],
       infos: [],
     });
