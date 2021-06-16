@@ -7,7 +7,9 @@
     "prepare": "husky install",
     "build": "ts-node src/",
     "test": "mocha -r ts-node/register 'src/**/*.test.ts'",
-    "coverage": "nyc npm run test"
+    "test-docs": "mocha -r ts-node/register 'src/**/*.test.ts' --reporter mochawesome --reporter-options reportDir=docs",
+    "coverage": "nyc npm run test",
+    "coverage-docs": "nyc npm run test-docs"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
     "@types/chai-subset": "^1.3.3",
     "@types/js-yaml": "^4.0.1",
     "@types/mocha": "^8.2.2",
+    "@types/mochawesome": "^6.2.0",
     "@types/node": "^15.12.2",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
@@ -43,6 +46,7 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "mocha": "^9.0.0",
+    "mochawesome": "^6.2.2",
     "nyc": "^15.1.0",
     "prettier": "2.3.1",
     "ts-node": "^10.0.0",

@@ -1,6 +1,7 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import { assert, property } from "fast-check";
+import { assert, property, sample } from "fast-check";
+import addContext from "mochawesome/addContext";
 
 import { ajv } from "../../index.test";
 import { pattern } from "./index.test";
@@ -27,10 +28,17 @@ const isInvalidPattern = (patternStr: string) => {
 };
 
 describe("patternSchema", () => {
-  it("should validate non-empty pattern composed of A-Z, 0-9, x or *", () =>
-    assert(property(pattern, ajvValidate), {
+  it("should validate non-empty pattern composed of A-Z, 0-9, x or *", function () {
+    sample(pattern, 10).forEach((sample, i) =>
+      addContext(this, {
+        title: `pattern sample ${i}`,
+        value: sample,
+      })
+    );
+    return assert(property(pattern, ajvValidate), {
       examples: [["*"], ["ACC1002"], ["IS1103"], ["CS1231S"], ["MA1102R"]],
-    }));
+    });
+  });
 
   it("should not validate empty pattern", () => isInvalidPattern(""));
   it("should not validate pattern with invalid characters", () =>
