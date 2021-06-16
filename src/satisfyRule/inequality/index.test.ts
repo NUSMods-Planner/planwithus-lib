@@ -1,4 +1,3 @@
-import chai from "chai";
 import { constantFrom, integer, tuple } from "fast-check";
 
 const inequality = tuple(constantFrom("<=", ">="), integer({ min: 1 })).map(
