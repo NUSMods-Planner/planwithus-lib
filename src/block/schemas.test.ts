@@ -1,6 +1,7 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import { assert, property } from "fast-check";
+import { assert, property, sample } from "fast-check";
+import addContext from "mochawesome/addContext";
 
 import { ajv } from "../index.test";
 import { matchRuleSchema } from "../matchRule/schemas";
@@ -29,7 +30,15 @@ const isInvalidBlock = (
 };
 
 describe("blockSchema", () => {
-  it("should validate valid block", () => assert(property(block, ajvValidate)));
+  it("should validate valid block", function () {
+    sample(block, 10).forEach((sample, i) =>
+      addContext(this, {
+        title: `block sample ${i}`,
+        value: sample,
+      })
+    );
+    return assert(property(block, ajvValidate));
+  });
 
   it("should not validate non-object", () => {
     const error = {

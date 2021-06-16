@@ -1,6 +1,7 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import { assert, property } from "fast-check";
+import { assert, property, sample } from "fast-check";
+import addContext from "mochawesome/addContext";
 
 import { ajv } from "../../index.test";
 import { inequality } from "./index.test";
@@ -27,8 +28,15 @@ const isInvalidInequality = (inequalityStr: string) => {
 };
 
 describe("inequalitySchema", () => {
-  it("should validate inequality in the form <=n or >=n", () =>
-    assert(property(inequality, ajvValidate)));
+  it("should validate inequality in the form <=n or >=n", function () {
+    sample(inequality, 10).forEach((sample, i) =>
+      addContext(this, {
+        title: `inequality sample ${i}`,
+        value: sample,
+      })
+    );
+    return assert(property(inequality, ajvValidate));
+  });
 
   it("should not validate inequality of invalid form", () =>
     [

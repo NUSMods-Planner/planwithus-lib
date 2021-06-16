@@ -1,6 +1,7 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import { assert, property } from "fast-check";
+import { assert, property, sample } from "fast-check";
+import addContext from "mochawesome/addContext";
 
 import { ajv } from "../index.test";
 import { matchRule, patternMatchRule } from "./index.test";
@@ -25,14 +26,35 @@ const isInvalidRule = (
 };
 
 describe("matchRuleSchema", () => {
-  it("should validate match rule with valid pattern", () =>
-    assert(property(pattern, ajvValidate)));
+  it("should validate match rule with valid pattern", function () {
+    sample(pattern, 10).forEach((sample, i) =>
+      addContext(this, {
+        title: `pattern sample ${i}`,
+        value: sample,
+      })
+    );
+    return assert(property(pattern, ajvValidate));
+  });
 
-  it("should validate match rules with valid pattern and info", () =>
-    assert(property(patternMatchRule, ajvValidate)));
+  it("should validate match rules with valid pattern and info", function () {
+    sample(patternMatchRule, 10).forEach((sample, i) =>
+      addContext(this, {
+        title: `patternMatchRule sample ${i}`,
+        value: sample,
+      })
+    );
+    return assert(property(patternMatchRule, ajvValidate));
+  });
 
-  it("should validate valid recursive match rules", () =>
-    assert(property(matchRule, ajvValidate)));
+  it("should validate valid recursive match rules", function () {
+    sample(matchRule, 10).forEach((sample, i) =>
+      addContext(this, {
+        title: `matchRule sample ${i}`,
+        value: sample,
+      })
+    );
+    return assert(property(matchRule, ajvValidate));
+  });
 
   it("should not validate non-string/object", () => {
     const error = {

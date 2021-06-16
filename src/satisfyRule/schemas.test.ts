@@ -1,6 +1,7 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import { assert, property, string } from "fast-check";
+import { assert, property, sample, string } from "fast-check";
+import addContext from "mochawesome/addContext";
 
 import { ajv } from "../index.test";
 import { mcSatisfyRule, satisfyRule } from "./index.test";
@@ -27,11 +28,23 @@ describe("satisfyRuleSchema", () => {
   it("should validate satisfy rule with valid block id", () =>
     assert(property(string(), ajvValidate)));
 
-  it("should validate satisfy rules with valid mc", () =>
-    assert(property(mcSatisfyRule, ajvValidate)));
+  it("should validate satisfy rules with valid mc", function () {
+    sample(mcSatisfyRule, 10).forEach((sample, i) =>
+      addContext(this, {
+        title: `mcSatisfyRule sample ${i}`,
+        value: sample,
+      })
+    );
+    return assert(property(mcSatisfyRule, ajvValidate));
+  });
 
-  it("should validate valid recursive satisfy rules", () =>
-    assert(property(satisfyRule, ajvValidate)));
+  it("should validate valid recursive satisfy rules", function () {
+    addContext(this, {
+      title: "satisfyRule samples",
+      value: sample(satisfyRule, 10),
+    });
+    return assert(property(satisfyRule, ajvValidate));
+  });
 
   it("should not validate non-string/object", () => {
     const error = {
