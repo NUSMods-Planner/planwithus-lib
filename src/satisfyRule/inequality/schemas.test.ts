@@ -1,15 +1,12 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import { assert, constantFrom, integer, property, tuple } from "fast-check";
+import { assert, property } from "fast-check";
 
 import { ajv } from "../../index.test";
+import { inequality } from "./index.test";
 import { inequalitySchema } from "./schemas";
 
 const ajvValidate = ajv.compile(inequalitySchema);
-
-const inequality = tuple(constantFrom("<=", ">="), integer({ min: 1 })).map(
-  ([sign, n]: [string, number]) => `${sign}${n}`
-);
 
 chai.use(chaiSubset);
 chai.should();
@@ -52,5 +49,3 @@ describe("inequalitySchema", () => {
       "a>=3",
     ].forEach(isInvalidInequality));
 });
-
-export { inequality };

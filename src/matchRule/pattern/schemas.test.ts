@@ -1,33 +1,15 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import { assert, constantFrom, property, stringOf, tuple } from "fast-check";
+import { assert, property } from "fast-check";
 
 import { ajv } from "../../index.test";
+import { pattern } from "./index.test";
 import { patternSchema } from "./schemas";
 
 chai.use(chaiSubset);
 chai.should();
 
 const ajvValidate = ajv.compile(patternSchema);
-
-const UPPERCASE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const DIGITS = "0123456789".split("");
-
-const modulePrefix = stringOf(constantFrom(...UPPERCASE_LETTERS), {
-  minLength: 2,
-  maxLength: 3,
-});
-const moduleNumber = stringOf(constantFrom("x", "*", ...DIGITS), {
-  minLength: 1,
-  maxLength: 4,
-});
-const moduleSuffix = stringOf(constantFrom(...UPPERCASE_LETTERS), {
-  minLength: 0,
-  maxLength: 1,
-});
-const pattern = tuple(modulePrefix, moduleNumber, moduleSuffix).map(
-  (t: [string, string, string]) => t.join("")
-);
 
 const isInvalidPattern = (patternStr: string) => {
   ajvValidate(patternStr).should.be.false;
@@ -56,5 +38,3 @@ describe("patternSchema", () => {
       isInvalidPattern
     ));
 });
-
-export { pattern };

@@ -1,50 +1,16 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import {
-  array,
-  assert,
-  letrec,
-  oneof,
-  property,
-  record,
-  string,
-} from "fast-check";
+import { assert, property } from "fast-check";
 
 import { ajv } from "../index.test";
-import { some } from "../some/schemas.test";
-import { pattern } from "./pattern/schemas.test";
+import { matchRule, patternMatchRule } from "./index.test";
+import { pattern } from "./pattern/index.test";
 import { matchRuleSchema } from "./schemas";
 
 chai.use(chaiSubset);
 chai.should();
 
 const ajvValidate = ajv.compile(matchRuleSchema);
-
-const { patternMatchRule, andMatchRule, orMatchRule, matchRule } = letrec(
-  (tie) => ({
-    patternMatchRule: record(
-      {
-        pattern,
-        exclude: some(pattern, { maxLength: 5 }),
-        info: string(),
-      },
-      { requiredKeys: ["pattern"] }
-    ),
-    andMatchRule: record({
-      and: array(tie("matchRule"), { maxLength: 5 }),
-    }),
-    orMatchRule: record({
-      or: array(tie("matchRule"), { maxLength: 5 }),
-    }),
-    matchRule: oneof(
-      { depthFactor: 0.8, withCrossShrink: true },
-      pattern,
-      tie("patternMatchRule"),
-      tie("andMatchRule"),
-      tie("orMatchRule")
-    ),
-  })
-);
 
 const isInvalidRule = (
   rule: unknown,
@@ -176,5 +142,3 @@ describe("matchRuleSchema", () => {
     );
   });
 });
-
-export { andMatchRule, matchRule, orMatchRule, patternMatchRule };

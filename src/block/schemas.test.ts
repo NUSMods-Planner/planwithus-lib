@@ -1,74 +1,20 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import {
-  array,
-  assert,
-  constantFrom,
-  integer,
-  letrec,
-  oneof,
-  property,
-  record,
-  string,
-  tuple,
-  webUrl,
-} from "fast-check";
+import { assert, property } from "fast-check";
 
 import { ajv } from "../index.test";
-import { matchRule } from "../matchRule/schemas.test";
-import { satisfyRule } from "../satisfyRule/schemas.test";
-import { some } from "../some/schemas.test";
+import { matchRuleSchema } from "../matchRule/schemas";
+import { satisfyRuleSchema } from "../satisfyRule/schemas";
+import { block } from "./index.test";
 import { blockSchema } from "./schemas";
-import type { Block } from "./types";
 
 chai.use(chaiSubset);
 chai.should();
 
-const ajvValidate = ajv.compile(blockSchema);
-
-const BLOCK_KEYWORDS = [
-  "name",
-  "ay",
-  "assign",
-  "match",
-  "satisfy",
-  "url",
-  "info",
-];
-
-const { block } = letrec((tie) => ({
-  block: tuple(
-    record(
-      {
-        name: string(),
-        ay: integer({ min: 1950, max: 2030 }),
-        assign: some(string(), { maxLength: 5 }),
-        match: some(matchRule, { maxLength: 5 }),
-        satisfy: some(satisfyRule, { maxLength: 5 }),
-        url: webUrl(),
-        info: string(),
-      },
-      { requiredKeys: [] }
-    ),
-    oneof(
-      { depthFactor: 0.8, withCrossShrink: true },
-      constantFrom([]),
-      array(
-        tuple(
-          string().filter((blockId) => !BLOCK_KEYWORDS.includes(blockId)),
-          tie("block")
-        ),
-        { maxLength: 5 }
-      )
-    )
-  ).map(
-    (t: [unknown, [string, unknown][]]) =>
-      ({
-        ...(t[0] as Block),
-        ...(Object.fromEntries(t[1]) as Record<string, Block>),
-      } as Block)
-  ),
-}));
+const ajvValidate = ajv
+  .addSchema(matchRuleSchema)
+  .addSchema(satisfyRuleSchema)
+  .compile(blockSchema);
 
 const isInvalidBlock = (
   block: unknown,

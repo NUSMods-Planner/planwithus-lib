@@ -1,46 +1,15 @@
 import chai from "chai";
 import chaiSubset from "chai-subset";
-import {
-  array,
-  assert,
-  integer,
-  letrec,
-  oneof,
-  property,
-  record,
-  string,
-} from "fast-check";
+import { assert, property, string } from "fast-check";
 
 import { ajv } from "../index.test";
-import { inequality } from "./inequality/schemas.test";
+import { mcSatisfyRule, satisfyRule } from "./index.test";
 import { satisfyRuleSchema } from "./schemas";
 
 chai.use(chaiSubset);
 chai.should();
 
 const ajvValidate = ajv.compile(satisfyRuleSchema);
-
-const { blockId, mcSatisfyRule, andSatisfyRule, orSatisfyRule, satisfyRule } =
-  letrec((tie) => ({
-    blockId: string(),
-    mcSatisfyRule: record(
-      { mc: oneof(integer({ min: 1, max: 200 }), inequality) },
-      { requiredKeys: ["mc"] }
-    ),
-    andSatisfyRule: record({
-      and: array(tie("satisfyRule"), { maxLength: 5 }),
-    }),
-    orSatisfyRule: record({
-      or: array(tie("satisfyRule"), { maxLength: 5 }),
-    }),
-    satisfyRule: oneof(
-      { depthFactor: 0.8, withCrossShrink: true },
-      tie("blockId"),
-      tie("mcSatisfyRule"),
-      tie("andSatisfyRule"),
-      tie("orSatisfyRule")
-    ),
-  }));
 
 const isInvalidRule = (
   rule: unknown,
@@ -56,7 +25,7 @@ const isInvalidRule = (
 
 describe("satisfyRuleSchema", () => {
   it("should validate satisfy rule with valid block id", () =>
-    assert(property(blockId, ajvValidate)));
+    assert(property(string(), ajvValidate)));
 
   it("should validate satisfy rules with valid mc", () =>
     assert(property(mcSatisfyRule, ajvValidate)));
@@ -131,5 +100,3 @@ describe("satisfyRuleSchema", () => {
     );
   });
 });
-
-export { andSatisfyRule, mcSatisfyRule, orSatisfyRule, satisfyRule };
