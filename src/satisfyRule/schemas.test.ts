@@ -39,10 +39,12 @@ describe("satisfyRuleSchema", () => {
   });
 
   it("should validate valid recursive satisfy rules", function () {
-    addContext(this, {
-      title: "satisfyRule samples",
-      value: sample(satisfyRule, 10),
-    });
+    sample(satisfyRule, 10).forEach((sample, i) =>
+      addContext(this, {
+        title: `satisfyRule sample ${i}`,
+        value: sample,
+      })
+    );
     return assert(property(satisfyRule, ajvValidate));
   });
 
