@@ -36,7 +36,7 @@ describe("matchRuleSchema", () => {
     return assert(property(pattern, ajvValidate));
   });
 
-  it("should validate match rules with valid pattern and info", function () {
+  it("should validate match rules with valid pattern, exclude and info", function () {
     sample(patternMatchRule, 10).forEach((sample, i) =>
       addContext(this, {
         title: `patternMatchRule sample ${i}`,
