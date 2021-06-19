@@ -12,13 +12,13 @@ satisfy: bachelor-hons-2016
     - or: [MA1102R, MA2002]
     - or: [CS1010, CS1010E, CS1010S, CS1010X, CS1101S]
   satisfy:
-    - mc: 16
+    - mc: ">=16"
 
 2k:
   name: Level-2000 modules
   assign: [2k-req, 2k-add]
   satisfy:
-    - mc: 24
+    - mc: ">=24"
 
   2k-req:
     match:
@@ -37,7 +37,7 @@ satisfy: bachelor-hons-2016
   name: Level-3000 modules
   assign: [ma3, 3k-add]
   satisfy:
-    - mc: 20
+    - mc: ">=20"
 
   ma3:
     name: List MA3
@@ -54,7 +54,7 @@ satisfy: bachelor-hons-2016
       - MA3209
       - MA3265
     satisfy:
-      - mc: 12
+      - mc: ">=12"
 
   3k-add:
     assign: [iii, iv]
@@ -65,7 +65,7 @@ satisfy: bachelor-hons-2016
   name: Level-4000 modules
   assign: [ma4, iv]
   satisfy:
-    - mc: 20
+    - mc: ">=20"
 
   ma4:
     name: List MA4
@@ -78,7 +78,7 @@ satisfy: bachelor-hons-2016
       - MA4271
       - MA4273
     satisfy:
-      - mc: 12
+      - mc: ">=12"
 
 ii:
   name: List II

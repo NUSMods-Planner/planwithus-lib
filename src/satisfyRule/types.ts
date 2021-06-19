@@ -1,7 +1,7 @@
 import type { BlockId } from "../block/blockId/types";
 import type { Inequality } from "./inequality/types";
 
-type MCSatisfyRule = { mc: number | Inequality };
+type MCSatisfyRule = { mc: Inequality };
 type AndSatisfyRule = { and: SatisfyRule[] };
 type OrSatisfyRule = { or: SatisfyRule[] };
 

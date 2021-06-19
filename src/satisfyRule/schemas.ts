@@ -26,22 +26,7 @@ const satisfyRuleRefSchema: JSONSchemaType<SatisfyRule> = {
 const MCSatisfyRuleSchema: JSONSchemaType<MCSatisfyRule> = {
   ...MCSatisfyRuleTypeSchema,
   additionalProperties: false,
-  properties: {
-    mc: {
-      type: ["integer", "string"],
-      if: { type: "integer" },
-      then: {
-        exclusiveMinimum: 0,
-        errorMessage: "number should be a positive integer",
-      },
-      else: {
-        if: { type: "string" },
-        then: inequalitySchema,
-      },
-      errorMessage:
-        "property 'mc' should be either a positive integer or a string representing an inequality",
-    },
-  },
+  properties: { mc: inequalitySchema },
   errorMessage: {
     additionalProperties: "MC satisfy rule should have property 'mc' only",
   },

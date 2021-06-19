@@ -28,7 +28,7 @@ elec:
 prim-match:
   assign: prim
   satisfy:
-    - mc: 8 # CS3230 fulfils primary requirements
+    - mc: ">=8" # CS3230 fulfils primary requirements
     - 4k
 
   4k:

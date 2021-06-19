@@ -29,7 +29,7 @@ satisfy: second-2019
               - MA1511
               - MA1512
     satisfy:
-      - mc: 10 # if MA1513 is taken
+      - mc: ">=10" # if MA1513 is taken
 
   1k-add:
     assign: [ma-hons-2019/ii, ma-hons-2019/iii, ma-hons-2019/iv]
@@ -43,17 +43,17 @@ satisfy: second-2019
     - or: [MA2202, MA2202S]
     - or: [MA2216, ST2131, ST2334]
   satisfy:
-    - mc: 20
+    - mc: ">=20"
 
 3k-above:
   name: Level-3000 and above modules
   assign: [ma-hons-2019/iii, ma-hons-2019/iv]
   satisfy:
-    - mc: 12
+    - mc: ">=12"
     - ma-match
 
   ma-match:
     name: MA-coded modules
     match: "MA*"
     satisfy:
-      - mc: 8
+      - mc: ">=8"

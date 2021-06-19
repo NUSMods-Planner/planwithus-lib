@@ -29,7 +29,7 @@ elec:
 prim-match:
   assign: prim
   satisfy:
-    - mc: 12
+    - mc: ">=12"
     - 4k
 
   4k:

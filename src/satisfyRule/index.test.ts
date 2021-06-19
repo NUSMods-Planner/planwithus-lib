@@ -1,13 +1,10 @@
-import { array, integer, letrec, oneof, record, string } from "fast-check";
+import { array, letrec, oneof, record, string } from "fast-check";
 
 import { inequality } from "./inequality/index.test";
 
 const { mcSatisfyRule, andSatisfyRule, orSatisfyRule, satisfyRule } = letrec(
   (tie) => ({
-    mcSatisfyRule: record(
-      { mc: oneof(integer({ min: 1, max: 200 }), inequality) },
-      { requiredKeys: ["mc"] }
-    ),
+    mcSatisfyRule: record({ mc: inequality }, { requiredKeys: ["mc"] }),
     andSatisfyRule: record({
       and: array(tie("satisfyRule"), { maxLength: 5 }),
     }),

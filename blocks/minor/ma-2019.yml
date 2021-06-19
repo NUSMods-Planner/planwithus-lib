@@ -13,7 +13,7 @@ satisfy: minor-2019
     - CS1231
     - CS1231S
   satisfy:
-    - mc: 8
+    - mc: ">=8"
 
 2k:
   name: Level-2000 modules
@@ -22,7 +22,7 @@ satisfy: minor-2019
       exclude: "MA20xx*"
     - ST2131
   satisfy:
-    - mc: 8
+    - mc: ">=8"
 
 3k-above:
   name: Level-3000 and above modules
@@ -33,4 +33,4 @@ satisfy: minor-2019
       exclude: MA4251
     - "MA5xxx*"
   satisfy:
-    - mc: 4
+    - mc: ">=4"

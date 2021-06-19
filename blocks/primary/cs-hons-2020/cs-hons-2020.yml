@@ -19,13 +19,13 @@ found:
     - CS2106
     - CS3230
   satisfy:
-    - mc: 32
+    - mc: ">=32"
 
 bd:
   name: Breadth & Depth
   assign: [fa, cp, team]
   satisfy:
-    - mc: 28
+    - mc: ">=28"
 
   fa:
     name: Focus Areas
@@ -42,7 +42,7 @@ bd:
       name: Focus Areas (Level-4000 and above modules)
       match: ["*4xxx*", "*5xxx*", "*6xxx*"]
       satisfy:
-        - mc: 12
+        - mc: ">=12"
 
   cp:
     name: CP-coded modules
@@ -57,19 +57,19 @@ bd:
       - and: [CS3216, CS3217]
       - and: [CS3281, CS3282]
     satisfy:
-      - mc: 8
+      - mc: ">=8"
 
 ind:
   name: Industrial Experience Requirement
   match: [CP3880, CP3200, CP3202, CP3107, CP3110, IS4010, TR3202]
   satisfy:
-    - mc: 12
+    - mc: ">=12"
 
 it-prof:
   name: IT Professionalism
   match: [IS1103, CS2101, ES2660]
   satisfy:
-    - mc: 12
+    - mc: ">=12"
 
 math-sci:
   name: Mathematics & Sciences
@@ -103,7 +103,7 @@ math-sci:
         - PC1431
         - PC1433
   satisfy:
-    - mc: 16
+    - mc: ">=16"
 
 ue:
   name: Unrestricted Electives
