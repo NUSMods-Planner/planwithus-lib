@@ -1,25 +1,26 @@
 import chai from "chai";
 
 import { evaluateMatcher } from "../matcher";
+import type { Module } from "../module/types";
 import { matchRuleMatcher, patternMatchRuleMatcher } from "./matchers";
 
 chai.should();
 
 describe("matchRuleMatcher", () => {
-  const modulesList1 = [
-    "MA1100",
-    "CS1231",
-    "CS1231S",
-    "MA1101R",
-    "MA1513",
-    "MA1102R",
-    "MA1511",
-    "MA1511A",
-    "MA1512",
-    "MA1507",
-    "MA1521",
-    "MA2101",
-    "MA2101S",
+  const modulesList1: Module[] = [
+    ["MA1100", 4],
+    ["CS1231", 4],
+    ["CS1231S", 4],
+    ["MA1101R", 4],
+    ["MA1513", 4],
+    ["MA1102R", 4],
+    ["MA1511", 4],
+    ["MA1511A", 4],
+    ["MA1512", 4],
+    ["MA1507", 4],
+    ["MA1521", 4],
+    ["MA2101", 4],
+    ["MA2101S", 4],
   ];
 
   it("should match only valid modules with pattern match rule", () => {
@@ -29,17 +30,22 @@ describe("matchRuleMatcher", () => {
       info: "swag",
     });
     evaluateMatcher(modulesList1, matcher).should.eql({
-      matched: ["MA1100", "MA1101R", "MA1102R", "MA1511A"],
+      matched: [
+        ["MA1100", 4],
+        ["MA1101R", 4],
+        ["MA1102R", 4],
+        ["MA1511A", 4],
+      ],
       remaining: [
-        "CS1231",
-        "CS1231S",
-        "MA1513",
-        "MA1511",
-        "MA1512",
-        "MA1507",
-        "MA1521",
-        "MA2101",
-        "MA2101S",
+        ["CS1231", 4],
+        ["CS1231S", 4],
+        ["MA1513", 4],
+        ["MA1511", 4],
+        ["MA1512", 4],
+        ["MA1507", 4],
+        ["MA1521", 4],
+        ["MA2101", 4],
+        ["MA2101S", 4],
       ],
       infos: ["swag"],
     });
@@ -53,15 +59,22 @@ describe("matchRuleMatcher", () => {
       ],
     });
     evaluateMatcher(modulesList1, matcher).should.eql({
-      matched: ["MA1513", "MA1511", "MA1511A", "MA1512", "MA1507", "MA1521"],
+      matched: [
+        ["MA1513", 4],
+        ["MA1511", 4],
+        ["MA1511A", 4],
+        ["MA1512", 4],
+        ["MA1507", 4],
+        ["MA1521", 4],
+      ],
       remaining: [
-        "MA1100",
-        "CS1231",
-        "CS1231S",
-        "MA1101R",
-        "MA1102R",
-        "MA2101",
-        "MA2101S",
+        ["MA1100", 4],
+        ["CS1231", 4],
+        ["CS1231S", 4],
+        ["MA1101R", 4],
+        ["MA1102R", 4],
+        ["MA2101", 4],
+        ["MA2101S", 4],
       ],
       infos: ["hi1"],
     });
@@ -119,18 +132,22 @@ describe("matchRuleMatcher", () => {
     });
     evaluateMatcher(modulesList1, matcher).should.eql({
       matched: [
-        "CS1231",
-        "MA1100",
-        "CS1231S",
-        "MA2101",
-        "MA2101S",
-        "MA1101R",
-        "MA1102R",
-        "MA1511",
-        "MA1512",
-        "MA1511A",
+        ["CS1231", 4],
+        ["MA1100", 4],
+        ["CS1231S", 4],
+        ["MA2101", 4],
+        ["MA2101S", 4],
+        ["MA1101R", 4],
+        ["MA1102R", 4],
+        ["MA1511", 4],
+        ["MA1512", 4],
+        ["MA1511A", 4],
       ],
-      remaining: ["MA1513", "MA1507", "MA1521"],
+      remaining: [
+        ["MA1513", 4],
+        ["MA1507", 4],
+        ["MA1521", 4],
+      ],
       infos: ["foo", "bar", "swag", "true swag"],
     });
   });

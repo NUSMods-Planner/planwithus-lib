@@ -3,6 +3,7 @@ import { array, assert, property, sample } from "fast-check";
 import addContext from "mochawesome/addContext";
 
 import { evaluateMatcher } from "../../matcher";
+import type { Module } from "../../module/types";
 import { pattern, patternExampleList } from "./index.test";
 import { patternToRE, patternMatcher } from "./matchers";
 
@@ -67,14 +68,14 @@ describe("patternToRE", () => {
 });
 
 describe("patternMatcher", () => {
-  const modulesList1 = [
-    "CS2100",
-    "GER1000",
-    "CS2040S",
-    "ST2131",
-    "MA1521",
-    "CS1231",
-    "CS2030",
+  const modulesList1: Module[] = [
+    ["CS2100", 4],
+    ["GER1000", 4],
+    ["CS2040S", 4],
+    ["ST2131", 4],
+    ["MA1521", 4],
+    ["CS1231", 4],
+    ["CS2030", 4],
   ];
 
   it("should match all modules with *", () => {
@@ -89,8 +90,17 @@ describe("patternMatcher", () => {
   it("should match only valid modules with pattern containing *", () => {
     const matcher = patternMatcher("CS2*");
     evaluateMatcher(modulesList1, matcher).should.eql({
-      matched: ["CS2100", "CS2040S", "CS2030"],
-      remaining: ["GER1000", "ST2131", "MA1521", "CS1231"],
+      matched: [
+        ["CS2100", 4],
+        ["CS2040S", 4],
+        ["CS2030", 4],
+      ],
+      remaining: [
+        ["GER1000", 4],
+        ["ST2131", 4],
+        ["MA1521", 4],
+        ["CS1231", 4],
+      ],
       infos: [],
     });
   });
@@ -98,8 +108,15 @@ describe("patternMatcher", () => {
   it("should match only valid modules with pattern containing x", () => {
     const matcher = patternMatcher("CS20xx");
     evaluateMatcher(modulesList1, matcher).should.eql({
-      matched: ["CS2030"],
-      remaining: ["CS2100", "GER1000", "CS2040S", "ST2131", "MA1521", "CS1231"],
+      matched: [["CS2030", 4]],
+      remaining: [
+        ["CS2100", 4],
+        ["GER1000", 4],
+        ["CS2040S", 4],
+        ["ST2131", 4],
+        ["MA1521", 4],
+        ["CS1231", 4],
+      ],
       infos: [],
     });
   });
@@ -107,8 +124,17 @@ describe("patternMatcher", () => {
   it("should match only valid modules with pattern containing x and *", () => {
     const matcher = patternMatcher("CS20xx*");
     evaluateMatcher(modulesList1, matcher).should.eql({
-      matched: ["CS2040S", "CS2030"],
-      remaining: ["CS2100", "GER1000", "ST2131", "MA1521", "CS1231"],
+      matched: [
+        ["CS2040S", 4],
+        ["CS2030", 4],
+      ],
+      remaining: [
+        ["CS2100", 4],
+        ["GER1000", 4],
+        ["ST2131", 4],
+        ["MA1521", 4],
+        ["CS1231", 4],
+      ],
       infos: [],
     });
   });
