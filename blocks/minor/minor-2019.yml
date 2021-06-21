@@ -4,7 +4,3 @@ url: https://www.nus.edu.sg/registrar/academic-information-policies/undergraduat
 satisfy:
   - mc: ">=20"
 info: "At least 12 MCs for any Minor must be taken from outside the entire set of modules that are listed for the major(s)/another minor that the student is taking/ has taken. A minimum of 60% of the Minor requirements must be earned from modules read at NUS. Please refer to the URL for more details."
-
-double-count:
-  satisfy:
-    - mc: "<=8"
