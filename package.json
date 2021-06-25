@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "ts-node src/",
+    "docs": "typedoc src/",
     "test": "mocha -r ts-node/register 'src/**/*.test.ts'",
     "test-docs": "mocha -r ts-node/register 'src/**/*.test.ts' --reporter mochawesome --reporter-options reportDir=docs",
     "coverage": "nyc npm run test",
@@ -50,6 +51,7 @@
     "nyc": "^15.1.0",
     "prettier": "2.3.1",
     "ts-node": "^10.0.0",
+    "typedoc": "^0.21.0",
     "typescript": "^4.3.2"
   },
   "lint-staged": {

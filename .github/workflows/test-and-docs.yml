@@ -1,9 +1,9 @@
-name: Run Tests
+name: Run Tests & Documentation
 
 on: [push, pull_request]
 
 jobs:
-  test:
+  test-and-docs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,6 +17,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+      - run: npm run docs
       - run: npm run coverage-docs
 
       - name: Upload docs
@@ -26,7 +27,7 @@ jobs:
           path: docs/
 
   deploy-gh-pages:
-    needs: test
+    needs: test-and-docs
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
