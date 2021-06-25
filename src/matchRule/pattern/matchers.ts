@@ -16,8 +16,8 @@ const patternToRE = (...patterns: Pattern[]): RegExp =>
 const patternMatcher = (pattern: Pattern): MatcherLeaf => {
   const re = patternToRE(pattern);
   return {
+    type: "pattern",
     match: ([moduleStr]: Module) => re.test.bind(re)(moduleStr),
-    infos: [],
   };
 };
 

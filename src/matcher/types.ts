@@ -1,13 +1,15 @@
 import type { Module } from "../module/types";
 
 type MatcherLeaf = {
+  type: string;
   match: (module: Module) => boolean;
-  infos: string[];
+  info?: string;
 };
 const isMatcherLeaf = (matcher: Matcher): matcher is MatcherLeaf =>
   "match" in matcher;
 
 type MatcherBranch = {
+  type: string;
   matchers: Matcher[];
   constraint: (matcheds: Module[][]) => boolean;
 };
@@ -17,9 +19,11 @@ const isMatcherBranch = (matcher: Matcher): matcher is MatcherBranch =>
 type Matcher = MatcherLeaf | MatcherBranch;
 
 type MatcherResult = {
+  type: string;
   matched: Module[];
   remaining: Module[];
-  infos: string[];
+  results: MatcherResult[];
+  info?: string;
 };
 
 export type { Matcher, MatcherBranch, MatcherLeaf, MatcherResult };

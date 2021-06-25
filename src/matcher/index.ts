@@ -7,46 +7,53 @@ const evaluateMatcher = (
   matcher: Matcher
 ): MatcherResult => {
   if (isMatcherLeaf(matcher)) {
-    const { match, infos } = matcher;
+    const { type, match, info } = matcher;
     const notMatch = (module: Module) => !match(module);
     const newMatched = remaining.filter(match);
     const newRemaining = remaining.filter(notMatch);
-    return {
-      matched: newMatched,
-      remaining: newRemaining,
-      infos: newMatched.length > 0 ? infos : [],
-    };
+    return Object.assign(
+      {
+        type,
+        matched: newMatched,
+        remaining: newRemaining,
+        results: [],
+      },
+      newMatched.length > 0 && typeof info !== "undefined" ? { info } : {}
+    );
   } else if (isMatcherBranch(matcher)) {
-    const { matchers, constraint } = matcher;
+    const { type, matchers, constraint } = matcher;
     const matcherResult = {
+      type,
       matched: [],
       remaining,
-      infos: [],
+      results: [],
     } as MatcherResult;
     const [newMatcheds, newMatcherResult] = matchers.reduce(
       (
         [
           accMatcheds,
-          { matched: accMatched, remaining: accRemaining, infos: accInfos },
+          { matched: accMatched, remaining: accRemaining, results: accResults },
         ],
         matcher
       ) => {
-        const { matched, remaining, infos } = evaluateMatcher(
-          accRemaining,
-          matcher
-        );
+        const result = evaluateMatcher(accRemaining, matcher);
+        const { matched, remaining } = result;
         return [
-          accMatcheds.concat([matched]),
+          [...accMatcheds, matched],
           {
-            matched: accMatched.concat(matched),
+            type,
+            matched: [...accMatched, ...matched],
             remaining,
-            infos: accInfos.concat(infos),
+            results: [...accResults, result],
           },
         ];
       },
       [[] as Module[][], matcherResult]
     );
-    return constraint(newMatcheds) ? newMatcherResult : matcherResult;
+    const { results: newResults } = newMatcherResult;
+    return constraint(newMatcheds)
+      ? newMatcherResult
+      : { ...matcherResult, results: newResults };
   } else {
     throw new Error("matcher is not well-defined");
   }

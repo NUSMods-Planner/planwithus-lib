@@ -30,6 +30,7 @@ describe("matchRuleMatcher", () => {
       info: "swag",
     });
     evaluateMatcher(modulesList1, matcher).should.eql({
+      type: "patternMatchRule",
       matched: [
         ["MA1100", 4],
         ["MA1101R", 4],
@@ -47,7 +48,8 @@ describe("matchRuleMatcher", () => {
         ["MA2101", 4],
         ["MA2101S", 4],
       ],
-      infos: ["swag"],
+      results: [],
+      info: "swag",
     });
   });
 
@@ -59,6 +61,7 @@ describe("matchRuleMatcher", () => {
       ],
     });
     evaluateMatcher(modulesList1, matcher).should.eql({
+      type: "orMatchRule",
       matched: [
         ["MA1513", 4],
         ["MA1511", 4],
@@ -76,7 +79,44 @@ describe("matchRuleMatcher", () => {
         ["MA2101", 4],
         ["MA2101S", 4],
       ],
-      infos: ["hi1"],
+      results: [
+        {
+          type: "patternMatchRule",
+          matched: [
+            ["MA1513", 4],
+            ["MA1511", 4],
+            ["MA1511A", 4],
+            ["MA1512", 4],
+            ["MA1507", 4],
+            ["MA1521", 4],
+          ],
+          remaining: [
+            ["MA1100", 4],
+            ["CS1231", 4],
+            ["CS1231S", 4],
+            ["MA1101R", 4],
+            ["MA1102R", 4],
+            ["MA2101", 4],
+            ["MA2101S", 4],
+          ],
+          results: [],
+          info: "hi1",
+        },
+        {
+          type: "patternMatchRule",
+          matched: [],
+          remaining: [
+            ["MA1100", 4],
+            ["CS1231", 4],
+            ["CS1231S", 4],
+            ["MA1101R", 4],
+            ["MA1102R", 4],
+            ["MA2101", 4],
+            ["MA2101S", 4],
+          ],
+          results: [],
+        },
+      ],
     });
   });
 
@@ -88,9 +128,47 @@ describe("matchRuleMatcher", () => {
       ],
     });
     evaluateMatcher(modulesList1, matcher).should.eql({
+      type: "andMatchRule",
       matched: [],
       remaining: modulesList1,
-      infos: [],
+      results: [
+        {
+          type: "patternMatchRule",
+          matched: [
+            ["MA1513", 4],
+            ["MA1511", 4],
+            ["MA1511A", 4],
+            ["MA1512", 4],
+            ["MA1507", 4],
+            ["MA1521", 4],
+          ],
+          remaining: [
+            ["MA1100", 4],
+            ["CS1231", 4],
+            ["CS1231S", 4],
+            ["MA1101R", 4],
+            ["MA1102R", 4],
+            ["MA2101", 4],
+            ["MA2101S", 4],
+          ],
+          results: [],
+          info: "hi1",
+        },
+        {
+          type: "patternMatchRule",
+          matched: [],
+          remaining: [
+            ["MA1100", 4],
+            ["CS1231", 4],
+            ["CS1231S", 4],
+            ["MA1101R", 4],
+            ["MA1102R", 4],
+            ["MA2101", 4],
+            ["MA2101S", 4],
+          ],
+          results: [],
+        },
+      ],
     });
   });
 
@@ -106,49 +184,177 @@ describe("matchRuleMatcher", () => {
           ],
         },
         {
-          and: [
-            {
-              or: [{ and: ["MA1511", "MA1512"] }, { pattern: "ACC*" }],
-            },
-            {
-              and: [
-                { pattern: "CS1231S", info: "swaggy" },
-                { pattern: "MA1101R", info: "thomas" },
-                "MA1102R",
-              ],
-            },
-            "MA1xxx*",
-          ],
-        },
-        {
-          and: [
-            { pattern: "MA11xx*", info: "true swag" },
-            "MA1511",
-            "MA1512",
-            { or: ["MA6220", "MA1511A"] },
-          ],
+          and: [{ pattern: "CS1231S", info: "swaggy" }, "MA1xxx*"],
         },
       ],
     });
-    evaluateMatcher(modulesList1, matcher).should.eql({
-      matched: [
-        ["CS1231", 4],
+
+    const matcherResult = evaluateMatcher(modulesList1, matcher);
+    matcherResult.should.have.property("type");
+    matcherResult.type.should.equal("orMatchRule");
+    matcherResult.should.have.property("matched");
+    matcherResult.matched.should.eql([
+      ["CS1231", 4],
+      ["MA1100", 4],
+      ["CS1231S", 4],
+      ["MA2101", 4],
+      ["MA2101S", 4],
+    ]);
+    matcherResult.should.have.property("remaining");
+    matcherResult.remaining.should.eql([
+      ["MA1101R", 4],
+      ["MA1513", 4],
+      ["MA1102R", 4],
+      ["MA1511", 4],
+      ["MA1511A", 4],
+      ["MA1512", 4],
+      ["MA1507", 4],
+      ["MA1521", 4],
+    ]);
+
+    matcherResult.should.have.property("results");
+    const results = matcherResult.results;
+    results.should.have.lengthOf(4);
+    results[0].should.eql({
+      type: "patternMatchRule",
+      matched: [["CS1231", 4]],
+      remaining: [
         ["MA1100", 4],
+        ["CS1231S", 4],
+        ["MA1101R", 4],
+        ["MA1513", 4],
+        ["MA1102R", 4],
+        ["MA1511", 4],
+        ["MA1511A", 4],
+        ["MA1512", 4],
+        ["MA1507", 4],
+        ["MA1521", 4],
+        ["MA2101", 4],
+        ["MA2101S", 4],
+      ],
+      results: [],
+      info: "foo",
+    });
+    results[1].should.eql({
+      type: "pattern",
+      matched: [["MA1100", 4]],
+      remaining: [
+        ["CS1231S", 4],
+        ["MA1101R", 4],
+        ["MA1513", 4],
+        ["MA1102R", 4],
+        ["MA1511", 4],
+        ["MA1511A", 4],
+        ["MA1512", 4],
+        ["MA1507", 4],
+        ["MA1521", 4],
+        ["MA2101", 4],
+        ["MA2101S", 4],
+      ],
+      results: [],
+    });
+    results[2].should.eql({
+      type: "andMatchRule",
+      matched: [
         ["CS1231S", 4],
         ["MA2101", 4],
         ["MA2101S", 4],
-        ["MA1101R", 4],
-        ["MA1102R", 4],
-        ["MA1511", 4],
-        ["MA1512", 4],
-        ["MA1511A", 4],
       ],
       remaining: [
+        ["MA1101R", 4],
         ["MA1513", 4],
+        ["MA1102R", 4],
+        ["MA1511", 4],
+        ["MA1511A", 4],
+        ["MA1512", 4],
         ["MA1507", 4],
         ["MA1521", 4],
       ],
-      infos: ["foo", "bar", "swag", "true swag"],
+      results: [
+        {
+          type: "patternMatchRule",
+          matched: [["CS1231S", 4]],
+          remaining: [
+            ["MA1101R", 4],
+            ["MA1513", 4],
+            ["MA1102R", 4],
+            ["MA1511", 4],
+            ["MA1511A", 4],
+            ["MA1512", 4],
+            ["MA1507", 4],
+            ["MA1521", 4],
+            ["MA2101", 4],
+            ["MA2101S", 4],
+          ],
+          results: [],
+          info: "bar",
+        },
+        {
+          type: "patternMatchRule",
+          matched: [
+            ["MA2101", 4],
+            ["MA2101S", 4],
+          ],
+          remaining: [
+            ["MA1101R", 4],
+            ["MA1513", 4],
+            ["MA1102R", 4],
+            ["MA1511", 4],
+            ["MA1511A", 4],
+            ["MA1512", 4],
+            ["MA1507", 4],
+            ["MA1521", 4],
+          ],
+          results: [],
+          info: "swag",
+        },
+      ],
+    });
+    results[3].should.eql({
+      type: "andMatchRule",
+      matched: [],
+      remaining: [
+        ["MA1101R", 4],
+        ["MA1513", 4],
+        ["MA1102R", 4],
+        ["MA1511", 4],
+        ["MA1511A", 4],
+        ["MA1512", 4],
+        ["MA1507", 4],
+        ["MA1521", 4],
+      ],
+      results: [
+        {
+          type: "patternMatchRule",
+          matched: [],
+          remaining: [
+            ["MA1101R", 4],
+            ["MA1513", 4],
+            ["MA1102R", 4],
+            ["MA1511", 4],
+            ["MA1511A", 4],
+            ["MA1512", 4],
+            ["MA1507", 4],
+            ["MA1521", 4],
+          ],
+          results: [],
+        },
+        {
+          type: "pattern",
+          matched: [
+            ["MA1101R", 4],
+            ["MA1513", 4],
+            ["MA1102R", 4],
+            ["MA1511", 4],
+            ["MA1511A", 4],
+            ["MA1512", 4],
+            ["MA1507", 4],
+            ["MA1521", 4],
+          ],
+          remaining: [],
+          results: [],
+        },
+      ],
     });
   });
 });

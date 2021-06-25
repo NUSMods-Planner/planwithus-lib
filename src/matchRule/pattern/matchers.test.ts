@@ -81,15 +81,17 @@ describe("patternMatcher", () => {
   it("should match all modules with *", () => {
     const matcher = patternMatcher("*");
     evaluateMatcher(modulesList1, matcher).should.eql({
+      type: "pattern",
       matched: modulesList1,
       remaining: [],
-      infos: [],
+      results: [],
     });
   });
 
   it("should match only valid modules with pattern containing *", () => {
     const matcher = patternMatcher("CS2*");
     evaluateMatcher(modulesList1, matcher).should.eql({
+      type: "pattern",
       matched: [
         ["CS2100", 4],
         ["CS2040S", 4],
@@ -101,13 +103,14 @@ describe("patternMatcher", () => {
         ["MA1521", 4],
         ["CS1231", 4],
       ],
-      infos: [],
+      results: [],
     });
   });
 
   it("should match only valid modules with pattern containing x", () => {
     const matcher = patternMatcher("CS20xx");
     evaluateMatcher(modulesList1, matcher).should.eql({
+      type: "pattern",
       matched: [["CS2030", 4]],
       remaining: [
         ["CS2100", 4],
@@ -117,13 +120,14 @@ describe("patternMatcher", () => {
         ["MA1521", 4],
         ["CS1231", 4],
       ],
-      infos: [],
+      results: [],
     });
   });
 
   it("should match only valid modules with pattern containing x and *", () => {
     const matcher = patternMatcher("CS20xx*");
     evaluateMatcher(modulesList1, matcher).should.eql({
+      type: "pattern",
       matched: [
         ["CS2040S", 4],
         ["CS2030", 4],
@@ -135,7 +139,7 @@ describe("patternMatcher", () => {
         ["MA1521", 4],
         ["CS1231", 4],
       ],
-      infos: [],
+      results: [],
     });
   });
 });

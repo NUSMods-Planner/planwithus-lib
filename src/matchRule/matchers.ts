@@ -17,20 +17,23 @@ const patternMatchRuleMatcher = ({
   const excludeRE = patternToRE(...excludeArray);
   const { match } = patternMatcher(pattern);
   return {
+    type: "patternMatchRule",
     match: (module) => {
       const [moduleStr] = module;
       return match(module) && !excludeRE.test(moduleStr);
     },
-    infos: typeof info === "undefined" ? [] : [info],
+    info,
   };
 };
 
 const andMatchRuleMatcher = ({ and }: AndMatchRule): MatcherBranch => ({
+  type: "andMatchRule",
   matchers: and.map(matchRuleMatcher),
   constraint: (matcheds) => matcheds.every((matched) => matched.length > 0),
 });
 
 const orMatchRuleMatcher = ({ or }: OrMatchRule): MatcherBranch => ({
+  type: "orMatchRule",
   matchers: or.map(matchRuleMatcher),
   constraint: (matcheds) => matcheds.some((matched) => matched.length > 0),
 });
