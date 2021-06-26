@@ -16,4 +16,12 @@ type Block = {
   [blockId: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
+enum BlockClass {
+  Primary = "primary",
+  Second = "second",
+  Minor = "minor",
+}
+const BLOCK_CLASSES = [BlockClass.Primary, BlockClass.Second, BlockClass.Minor];
+
 export type { Block };
+export { BLOCK_CLASSES, BlockClass };

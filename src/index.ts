@@ -4,8 +4,13 @@ import path from "path";
 
 import { Directory } from "./directory";
 import { parseYAML } from "./parser";
+import type { BlockId } from "./block/blockId/types";
+import { blockSatisfier } from "./block/satisfiers";
+import { BLOCK_CLASSES } from "./block/types";
+import type { Module } from "./module/types";
+import type { SatisfierResult } from "./satisfier/types";
+import { evaluateSatisfier } from "./satisfier";
 
-const BLOCK_CLASSES = ["primary", "second", "minor"];
 const PATH_PREFIX = path.join(__dirname, "../blocks");
 
 const loadBlocks = async (type: string): Promise<Directory> => {
@@ -31,4 +36,11 @@ const initDirectories = async (): Promise<Record<string, Directory>> => {
   );
 };
 
-export { BLOCK_CLASSES, initDirectories };
+const verifyPlan = (
+  modules: Module[],
+  dir: Directory,
+  blockId: BlockId
+): SatisfierResult =>
+  evaluateSatisfier([], modules, blockSatisfier("", dir, blockId, blockId));
+
+export { initDirectories, verifyPlan };
