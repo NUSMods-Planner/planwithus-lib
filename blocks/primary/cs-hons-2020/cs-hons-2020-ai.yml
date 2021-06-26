@@ -1,15 +1,26 @@
 name: Focus Area (Artificial Intelligence)
-assign: [prim, elec]
+assign: ["prim-match/prim", elec]
 
-prim:
-  name: Primaries
-  match:
-    - CS3243
-    - CS3244
-    - CS4243
-    - CS4244
-    - CS4246
-    - CS4248
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=12"
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS3243
+      - CS3244
+      - CS4243
+      - CS4244
+      - CS4246
+      - CS4248
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
 
 elec:
   name: Electives
@@ -25,14 +36,3 @@ elec:
     - CS5260
     - CS5340
     - CS5339
-
-prim-match:
-  assign: prim
-  satisfy:
-    - mc: ">=12"
-    - 4k
-
-  4k:
-    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
-    satisfy:
-      - mc: ">=4"
