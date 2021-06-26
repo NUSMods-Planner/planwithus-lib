@@ -8,16 +8,14 @@ import type {
   PatternMatchRule,
 } from "./types";
 
-const patternMatchRuleMatcher = ({
-  pattern,
-  exclude = [],
-  info,
-}: PatternMatchRule): MatcherLeaf => {
+const patternMatchRuleMatcher = (rule: PatternMatchRule): MatcherLeaf => {
+  const { pattern, exclude = [], info } = rule;
   const excludeArray = typeof exclude === "string" ? [exclude] : exclude;
   const excludeRE = patternToRE(...excludeArray);
   const { match } = patternMatcher(pattern);
   return {
     type: "patternMatchRule",
+    rule: { pattern, exclude, info },
     match: (module) => {
       const [moduleStr] = module;
       return match(module) && !excludeRE.test(moduleStr);
@@ -28,12 +26,14 @@ const patternMatchRuleMatcher = ({
 
 const andMatchRuleMatcher = ({ and }: AndMatchRule): MatcherBranch => ({
   type: "andMatchRule",
+  rule: { and },
   matchers: and.map(matchRuleMatcher),
   constraint: (matcheds) => matcheds.every((matched) => matched.length > 0),
 });
 
 const orMatchRuleMatcher = ({ or }: OrMatchRule): MatcherBranch => ({
   type: "orMatchRule",
+  rule: { or },
   matchers: or.map(matchRuleMatcher),
   constraint: (matcheds) => matcheds.some((matched) => matched.length > 0),
 });

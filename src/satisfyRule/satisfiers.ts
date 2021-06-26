@@ -14,42 +14,51 @@ import type {
   SatisfyRule,
 } from "./types";
 
-const MCSatisfyRuleSatisfier = ({ mc }: MCSatisfyRule): SatisfierLeaf =>
-  inequalitySatisfier(mc);
+const MCSatisfyRuleSatisfier = ({ mc }: MCSatisfyRule): SatisfierLeaf => ({
+  ...inequalitySatisfier(mc),
+  type: "MCSatisfyRule",
+  rule: { mc },
+});
 
 const andSatisfyRuleSatisfier = (
   dir: Directory,
+  prefix: string,
   { and }: AndSatisfyRule
 ): SatisfierBranch => ({
+  type: "andSatisfyRule",
+  rule: { and },
   filter: (assigned) => assigned,
-  satisfiers: and.map((rule) => satisfyRuleSatisfier(dir, rule)),
+  satisfiers: and.map((rule) => satisfyRuleSatisfier(dir, prefix, rule)),
   constraint: (satisfieds) => satisfieds.every((bool) => bool),
 });
 
 const orSatisfyRuleSatisfier = (
   dir: Directory,
+  prefix: string,
   { or }: OrSatisfyRule
 ): SatisfierBranch => ({
+  type: "orSatisfyRule",
+  rule: { or },
   filter: (assigned) => assigned,
-  satisfiers: or.map((rule) => satisfyRuleSatisfier(dir, rule)),
+  satisfiers: or.map((rule) => satisfyRuleSatisfier(dir, prefix, rule)),
   constraint: (satisfieds) => satisfieds.some((bool) => bool),
 });
 
-// TODO: Implement subblock resolution
 const satisfyRuleSatisfier = (
   dir: Directory,
+  prefix: string,
   satisfy: Some<SatisfyRule>
 ): Satisfier => {
   if (Array.isArray(satisfy)) {
-    return satisfyRuleSatisfier(dir, { and: satisfy });
+    return satisfyRuleSatisfier(dir, prefix, { and: satisfy });
   } else if (typeof satisfy === "string") {
-    return blockSatisfier(dir, dir.find(satisfy));
+    return blockSatisfier(dir, prefix, satisfy);
   } else if ("mc" in satisfy) {
     return MCSatisfyRuleSatisfier(satisfy);
   } else if ("and" in satisfy) {
-    return andSatisfyRuleSatisfier(dir, satisfy);
+    return andSatisfyRuleSatisfier(dir, prefix, satisfy);
   } else if ("or" in satisfy) {
-    return orSatisfyRuleSatisfier(dir, satisfy);
+    return orSatisfyRuleSatisfier(dir, prefix, satisfy);
   } else {
     throw new Error("satisfy rule(s) is (are) not well-defined");
   }

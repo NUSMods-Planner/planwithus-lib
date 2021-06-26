@@ -1,5 +1,6 @@
 import { decomposeBlock } from "../block";
 import type { Block } from "../block/types";
+import type { BlockId } from "../block/blockId/types";
 
 class Directory {
   blocks: Record<string, Block>;
@@ -24,11 +25,19 @@ class Directory {
     });
   }
 
-  find(prefix: string): Block {
-    if (prefix in Object.keys(this.blocks)) {
-      throw new Error(`block '${prefix}' does not exist`);
+  find(prefix: string, id: BlockId): [BlockId, Block] {
+    const prefixedId = prefix === "" ? id : [prefix, id].join("/");
+    if (Object.keys(this.blocks).includes(id)) {
+      return [id, this.blocks[id]];
+    } else if (Object.keys(this.blocks).includes(prefixedId)) {
+      return [prefixedId, this.blocks[prefixedId]];
+    } else {
+      throw new Error(
+        id !== prefixedId
+          ? `block '${id}' or '${prefixedId}' does not exist`
+          : `block '${id}' does not exist`
+      );
     }
-    return this.blocks[prefix];
   }
 }
 

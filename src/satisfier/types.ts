@@ -1,16 +1,19 @@
 import type { Module } from "../module/types";
 
 type SatisfierLeaf = {
+  type: string;
+  rule: unknown;
   constraint: (assigned: Module[]) => boolean;
-  infos: string[];
-  messages: string[];
+  info?: string;
 };
 const isSatisfierLeaf = (satisfier: Satisfier): satisfier is SatisfierLeaf =>
   !("satisfiers" in satisfier);
 
 type SatisfierBranch = {
-  satisfiers: Satisfier[];
+  type: string;
+  rule: unknown;
   filter: (assigned: Module[]) => Module[];
+  satisfiers: Satisfier[];
   constraint: (satisfieds: boolean[]) => boolean;
 };
 const isSatisfierBranch = (
@@ -20,10 +23,12 @@ const isSatisfierBranch = (
 type Satisfier = SatisfierLeaf | SatisfierBranch;
 
 type SatisfierResult = {
+  type: string;
+  rule: unknown;
   assigned: Module[];
   satisfied: boolean;
-  infos: string[];
-  messages: string[];
+  results: SatisfierResult[];
+  info?: string;
 };
 
 export type { Satisfier, SatisfierBranch, SatisfierLeaf, SatisfierResult };

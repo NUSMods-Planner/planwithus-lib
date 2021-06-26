@@ -5,21 +5,18 @@ import type { Inequality } from "./types";
 import { InequalitySign } from "./types";
 
 const calculateTotalMCs = (assigned: Module[]) =>
-  assigned.map(([, mc]) => mc).reduce((x, y) => x + y);
+  assigned.map(([, mc]) => mc).reduce((x, y) => x + y, 0);
 
 const inequalitySatisfier = (inequality: Inequality): SatisfierLeaf => {
   const [sign, n] = parseInequality(inequality);
-  return sign === InequalitySign.AtLeast
-    ? {
-        constraint: (assigned) => calculateTotalMCs(assigned) >= n,
-        infos: [],
-        messages: [`modules do not meet minimum MC requirement of ${n}`],
-      }
-    : {
-        constraint: (assigned) => calculateTotalMCs(assigned) <= n,
-        infos: [],
-        messages: [`modules exceed the maximum MC requirement of ${n}`],
-      };
+  return {
+    type: "inequality",
+    rule: inequality,
+    constraint: (assigned) =>
+      sign === InequalitySign.AtLeast
+        ? calculateTotalMCs(assigned) >= n
+        : calculateTotalMCs(assigned) <= n,
+  };
 };
 
 export { inequalitySatisfier };

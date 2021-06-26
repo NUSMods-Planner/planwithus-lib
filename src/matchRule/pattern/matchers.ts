@@ -17,6 +17,7 @@ const patternMatcher = (pattern: Pattern): MatcherLeaf => {
   const re = patternToRE(pattern);
   return {
     type: "pattern",
+    rule: pattern,
     match: ([moduleStr]: Module) => re.test.bind(re)(moduleStr),
   };
 };

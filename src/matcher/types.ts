@@ -2,6 +2,7 @@ import type { Module } from "../module/types";
 
 type MatcherLeaf = {
   type: string;
+  rule: unknown;
   match: (module: Module) => boolean;
   info?: string;
 };
@@ -10,6 +11,7 @@ const isMatcherLeaf = (matcher: Matcher): matcher is MatcherLeaf =>
 
 type MatcherBranch = {
   type: string;
+  rule: unknown;
   matchers: Matcher[];
   constraint: (matcheds: Module[][]) => boolean;
 };
@@ -20,6 +22,7 @@ type Matcher = MatcherLeaf | MatcherBranch;
 
 type MatcherResult = {
   type: string;
+  rule: unknown;
   matched: Module[];
   remaining: Module[];
   results: MatcherResult[];

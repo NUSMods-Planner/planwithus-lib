@@ -7,45 +7,44 @@ const evaluateSatisfier = (
   satisfier: Satisfier
 ): SatisfierResult => {
   if (isSatisfierLeaf(satisfier)) {
-    const { constraint, infos, messages } = satisfier;
+    const { type, rule, constraint, info } = satisfier;
     const satisfied = constraint(assigned);
-    return satisfied
-      ? {
-          assigned,
-          satisfied,
-          infos,
-          messages: [],
-        }
-      : {
-          assigned,
-          satisfied,
-          infos: [],
-          messages,
-        };
+    return Object.assign(
+      {
+        type,
+        rule,
+        assigned,
+        satisfied,
+        results: [],
+      },
+      satisfied && typeof info !== "undefined" ? { info } : {}
+    );
   } else if (isSatisfierBranch(satisfier)) {
-    const { filter, satisfiers, constraint } = satisfier;
+    const { type, rule, filter, satisfiers, constraint } = satisfier;
     const newAssigned = filter(assigned);
     const satisfierResult: SatisfierResult = {
+      type,
+      rule,
       assigned: newAssigned,
       satisfied: true,
-      infos: [],
-      messages: [],
+      results: [],
     };
 
     const [newSatisfieds, newSatisfierResult] = satisfiers.reduce(
-      ([accSatisfieds, satisfierResult], satisfier) => {
-        const { infos: accInfos, messages: accMessages } = satisfierResult;
-        const { satisfied, infos, messages } = evaluateSatisfier(
-          newAssigned,
-          satisfier
-        );
+      (
+        [accSatisfieds, { assigned: accAssigned, results: accResults }],
+        satisfier
+      ) => {
+        const result = evaluateSatisfier(newAssigned, satisfier);
+        const { satisfied } = result;
         return [
           [...accSatisfieds, satisfied],
           {
-            assigned: newAssigned,
-            satisfied,
-            infos: accInfos.concat(infos),
-            messages: accMessages.concat(messages),
+            type,
+            rule,
+            assigned: accAssigned,
+            satisfied: true,
+            results: [...accResults, result],
           },
         ];
       },
@@ -53,9 +52,10 @@ const evaluateSatisfier = (
     );
 
     const satisfied = constraint(newSatisfieds);
+    const { results: newResults } = newSatisfierResult;
     return satisfied
-      ? { ...newSatisfierResult, satisfied, messages: [] }
-      : { ...newSatisfierResult, assigned, satisfied, infos: [] };
+      ? newSatisfierResult
+      : { ...satisfierResult, satisfied, results: newResults };
   } else {
     throw new Error("satisfier is not well-defined");
   }

@@ -7,13 +7,14 @@ const evaluateMatcher = (
   matcher: Matcher
 ): MatcherResult => {
   if (isMatcherLeaf(matcher)) {
-    const { type, match, info } = matcher;
+    const { type, rule, match, info } = matcher;
     const notMatch = (module: Module) => !match(module);
     const newMatched = remaining.filter(match);
     const newRemaining = remaining.filter(notMatch);
     return Object.assign(
       {
         type,
+        rule,
         matched: newMatched,
         remaining: newRemaining,
         results: [],
@@ -21,9 +22,10 @@ const evaluateMatcher = (
       newMatched.length > 0 && typeof info !== "undefined" ? { info } : {}
     );
   } else if (isMatcherBranch(matcher)) {
-    const { type, matchers, constraint } = matcher;
+    const { type, rule, matchers, constraint } = matcher;
     const matcherResult = {
       type,
+      rule,
       matched: [],
       remaining,
       results: [],
@@ -42,6 +44,7 @@ const evaluateMatcher = (
           [...accMatcheds, matched],
           {
             type,
+            rule,
             matched: [...accMatched, ...matched],
             remaining,
             results: [...accResults, result],
