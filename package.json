@@ -37,7 +37,7 @@
     "@types/mocha": "^8.2.2",
     "@types/mochawesome": "^6.2.0",
     "@types/node": "^16.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
     "chai": "^4.3.4",
     "chai-subset": "^1.6.0",
