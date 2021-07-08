@@ -2,10 +2,10 @@ import Ajv from "ajv";
 import ajvErrors from "ajv-errors";
 import yaml from "js-yaml";
 
-import { blockSchema } from "../block/schemas";
-import type { Block } from "../block/types";
-import { matchRuleSchema } from "../matchRule/schemas";
-import { satisfyRuleSchema } from "../satisfyRule/schemas";
+import type { Block } from "../block";
+import { blockSchema } from "../block";
+import { matchRuleSchema } from "../matchRule";
+import { satisfyRuleSchema } from "../satisfyRule";
 
 const ajv = new Ajv({
   allErrors: true, // necessary for ajv-errors

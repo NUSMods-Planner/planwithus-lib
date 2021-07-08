@@ -1,7 +1,7 @@
 import chai from "chai";
 
-import type { Module } from "../module/types";
-import type { SatisfierAssign } from "../satisfier/types";
+import type { Module } from "../module";
+import type { SatisfierAssign } from "../satisfier";
 import { patternMatchRuleSatisfier } from "./satisfiers";
 
 chai.should();

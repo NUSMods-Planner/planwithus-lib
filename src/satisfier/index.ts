@@ -1,4 +1,4 @@
-import type { Module } from "../module/types";
+import type { Module } from "../module";
 import type {
   Satisfier,
   SatisfierBranch,
@@ -167,3 +167,22 @@ const evaluateSatisfier = (
 };
 
 export { evaluateSatisfier };
+export type { Module } from "../module";
+export type {
+  Satisfier,
+  SatisfierAssign,
+  SatisfierBranch,
+  SatisfierConstraint,
+  SatisfierFilter,
+  SatisfierLeafAssign,
+  SatisfierLeafConstraint,
+  SatisfierLeafFilter,
+  SatisfierReduce,
+  SatisfierResult,
+} from "./types";
+export {
+  isSatisfierBranch,
+  isSatisfierLeafAssign,
+  isSatisfierLeafConstraint,
+  isSatisfierLeafFilter,
+} from "./types";

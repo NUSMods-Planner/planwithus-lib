@@ -4,8 +4,8 @@ import { assert, property, sample } from "fast-check";
 import addContext from "mochawesome/addContext";
 
 import { ajv } from "../index.test";
-import { matchRuleSchema } from "../matchRule/schemas";
-import { satisfyRuleSchema } from "../satisfyRule/schemas";
+import { matchRuleSchema } from "../matchRule";
+import { satisfyRuleSchema } from "../satisfyRule";
 import { block } from "./index.test";
 import { blockSchema } from "./schemas";
 

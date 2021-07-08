@@ -1,6 +1,6 @@
 import { JSONSchemaType } from "ajv";
 
-import { inequalitySchema } from "./inequality/schemas";
+import { inequalitySchema } from "./inequality";
 import {
   MCSatisfyRuleTypeSchema,
   andSatisfyRuleTypeSchema,

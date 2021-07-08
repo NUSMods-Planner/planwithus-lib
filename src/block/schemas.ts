@@ -1,10 +1,8 @@
 import { JSONSchemaType } from "ajv";
 
-import { matchRuleRefSchema } from "../matchRule/schemas";
-import { matchRuleTypeSchema } from "../matchRule/typeSchemas";
-import { satisfyRuleRefSchema } from "../satisfyRule/schemas";
-import { satisfyRuleTypeSchema } from "../satisfyRule/typeSchemas";
-import { someSchema } from "../some/schemas";
+import { matchRuleRefSchema, matchRuleTypeSchema } from "../matchRule";
+import { satisfyRuleRefSchema, satisfyRuleTypeSchema } from "../satisfyRule";
+import { someSchema } from "../some";
 import { blockTypeSchema } from "./typeSchemas";
 import type { Block } from "./types";
 

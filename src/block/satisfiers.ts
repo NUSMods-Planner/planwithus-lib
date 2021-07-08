@@ -1,14 +1,14 @@
 import { Directory } from "../directory";
-import { matchRuleSatisfier } from "../matchRule/satisfiers";
+import { matchRuleSatisfier } from "../matchRule";
 import { evaluateSatisfier } from "../satisfier";
 import type {
   SatisfierBranch,
   SatisfierLeafAssign,
   SatisfierResult,
-} from "../satisfier/types";
-import { satisfyRuleSatisfier } from "../satisfyRule/satisfiers";
-import type { Some } from "../some/types";
-import type { BlockId } from "./blockId/types";
+} from "../satisfier";
+import { satisfyRuleSatisfier } from "../satisfyRule";
+import type { Some } from "../some";
+import type { BlockId } from "./blockId";
 
 const assignBlockSatisfier = (
   prefix: string,

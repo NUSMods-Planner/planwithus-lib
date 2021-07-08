@@ -13,7 +13,7 @@ import {
 import { matchRule } from "../matchRule/index.test";
 import { satisfyRule } from "../satisfyRule/index.test";
 import { some } from "../some/index.test";
-import type { Block } from "./types";
+import type { Block } from "./";
 
 const BLOCK_KEYWORDS = [
   "name",

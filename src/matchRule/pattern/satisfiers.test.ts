@@ -2,8 +2,8 @@ import chai from "chai";
 import { array, assert, property, sample } from "fast-check";
 import addContext from "mochawesome/addContext";
 
-import type { Module } from "../../module/types";
-import type { SatisfierAssign } from "../../satisfier/types";
+import type { Module } from "../../module";
+import type { SatisfierAssign } from "../../satisfier";
 import { patternExampleList } from "./index.test";
 import { patternToRE, patternSatisfier } from "./satisfiers";
 

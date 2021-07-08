@@ -1,6 +1,6 @@
+import type { Block } from "../block";
 import { decomposeBlock } from "../block";
-import type { Block } from "../block/types";
-import type { BlockId } from "../block/blockId/types";
+import type { BlockId } from "../block/blockId";
 
 class Directory {
   blocks: Record<string, Block>;

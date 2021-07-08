@@ -4,11 +4,10 @@ import path from "path";
 
 import { Directory } from "./directory";
 import { parseYAML } from "./parser";
-import type { BlockId } from "./block/blockId/types";
-import { blockSatisfier } from "./block/satisfiers";
-import { BLOCK_CLASSES } from "./block/types";
-import type { Module } from "./module/types";
-import type { SatisfierResult } from "./satisfier/types";
+import type { BlockId } from "./block/blockId";
+import { BLOCK_CLASSES, blockSatisfier } from "./block";
+import type { Module } from "./module";
+import type { SatisfierResult } from "./satisfier";
 import { evaluateSatisfier } from "./satisfier";
 
 const PATH_PREFIX = path.join(__dirname, "../blocks");

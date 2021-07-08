@@ -1,12 +1,12 @@
 import chai from "chai";
 
-import type { Module } from "../../module/types";
+import type { Module } from "../../module";
 import type {
   SatisfierConstraint,
   SatisfierFilter,
   SatisfierLeafConstraint,
   SatisfierLeafFilter,
-} from "../../satisfier/types";
+} from "../../satisfier";
 import { inequalitySatisfier } from "./satisfiers";
 
 chai.should();

@@ -1,8 +1,7 @@
 import { JSONSchemaType } from "ajv";
 
-import { someSchema } from "../some/schemas";
-import { patternSchema } from "./pattern/schemas";
-import { patternTypeSchema } from "./pattern/typeSchemas";
+import { someSchema } from "../some";
+import { patternSchema, patternTypeSchema } from "./pattern";
 import {
   andMatchRuleTypeSchema,
   matchRuleObjectTypeSchema,

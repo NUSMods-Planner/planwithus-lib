@@ -1,4 +1,4 @@
-import type { Module } from "../module/types";
+import type { Module } from "../module";
 
 type SatisfierBase = {
   ref: string;

@@ -16,3 +16,8 @@ const parseInequality = (inequality: Inequality): [InequalitySign, number] => {
 };
 
 export { parseInequality };
+export { inequalitySatisfier } from "./satisfiers";
+export { inequalitySchema } from "./schemas";
+export { inequalityTypeSchema } from "./typeSchemas";
+export type { Inequality } from "./types";
+export { InequalitySign } from "./types";

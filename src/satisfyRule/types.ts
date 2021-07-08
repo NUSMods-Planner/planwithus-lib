@@ -1,5 +1,5 @@
-import type { BlockId } from "../block/blockId/types";
-import type { Inequality } from "./inequality/types";
+import type { BlockId } from "../block/blockId";
+import type { Inequality } from "./inequality";
 
 type MCSatisfyRule = { mc: Inequality };
 type AndSatisfyRule = { and: SatisfyRule[] };

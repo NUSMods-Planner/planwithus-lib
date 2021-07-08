@@ -1,7 +1,7 @@
-import type { MatchRule } from "../matchRule/types";
-import type { SatisfyRule } from "../satisfyRule/types";
-import type { Some } from "../some/types";
-import type { BlockId } from "./blockId/types";
+import type { MatchRule } from "../matchRule";
+import type { SatisfyRule } from "../satisfyRule";
+import type { Some } from "../some";
+import type { BlockId } from "./blockId";
 
 type Block = {
   name?: string;

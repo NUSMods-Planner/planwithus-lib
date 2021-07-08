@@ -1,4 +1,4 @@
-import type { SatisfierLeafAssign } from "../../satisfier/types";
+import type { SatisfierLeafAssign } from "../../satisfier";
 import type { Pattern } from "./types";
 
 const patternToRE = (...patterns: Pattern[]): RegExp =>

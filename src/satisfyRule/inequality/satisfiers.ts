@@ -1,9 +1,9 @@
-import type { Module } from "../../module/types";
+import type { Module } from "../../module";
 import type {
   Satisfier,
   SatisfierLeafConstraint,
   SatisfierLeafFilter,
-} from "../../satisfier/types";
+} from "../../satisfier";
 import { parseInequality } from "./";
 import type { Inequality } from "./types";
 import { InequalitySign } from "./types";

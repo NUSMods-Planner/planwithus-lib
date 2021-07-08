@@ -1,5 +1,5 @@
-import type { Some } from "../some/types";
-import type { Pattern } from "./pattern/types";
+import type { Some } from "../some";
+import type { Pattern } from "./pattern";
 
 type PatternMatchRule = {
   pattern: Pattern;

@@ -2,9 +2,9 @@ import type {
   Satisfier,
   SatisfierBranch,
   SatisfierLeafAssign,
-} from "../satisfier/types";
-import type { Some } from "../some/types";
-import { patternSatisfier, patternToRE } from "./pattern/satisfiers";
+} from "../satisfier";
+import type { Some } from "../some";
+import { patternSatisfier, patternToRE } from "./pattern";
 import type {
   AndMatchRule,
   MatchRule,

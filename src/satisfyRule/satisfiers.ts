@@ -1,14 +1,14 @@
-import type { BlockId } from "../block/blockId/types";
-import { blockSatisfier } from "../block/satisfiers";
+import type { BlockId } from "../block/blockId";
+import { blockSatisfier } from "../block";
 import { Directory } from "../directory";
-import { evaluateSatisfier } from "../satisfier";
 import type {
   Satisfier,
   SatisfierBranch,
   SatisfierLeafConstraint,
-} from "../satisfier/types";
-import type { Some } from "../some/types";
-import { inequalitySatisfier } from "./inequality/satisfiers";
+} from "../satisfier";
+import { evaluateSatisfier } from "../satisfier";
+import type { Some } from "../some";
+import { inequalitySatisfier } from "./inequality";
 import type {
   AndSatisfyRule,
   MCSatisfyRule,
