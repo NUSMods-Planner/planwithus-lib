@@ -1,3 +1,9 @@
+/**
+ * This module reexports functions and types relating to the [[Satisfier]] type.
+ *
+ * @module
+ */
+
 import type { Module } from "../module";
 import type {
   Satisfier,
@@ -148,6 +154,15 @@ const evaluateSatisfierBranch = (
   }
 };
 
+/**
+ * Evaluates a satisfier when provided a list of assigned modules and remaining
+ * modules.
+ *
+ * @param assigned List of assigned modules.
+ * @param remaining List of remaining modules to be assigned.
+ * @param satisfier Specified satisfier.
+ * @return Result of evaluating the satisfier on the input parameters.
+ */
 const evaluateSatisfier = (
   assigned: Module[],
   remaining: Module[],
@@ -170,6 +185,7 @@ export { evaluateSatisfier };
 export type {
   Satisfier,
   SatisfierAssign,
+  SatisfierBase,
   SatisfierBranch,
   SatisfierConstraint,
   SatisfierFilter,
