@@ -1,3 +1,29 @@
+/**
+ * This module provides functions that make up the main functionality of
+ * `planwithus-lib`.
+ *
+ * A **block** is used to express the metadata and logic of course
+ * requirements. Blocks can be subdivided into multiple blocks which are reused
+ * in other course combinations.
+ *
+ * Blocks are loaded from the `blocks/` directory of the repository root folder
+ * and arranged into classes, with each class forming a subdirectory of the
+ * `blocks/` directory. (For example, blocks under the `primary` class can be
+ * found at `blocks/primary`.) Blocks are currently organised into three
+ * categories, `primary` (referring to primary majors), `second` (referring to
+ * second majors) and `minor` (referring to minors).
+ *
+ * Each block is represented by a [YAML](https://yaml.org/) file which contains
+ * a single *top-level block* with an identifier corresponding to its filename.
+ * (For example, the block at `blocks/primary/cs-hons-2020.yml` is a primary
+ * major block with the identifier `cs-hons-2020`.) Beyond their classes, folder
+ * names are ignored; the two files at `blocks/primary/cs-hons-2020.yml` and
+ * `blocks/primary/cs-hons-2020/cs-hons-2020.yml` will represent a primary major
+ * with the same identifier `cs-hons-2020`. **Note that blocks with the same
+ * identifiers are prohibited.**
+ *
+ * @module
+ */
 import fs from "fs/promises";
 import glob from "globby";
 import path from "path";
@@ -28,6 +54,12 @@ const loadBlocks = async (type: string): Promise<Directory> => {
   return verifier;
 };
 
+/**
+ * Initialises block directories with each directory corresponding to a block
+ * class.
+ *
+ * @return An object with keys as block classes and values as block directories.
+ */
 const initDirectories = async (): Promise<Record<string, Directory>> => {
   const directories = await Promise.all(BLOCK_CLASSES.map(loadBlocks));
   return Object.fromEntries(
@@ -35,6 +67,14 @@ const initDirectories = async (): Promise<Record<string, Directory>> => {
   );
 };
 
+/**
+ * Wrapper function that verifies a study plan against a specific block.
+ *
+ * @param modules List of modules in the study plan.
+ * @param dir Block directory which contains the desired block.
+ * @param blockId Identifier of the desired block.
+ * @return An object representing the result of a study plan verification.
+ */
 const verifyPlan = (
   modules: Module[],
   dir: Directory,
