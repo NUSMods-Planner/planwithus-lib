@@ -2,16 +2,13 @@
  * This module provides functions that make up the main functionality of
  * `planwithus-lib`.
  *
- * A **block** is used to express the metadata and logic of course
- * requirements. Blocks can be subdivided into multiple blocks which are reused
- * in other course combinations.
- *
- * Blocks are loaded from the `blocks/` directory of the repository root folder
- * and arranged into classes, with each class forming a subdirectory of the
- * `blocks/` directory. (For example, blocks under the `primary` class can be
- * found at `blocks/primary`.) Blocks are currently organised into three
- * categories, `primary` (referring to primary majors), `second` (referring to
- * second majors) and `minor` (referring to minors).
+ * A block is used to express course requirements. Blocks are loaded from the
+ * `blocks/` directory of the repository root folder and arranged into
+ * classes, with each class forming a subdirectory of the `blocks/` directory.
+ * (For example, blocks under the `primary` class can be found at
+ * `blocks/primary`.) Blocks are currently organised into three categories,
+ * `primary` (referring to primary majors), `second` (referring to second
+ * majors) and `minor` (referring to minors).
  *
  * Each block is represented by a [YAML](https://yaml.org/) file which contains
  * a single *top-level block* with an identifier corresponding to its filename.
@@ -22,8 +19,12 @@
  * with the same identifier `cs-hons-2020`. **Note that blocks with the same
  * identifiers are prohibited.**
  *
+ * For more information on the specification format of blocks, please refer to
+ * the [[block]] module.
+ *
  * @module
  */
+
 import fs from "fs/promises";
 import glob from "globby";
 import path from "path";
