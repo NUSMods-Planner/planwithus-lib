@@ -6,7 +6,6 @@ export {
 } from "./satisfiers";
 export {
   andMatchRuleSchema,
-  matchRuleObjectSchema,
   matchRuleRefSchema,
   matchRuleSchema,
   orMatchRuleSchema,
@@ -14,7 +13,6 @@ export {
 } from "./schemas";
 export {
   andMatchRuleTypeSchema,
-  matchRuleObjectTypeSchema,
   matchRuleTypeSchema,
   orMatchRuleTypeSchema,
   patternMatchRuleTypeSchema,
@@ -22,7 +20,6 @@ export {
 export type {
   AndMatchRule,
   MatchRule,
-  MatchRuleObject,
   OrMatchRule,
   PatternMatchRule,
 } from "./types";

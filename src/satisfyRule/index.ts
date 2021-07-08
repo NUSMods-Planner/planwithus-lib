@@ -8,7 +8,6 @@ export {
   MCSatisfyRuleSchema,
   andSatisfyRuleSchema,
   orSatisfyRuleSchema,
-  satisfyRuleObjectSchema,
   satisfyRuleRefSchema,
   satisfyRuleSchema,
 } from "./schemas";
@@ -16,7 +15,6 @@ export {
   MCSatisfyRuleTypeSchema,
   andSatisfyRuleTypeSchema,
   orSatisfyRuleTypeSchema,
-  satisfyRuleObjectTypeSchema,
   satisfyRuleTypeSchema,
 } from "./typeSchemas";
 export type {
@@ -24,5 +22,4 @@ export type {
   MCSatisfyRule,
   OrSatisfyRule,
   SatisfyRule,
-  SatisfyRuleObject,
 } from "./types";

@@ -1,16 +1,6 @@
 import type { SatisfierLeafAssign } from "../../satisfier";
+import { patternToRE } from "./";
 import type { Pattern } from "./types";
-
-const patternToRE = (...patterns: Pattern[]): RegExp =>
-  new RegExp(
-    "^" +
-      patterns
-        .map((pattern) =>
-          pattern.replace(/x/g, "[0-9]").replace(/\*/g, "[A-Z0-9]*")
-        )
-        .join("|") +
-      "$"
-  );
 
 const patternSatisfier = (
   ref: string,
@@ -27,4 +17,4 @@ const patternSatisfier = (
   };
 };
 
-export { patternSatisfier, patternToRE };
+export { patternSatisfier };

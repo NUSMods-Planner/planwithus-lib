@@ -167,7 +167,6 @@ const evaluateSatisfier = (
 };
 
 export { evaluateSatisfier };
-export type { Module } from "../module";
 export type {
   Satisfier,
   SatisfierAssign,

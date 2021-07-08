@@ -4,8 +4,9 @@ import addContext from "mochawesome/addContext";
 
 import type { Module } from "../../module";
 import type { SatisfierAssign } from "../../satisfier";
+import { patternToRE } from "./";
 import { patternExampleList } from "./index.test";
-import { patternToRE, patternSatisfier } from "./satisfiers";
+import { patternSatisfier } from "./satisfiers";
 
 chai.should();
 
