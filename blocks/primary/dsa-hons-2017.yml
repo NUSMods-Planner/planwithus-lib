@@ -1,8 +1,8 @@
 name: "Data Science and Analytics (Hons)"
 ay: 2017
 url: https://www.stat.nus.edu.sg/current-students/undergraduate-programme/programme-structure/
-assign: [ulr-2015, 1k, 2k, 3k-4k, fos-2015, ue]
-satisfy: bachelor-hons-2016
+assign: [ulr-2015, 1k, 2k, 3k-4k, fos-2015]
+satisfy: [ulr-2015, 1k, 2k, 3k-4k, fos-2015]
 
 1k:
   name: Level-1000 modules
@@ -99,7 +99,3 @@ satisfy: bachelor-hons-2016
           - CS4234
           - MA4230
           - MA4270
-
-ue:
-  name: Unrestricted Electives
-  match: "*"

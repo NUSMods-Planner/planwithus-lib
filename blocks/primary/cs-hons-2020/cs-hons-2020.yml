@@ -1,8 +1,9 @@
 name: "Computer Science (Hons)"
 ay: 2020
 url: https://www.comp.nus.edu.sg/programmes/ug/cs/curr/
-assign: [ulr-2015, found, bd, ind, it-prof, math-sci, ue]
-satisfy: bachelor-hons-2016
+assign: [ulr-2015, found, bd, ind, it-prof, math-sci]
+satisfy: [ulr-2015, found, bd, ind, it-prof, math-sci]
+info: "Students without A-level or H2 Mathematics are required to complete the bridging module MA1301/X as part of the Unrestricted Electives."
 
 found:
   name: Foundation
@@ -104,8 +105,3 @@ math-sci:
         - PC1433
   satisfy:
     - mc: ">=16"
-
-ue:
-  name: Unrestricted Electives
-  info: "Students without A-level or H2 Mathematics are required to complete the bridging module MA1301/X as part of the Unrestricted Electives."
-  match: "*"

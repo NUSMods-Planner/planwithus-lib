@@ -2,7 +2,7 @@ name: "Mathematics (2nd Major)"
 ay: 2019
 url: https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/second-major-in-mathematics/
 assign: [1k, 2k, 3k-above]
-satisfy: second-2019
+satisfy: [1k, 2k, 3k-above]
 
 1k:
   name: Level-1000 modules
