@@ -65,6 +65,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This module reexports functions and types relating to the <a href="satisfier.html#satisfier-1">Satisfier</a> type.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -74,6 +81,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="satisfier.html#satisfier-1" class="tsd-kind-icon">Satisfier</a></li>
 								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="satisfier.html#satisfierassign" class="tsd-kind-icon">Satisfier<wbr>Assign</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="satisfier.html#satisfierbase" class="tsd-kind-icon">Satisfier<wbr>Base</a></li>
 								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="satisfier.html#satisfierbranch" class="tsd-kind-icon">Satisfier<wbr>Branch</a></li>
 								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="satisfier.html#satisfierconstraint" class="tsd-kind-icon">Satisfier<wbr>Constraint</a></li>
 								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="satisfier.html#satisfierfilter" class="tsd-kind-icon">Satisfier<wbr>Filter</a></li>
@@ -108,6 +116,11 @@
 					<a name="satisfierassign" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Assign</h3>
 					Re-exports <a href="satisfier_types.html#satisfierassign">SatisfierAssign</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-module">
+					<a name="satisfierbase" class="tsd-anchor"></a>
+					<h3>Satisfier<wbr>Base</h3>
+					Re-exports <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-module">
 					<a name="satisfierbranch" class="tsd-anchor"></a>
@@ -182,22 +195,38 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/index.ts#L151">satisfier/index.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/index.ts#L166">satisfier/index.ts:166</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Evaluates a satisfier when provided a list of assigned modules and remaining
+									modules.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assigned: <a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of assigned modules.</p>
+									</div>
 								</li>
 								<li>
 									<h5>remaining: <a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of remaining modules to be assigned.</p>
+									</div>
 								</li>
 								<li>
 									<h5>satisfier: <a href="satisfier_types.html#satisfier" class="tsd-signature-type" data-tsd-kind="Type alias">Satisfier</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Specified satisfier.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a></h4>
+							<p>Result of evaluating the satisfier on the input parameters.</p>
 						</li>
 					</ul>
 				</section>
@@ -221,6 +250,9 @@
 					</li>
 					<li class=" tsd-kind-reference tsd-parent-kind-module">
 						<a href="satisfier.html#satisfierassign" class="tsd-kind-icon">Satisfier<wbr>Assign</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-module">
+						<a href="satisfier.html#satisfierbase" class="tsd-kind-icon">Satisfier<wbr>Base</a>
 					</li>
 					<li class=" tsd-kind-reference tsd-parent-kind-module">
 						<a href="satisfier.html#satisfierbranch" class="tsd-kind-icon">Satisfier<wbr>Branch</a>

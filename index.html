@@ -75,6 +75,12 @@
 				<p>This will call a script which runs the TypeScript compiler on the source code. Lastly, to test the code, run:</p>
 				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">run</span><span style="color: #000000"> </span><span style="color: #001080">coverage</span>
 </code></pre>
+				<a href="#block-format" id="block-format" style="color: inherit; text-decoration: none;">
+					<h2>Block Format</h2>
+				</a>
+				<p>In <code>planwithus-lib</code>, course requirements are specified using the <a href="https://yaml.org/">YAML</a> format and validated by schemas written in <a href="https://json-schema.org/">JSON Schema</a>.</p>
+				<p>For more details on the course requirement specification, please refer to the documentation for <a href="https://wei2912.github.io/planwithus-lib/docs/modules/index.html">index.ts</a>. While the specification is meant to be exhaustive, it is likely that users will not require all of these constructs to build up their course requirements. Users are recommended to learn the syntax by referring to any of the <a href="https://github.com/wei2912/planwithus-lib/tree/main/blocks">existing blocks</a> and looking at how similar courses are implemented. For further assistance, users may also ask questions <a href="https://github.com/wei2912/planwithus-lib/discussions">on the Discussions forum</a>.</p>
+				<p>As with any YAML file, comments can be added to the files using the <code>#</code> symbol, which will cause <code>planwithus-lib</code> to ignore everything on the same line after the <code>#</code> symbol.</p>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
 					<h2>Documentation</h2>
 				</a>

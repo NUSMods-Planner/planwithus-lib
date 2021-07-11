@@ -65,6 +65,31 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This module provides functions that make up the main functionality of
+						<code>planwithus-lib</code>.</p>
+					</div>
+					<p>A block is used to express course requirements. Blocks are loaded from the
+						<code>blocks/</code> directory of the repository root folder and arranged into
+						classes, with each class forming a subdirectory of the <code>blocks/</code> directory.
+						(For example, blocks under the <code>primary</code> class can be found at
+						<code>blocks/primary</code>.) Blocks are currently organised into three categories,
+						<code>primary</code> (referring to primary majors), <code>second</code> (referring to second
+					majors) and <code>minor</code> (referring to minors).</p>
+					<p>Each block is represented by a <a href="https://yaml.org/">YAML</a> file which contains
+						a single <em>top-level block</em> with an identifier corresponding to its filename.
+						(For example, the block at <code>blocks/primary/cs-hons-2020.yml</code> is a primary
+						major block with the identifier <code>cs-hons-2020</code>.) Beyond their classes, folder
+						names are ignored; the two files at <code>blocks/primary/cs-hons-2020.yml</code> and
+						<code>blocks/primary/cs-hons-2020/cs-hons-2020.yml</code> will represent a primary major
+						with the same identifier <code>cs-hons-2020</code>. <strong>Note that blocks with the same
+					identifiers are prohibited.</strong></p>
+					<p>For more information on the specification format of blocks, please refer to
+					the <a href="block.html">block</a> module.</p>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -91,10 +116,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/index.ts#L31">index.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/index.ts#L64">index.ts:64</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Initialises block directories with each directory corresponding to a block
+									class.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../classes/directory.directory-1.html" class="tsd-signature-type" data-tsd-kind="Class">Directory</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>An object with keys as block classes and values as block directories.</p>
 						</li>
 					</ul>
 				</section>
@@ -108,22 +140,37 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/index.ts#L38">index.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/index.ts#L79">index.ts:79</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrapper function that verifies a study plan against a specific block.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>modules: <a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of modules in the study plan.</p>
+									</div>
 								</li>
 								<li>
 									<h5>dir: <a href="../classes/directory.directory-1.html" class="tsd-signature-type" data-tsd-kind="Class">Directory</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Block directory which contains the desired block.</p>
+									</div>
 								</li>
 								<li>
 									<h5>blockId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Identifier of the desired block.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a></h4>
+							<p>An object representing the result of a study plan verification.</p>
 						</li>
 					</ul>
 				</section>

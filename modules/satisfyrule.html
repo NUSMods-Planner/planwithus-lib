@@ -65,6 +65,102 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This module reexports functions, schemas and types relating to satisfy rules.</p>
+					</div>
+					<p>There are currently four types of <strong>satisfy rules</strong>:</p>
+					<ol>
+						<li>Block ID satisfy rule</li>
+						<li>MC satisfy rule</li>
+						<li>And satisfy rule</li>
+						<li>Or satisfy rule</li>
+					</ol>
+					<a href="#block-id-satisfy-rule" id="block-id-satisfy-rule" style="color: inherit; text-decoration: none;">
+						<h1>Block ID satisfy rule</h1>
+					</a>
+					<p>A block ID satisfy rule is a string representing a block identifier. For this
+						rule to be satisfied, the specified block must be satisfied by the list of
+					modules passed to it.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #000000">- </span><span style="color: #0000FF">bachelor-hons-2016</span>
+<span style="color: #000000">- </span><span style="color: #0000FF">fos-2015</span>
+</code></pre>
+					<a href="#mc-satisfy-rule" id="mc-satisfy-rule" style="color: inherit; text-decoration: none;">
+						<h1>MC satisfy rule</h1>
+					</a>
+					<p>A Modular Credit (MC) satisfy rule is an object with a <code>mc</code> field assigned to
+						an inequality string. Please refer to <a href="satisfyrule_inequality.html">satisfyRule/inequality</a> for more
+					information on the format of the inequality string.</p>
+					<p>If an &quot;at least&quot; inequality (e.g. &quot;&gt;=32&quot;) is passed, the satisfy rule is
+					satisfied only if the total number of MCs exceed the specified number.</p>
+					<p>If an &quot;at most&quot; inequality (e.g. &quot;&lt;=16&quot;) is passed, the satisfy rule is
+						always satisfied; however, extraneous modules will be unassigned until there
+						are no more modules that can be unassigned without causing the total number
+					of MCs to fall below the specified number.</p>
+					<p>For example, if a list of modules contains five modules A to E (in that
+					order) with each module having 4 MCs each,</p>
+					<ol>
+						<li>With the inequality &quot;&lt;=16&quot;, <strong>modules A to D will remain</strong> while <strong>module
+							E is unassigned</strong>. The total number of MCs now totals to 16, which is exactly
+						equal to the upper bound.</li>
+						<li>With the inequality &quot;&lt;=11&quot;, <strong>modules A to C will remain</strong> while <strong>modules
+							D and E are unassigned</strong>. The total number of MCs now totals to 12. Observe
+							that this exceeds the upper bound of 11 MCs. However, if module C is
+							unassigned, the total number of MCs would fall to 8 MCs below the upper bound
+							of 11 MCs. In order to fill up the remaining capacity of MCs, module C is
+						assigned.</li>
+					</ol>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #000000">- </span><span style="color: #800000">mc</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;&gt;=32&quot;</span><span style="color: #000000"> </span><span style="color: #008000"># MC satisfy rule with an &quot;at least&quot; inequality</span>
+<span style="color: #000000">- </span><span style="color: #800000">mc</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;&lt;=16&quot;</span><span style="color: #000000"> </span><span style="color: #008000"># MC satisfy rule with an &quot;at most&quot; inequality</span>
+</code></pre>
+					<a href="#and-satisfy-rule" id="and-satisfy-rule" style="color: inherit; text-decoration: none;">
+						<h1>And satisfy rule</h1>
+					</a>
+					<p>An and satisfy rule is an object with an <code>and</code> field assigned to an array of
+						satisfy rules. For the satisfy rule to be satisfied, <strong>all</strong> child satisfy
+					rules must be matched.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #008000"># and satisfy rule which is only satisfied if both the MC satisfy rule and</span>
+<span style="color: #008000"># the `4k` block are satisfied</span>
+<span style="color: #000000">- </span><span style="color: #800000">and</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #800000">mc</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;&gt;=24&quot;</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">4k</span>
+<span style="color: #008000"># a more complex and satisfy rule which is only satisfied if both the</span>
+<span style="color: #008000"># `4k-above` block and either of the following blocks,</span>
+<span style="color: #008000"># `cs-hons-2020-alg/prim-match` or `cs-hons-2020-ai/prim-match`, are</span>
+<span style="color: #008000"># satisfied</span>
+<span style="color: #000000">- </span><span style="color: #800000">and</span><span style="color: #000000">:</span>
+<span style="color: #000000">- </span><span style="color: #0000FF">4k-above</span>
+<span style="color: #000000">- </span><span style="color: #800000">or</span><span style="color: #000000">:</span>
+<span style="color: #000000">- </span><span style="color: #0000FF">cs-hons-2020-alg/prim-match</span>
+<span style="color: #000000">- </span><span style="color: #0000FF">cs-hons-2020-ai/prim-match</span>
+</code></pre>
+					<a href="#or-satisfy-rule" id="or-satisfy-rule" style="color: inherit; text-decoration: none;">
+						<h1>Or satisfy rule</h1>
+					</a>
+					<p>An or satisfy rule is an object with an <code>or</code> field assigned to an array of
+						satisfy rules. For the satisfy rule to be satisfied, <strong>at least one</strong> of the
+					child satisfy rules must be satisfied.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #008000"># or satisfy rule which is satisfied if either the `3k` or the `4k` block</span>
+<span style="color: #008000"># is satisfied</span>
+<span style="color: #000000">- </span><span style="color: #800000">or</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">3k</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">4k</span>
+<span style="color: #008000"># a more complex or satisfy rule which is only satisfied if either the MC</span>
+<span style="color: #008000"># satisfy rule, or both the following blocks `4k-above` and `prim-match`, are</span>
+<span style="color: #008000"># satisfied</span>
+<span style="color: #000000">- </span><span style="color: #800000">or</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #800000">mc</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;&gt;=20&quot;</span>
+<span style="color: #000000">  - </span><span style="color: #800000">and</span><span style="color: #000000">:</span>
+<span style="color: #000000">    - </span><span style="color: #0000FF">4k-above</span>
+<span style="color: #000000">    - </span><span style="color: #0000FF">prim-match</span>
+</code></pre>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">

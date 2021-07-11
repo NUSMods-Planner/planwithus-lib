@@ -72,8 +72,10 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="satisfier_types.html#context" class="tsd-kind-icon">Context</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="satisfier_types.html#satisfier" class="tsd-kind-icon">Satisfier</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="satisfier_types.html#satisfierassign" class="tsd-kind-icon">Satisfier<wbr>Assign</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="satisfier_types.html#satisfierbase" class="tsd-kind-icon">Satisfier<wbr>Base</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="satisfier_types.html#satisfierbranch" class="tsd-kind-icon">Satisfier<wbr>Branch</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="satisfier_types.html#satisfierconstraint" class="tsd-kind-icon">Satisfier<wbr>Constraint</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="satisfier_types.html#satisfierfilter" class="tsd-kind-icon">Satisfier<wbr>Filter</a></li>
@@ -99,22 +101,63 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="context" class="tsd-anchor"></a>
+					<h3>Context</h3>
+					<div class="tsd-signature tsd-kind-icon">Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>context<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L18">satisfier/types.ts:18</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object with the <code>context</code> (optional) property, which is used to denote some
+							context and can take on any value.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> context<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">unknown</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfier" class="tsd-anchor"></a>
 					<h3>Satisfier</h3>
 					<div class="tsd-signature tsd-kind-icon">Satisfier<span class="tsd-signature-symbol">:</span> <a href="satisfier_types.html#satisfierbranch" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierBranch</a><span class="tsd-signature-symbol"> | </span><a href="satisfier_types.html#satisfierleafassign" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierLeafAssign</a><span class="tsd-signature-symbol"> | </span><a href="satisfier_types.html#satisfierleafconstraint" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierLeafConstraint</a><span class="tsd-signature-symbol"> | </span><a href="satisfier_types.html#satisfierleaffilter" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierLeafFilter</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L57">satisfier/types.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L150">satisfier/types.ts:150</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Type alias for one of these four types:</p>
+							<ol>
+								<li><a href="satisfier_types.html#satisfierbranch">SatisfierBranch</a></li>
+								<li><a href="satisfier_types.html#satisfierleafassign">SatisfierLeafAssign</a></li>
+								<li><a href="satisfier_types.html#satisfierleafconstraint">SatisfierLeafConstraint</a></li>
+								<li><a href="satisfier_types.html#satisfierleaffilter">SatisfierLeafFilter</a></li>
+							</ol>
+						</div>
+						<p>The first type (<a href="satisfier_types.html#satisfierbranch">SatisfierBranch</a>) is used to construct a branch satisfier
+							that requires other satisfiers to be evaluated. The remaining three types are
+							used to construct leaf satisfiers, which may either assign modules
+							(<a href="satisfier_types.html#satisfierleafassign">SatisfierLeafAssign</a>), impose a constraint on the assigned modules
+							(<a href="satisfier_types.html#satisfierleafconstraint">SatisfierLeafConstraint</a>), or filter assigned modules
+						(<a href="satisfier_types.html#satisfierleaffilter">SatisfierLeafFilter</a>).</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfierassign" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Assign</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Assign<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>remaining<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>remainingMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></div>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Assign<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>remaining<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>remainingMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L27">satisfier/types.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L65">satisfier/types.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -122,17 +165,29 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>remaining<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>remainingMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>remaining<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>remainingMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Function type taking in a list of remaining modules and returning an object
+												with the following properties:</p>
+												<ol>
+													<li><code>remainingMask</code>, an array of booleans of the same length as <code>remaining</code>,
+														with <code>true</code> marking the corresponding module as <strong>assigned</strong> and <code>false</code>
+													marking the corresponding module as <strong>not assigned</strong>; and</li>
+													<li><code>context</code> (optional), inherited from <a href="satisfier_types.html#context">Context</a>.</li>
+												</ol>
+											</div>
+										</div>
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
 												<h5>remaining: <a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>remainingMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>remainingMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></h4>
 									</li>
 								</ul>
 							</li>
@@ -140,22 +195,69 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
-					<a name="satisfierbranch" class="tsd-anchor"></a>
-					<h3>Satisfier<wbr>Branch</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Branch<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SatisfierBase</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>satisfiers<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfier" class="tsd-signature-type" data-tsd-kind="Type alias">Satisfier</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>reduce<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierreduce" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierReduce</a><span class="tsd-signature-symbol">; </span>satisfiers<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfier" class="tsd-signature-type" data-tsd-kind="Type alias">Satisfier</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
+					<a name="satisfierbase" class="tsd-anchor"></a>
+					<h3>Satisfier<wbr>Base</h3>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>info<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>ref<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L13">satisfier/types.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L9">satisfier/types.ts:9</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object with the following properties:</p>
+							<ol>
+								<li><code>ref</code>, a reference string denoting the satisfier;</li>
+								<li><code>info</code> (optional), an info string that is displayed if the satisfier is
+								invoked.</li>
+							</ol>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> info<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>ref<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="satisfierbranch" class="tsd-anchor"></a>
+					<h3>Satisfier<wbr>Branch</h3>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Branch<span class="tsd-signature-symbol">:</span> <a href="satisfier_types.html#satisfierbase" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierBase</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>satisfiers<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfier" class="tsd-signature-type" data-tsd-kind="Type alias">Satisfier</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>reduce<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierreduce" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierReduce</a><span class="tsd-signature-symbol">; </span>satisfiers<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfier" class="tsd-signature-type" data-tsd-kind="Type alias">Satisfier</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L43">satisfier/types.ts:43</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object with the following properties:</p>
+							<ol>
+								<li><code>ref</code>, inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>;</li>
+								<li><code>info</code> (optional), inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>;</li>
+								<li><code>satisfiers</code>, which is a list of satisfiers;</li>
+								<li><code>reduce</code> (optional), which is a <a href="satisfier_types.html#satisfierreduce">SatisfierReduce</a> function that reduces
+									a list of satisfier results into an object containing a boolean with optional
+								context; and</li>
+								<li><code>message</code> (optional), which is an error message string that is displayed
+								if <code>reduce</code> returns a <strong>false result</strong>.</li>
+							</ol>
+						</div>
+						<p>The <code>reduce</code> property must be specified along with the <code>message</code> property.</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfierconstraint" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Constraint</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Constraint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></div>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Constraint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L36">satisfier/types.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L89">satisfier/types.ts:89</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -163,17 +265,28 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Function type taking in a list of assigned modules and returning an object
+												with the following properties:</p>
+												<ol>
+													<li><code>isSatisfied</code>, a boolean indicating if the list of assigned modules</li>
+												</ol>
+												<p><strong>meets the constraint</strong>; and
+												2. <code>context</code> (optional), inherited from <a href="satisfier_types.html#context">Context</a>.</p>
+											</div>
+										</div>
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
 												<h5>assigned: <a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></h4>
 									</li>
 								</ul>
 							</li>
@@ -183,10 +296,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfierfilter" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Filter</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>assignedMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></div>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>assignedMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L48">satisfier/types.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L119">satisfier/types.ts:119</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -194,17 +307,29 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>assignedMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>assignedMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Function type taking in a list of assigned modules and returning an object
+												with the following properties:</p>
+												<ol>
+													<li><code>assignedMask</code>, an array of booleans of the same length as <code>assigned</code>,
+														with <code>true</code> marking the corresponding module as <strong>still assigned</strong> and
+													<code>false</code> marking the corresponding module as <strong>unassigned</strong>; and</li>
+													<li><code>context</code> (optional), inherited from <a href="satisfier_types.html#context">Context</a>.</li>
+												</ol>
+											</div>
+										</div>
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
 												<h5>assigned: <a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>assignedMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>assignedMask<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></h4>
 									</li>
 								</ul>
 							</li>
@@ -214,40 +339,75 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfierleafassign" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Leaf<wbr>Assign</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Leaf<wbr>Assign<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SatisfierBase</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>assign<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierassign" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierAssign</a><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Leaf<wbr>Assign<span class="tsd-signature-symbol">:</span> <a href="satisfier_types.html#satisfierbase" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierBase</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>assign<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierassign" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierAssign</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L30">satisfier/types.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L76">satisfier/types.ts:76</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object with the following properties:</p>
+							<ol>
+								<li><code>ref</code>, inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>;</li>
+								<li><code>info</code> (optional), inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>; and</li>
+								<li><code>assign</code>, which is a <a href="satisfier_types.html#satisfierassign">SatisfierAssign</a> function used to assign modules
+								from a list of remaining modules.</li>
+							</ol>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfierleafconstraint" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Leaf<wbr>Constraint</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Leaf<wbr>Constraint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SatisfierBase</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>constraint<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierconstraint" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierConstraint</a><span class="tsd-signature-symbol">; </span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Leaf<wbr>Constraint<span class="tsd-signature-symbol">:</span> <a href="satisfier_types.html#satisfierbase" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierBase</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>constraint<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierconstraint" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierConstraint</a><span class="tsd-signature-symbol">; </span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L39">satisfier/types.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L102">satisfier/types.ts:102</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object with the following properties:</p>
+							<ol>
+								<li><code>ref</code>, inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>;</li>
+								<li><code>info</code> (optional), inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>;</li>
+								<li><code>constraint</code>, which is a <a href="satisfier_types.html#satisfierconstraint">SatisfierConstraint</a> function used to enforce
+								some constraint on a list of assigned modules; and</li>
+								<li><code>message</code>, which is an error message displayed if <code>constraint</code> returns
+								a <strong>false result</strong>.</li>
+							</ol>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfierleaffilter" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Leaf<wbr>Filter</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Leaf<wbr>Filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SatisfierBase</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>filter<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierfilter" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierFilter</a><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Leaf<wbr>Filter<span class="tsd-signature-symbol">:</span> <a href="satisfier_types.html#satisfierbase" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierBase</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>filter<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierfilter" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierFilter</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L51">satisfier/types.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L130">satisfier/types.ts:130</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object with the following properties:</p>
+							<ol>
+								<li><code>ref</code>, inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>;</li>
+								<li><code>info</code> (optional), inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>; and</li>
+								<li><code>filter</code>, which is a <a href="satisfier_types.html#satisfierfilter">SatisfierFilter</a> function used to filter a list
+								of assigned modules.</li>
+							</ol>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfierreduce" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Reduce</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Reduce<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>results<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></div>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Reduce<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>results<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L10">satisfier/types.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L26">satisfier/types.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -255,17 +415,27 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>results<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>results<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Function type taking in a list of <a href="satisfier_types.html#satisfierresult">SatisfierResult</a> and returning an object
+												with the following properties:</p>
+												<ol>
+													<li><code>isSatisfied</code>, a boolean indicating the reduction of the results; and</li>
+													<li><code>context</code> (optional), inherited from <a href="satisfier_types.html#context">Context</a>.</li>
+												</ol>
+											</div>
+										</div>
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
 												<h5>results: <a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a><span class="tsd-signature-symbol">[]</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></h4>
 									</li>
 								</ul>
 							</li>
@@ -275,12 +445,37 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="satisfierresult" class="tsd-anchor"></a>
 					<h3>Satisfier<wbr>Result</h3>
-					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SatisfierBase</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>added<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>remaining<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>removed<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>results<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Context</span></div>
+					<div class="tsd-signature tsd-kind-icon">Satisfier<wbr>Result<span class="tsd-signature-symbol">:</span> <a href="satisfier_types.html#satisfierbase" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierBase</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>added<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>assigned<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>isSatisfied<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>remaining<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>removed<span class="tsd-signature-symbol">: </span><a href="module_types.html#module" class="tsd-signature-type" data-tsd-kind="Type alias">Module</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>results<span class="tsd-signature-symbol">: </span><a href="satisfier_types.html#satisfierresult" class="tsd-signature-type" data-tsd-kind="Type alias">SatisfierResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="satisfier_types.html#context" class="tsd-signature-type" data-tsd-kind="Type alias">Context</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L63">satisfier/types.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L178">satisfier/types.ts:178</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object containing the following properties:</p>
+							<ol>
+								<li><code>ref</code>, inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>;</li>
+								<li><code>info</code> (optional), inherited from <a href="satisfier_types.html#satisfierbase">SatisfierBase</a>;</li>
+								<li><code>added</code>, a list of modules added during the evaluation of the satisfier;</li>
+								<li><code>assigned</code>, a list of assigned modules after the evaluation of the
+								satisfier;</li>
+								<li><code>remaining</code>, a list of remaining modules after the evaluation of the
+								satisfier;</li>
+								<li><code>removed</code>, a list of modules removed during the evaluation of the
+								satisfier;</li>
+								<li><code>isSatisfied</code>, a boolean indicating if the satisfier is satisfied;</li>
+								<li><code>results</code>, a list of satisfier results;</li>
+								<li><code>message</code> (optional), an error message displayed if <code>isSatisfied</code> is
+								false; and</li>
+								<li><code>context</code> (optional), inherited from <a href="satisfier_types.html#context">Context</a>.</li>
+							</ol>
+						</div>
+						<p>Satisfier results are arranged in a tree-like structure, similar to that of
+							satisfiers. For branch satisfiers which contain child satisfiers, the list of
+							results from the evaluation of each child satisfier is stored in <code>results</code>.
+						For leaf satisfiers, the <code>results</code> array is empty.</p>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -295,7 +490,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L23">satisfier/types.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L53">satisfier/types.ts:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -318,7 +513,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L32">satisfier/types.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L78">satisfier/types.ts:78</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -341,7 +536,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L44">satisfier/types.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L107">satisfier/types.ts:107</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -364,7 +559,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfier/types.ts#L53">satisfier/types.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfier/types.ts#L132">satisfier/types.ts:132</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -393,10 +588,16 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="satisfier_types.html#context" class="tsd-kind-icon">Context</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="satisfier_types.html#satisfier" class="tsd-kind-icon">Satisfier</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="satisfier_types.html#satisfierassign" class="tsd-kind-icon">Satisfier<wbr>Assign</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="satisfier_types.html#satisfierbase" class="tsd-kind-icon">Satisfier<wbr>Base</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="satisfier_types.html#satisfierbranch" class="tsd-kind-icon">Satisfier<wbr>Branch</a>

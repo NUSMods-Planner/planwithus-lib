@@ -65,6 +65,96 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This module reexports functions, schemas and types relating to match rules.</p>
+					</div>
+					<p>There are currently four types of <strong>match rules</strong>:</p>
+					<ol>
+						<li>Pattern match rule</li>
+						<li>Pattern match rule (extended)</li>
+						<li>And match rule</li>
+						<li>Or match rule</li>
+					</ol>
+					<a href="#pattern-match-rule" id="pattern-match-rule" style="color: inherit; text-decoration: none;">
+						<h1>Pattern match rule</h1>
+					</a>
+					<p>A pattern match rule is a pattern string that matches module names (e.g.
+						<code>MA42xx*</code>). Please refer to the <a href="matchrule_pattern.html">matchRule/pattern</a> module for more
+					information on the format of the pattern string.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #000000">- </span><span style="color: #0000FF">GER1000</span><span style="color: #000000"> </span><span style="color: #008000"># matches exactly &quot;GER1000&quot;</span>
+<span style="color: #000000">- </span><span style="color: #0000FF">MA42xx*</span><span style="color: #000000"> </span><span style="color: #008000"># matches all modules starting with &quot;MA42&quot; followed by two digits</span>
+<span style="color: #000000">- * </span><span style="color: #008000"># matches all modules</span>
+</code></pre>
+					<a href="#pattern-match-rule-extended" id="pattern-match-rule-extended" style="color: inherit; text-decoration: none;">
+						<h1>Pattern match rule (extended)</h1>
+					</a>
+					<p>An extended pattern match rule is an object with the following fields:</p>
+					<ol>
+						<li><code>pattern</code>, a pattern string matching the desired modules;</li>
+						<li><code>info</code> (optional), a string that provides additional information whenever
+						the match rule is invoked; and</li>
+						<li><code>exclude</code> (optional), a pattern string or an array of pattern strings
+						which negate any matches.</li>
+					</ol>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #008000"># an extended pattern match rule with no other fields, matching exactly the</span>
+<span style="color: #008000"># module &quot;GER1000&quot;</span>
+<span style="color: #000000">- </span><span style="color: #800000">pattern</span><span style="color: #000000">: </span><span style="color: #0000FF">GER1000</span>
+<span style="color: #008000"># an extended pattern match rule with an `info` field</span>
+<span style="color: #000000">- </span><span style="color: #800000">pattern</span><span style="color: #000000">: </span><span style="color: #0000FF">GER1000</span>
+<span style="color: #000000">  </span><span style="color: #800000">info</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;This module is part of the General Education requirements.&quot;</span>
+<span style="color: #008000"># an extended pattern match rule with an `exclude` field containing a pattern</span>
+<span style="color: #008000"># string, matching all modules starting with &quot;GER&quot; other than &quot;GER1000&quot;</span>
+<span style="color: #000000">- </span><span style="color: #800000">pattern</span><span style="color: #000000">: </span><span style="color: #0000FF">GER*</span>
+<span style="color: #000000">  </span><span style="color: #800000">exclude</span><span style="color: #000000">: </span><span style="color: #0000FF">GER1000</span>
+<span style="color: #008000"># an extended pattern match rule with an `exclude` field containing an array</span>
+<span style="color: #008000"># of pattern strings, matching all modules starting with &quot;MA42&quot; followed by</span>
+<span style="color: #008000"># two digits other than &quot;MA4203&quot; and &quot;MA4207&quot;</span>
+<span style="color: #000000">- </span><span style="color: #800000">pattern</span><span style="color: #000000">: </span><span style="color: #0000FF">MA42xx*</span>
+<span style="color: #000000">  </span><span style="color: #800000">exclude</span><span style="color: #000000">: [</span><span style="color: #0000FF">MA4203</span><span style="color: #000000">, </span><span style="color: #0000FF">MA4207</span><span style="color: #000000">]</span>
+</code></pre>
+					<a href="#and-match-rule" id="and-match-rule" style="color: inherit; text-decoration: none;">
+						<h1>And match rule</h1>
+					</a>
+					<p>An and match rule is an object with an <code>and</code> field assigned to an array of
+						match rules. For the match rule to be matched, <strong>all</strong> child match rules
+					must be matched.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #008000"># and match rule which only matches the modules &quot;GER1000&quot; and &quot;MA1101R&quot; if</span>
+<span style="color: #008000"># both are in the list of modules</span>
+<span style="color: #000000">- </span><span style="color: #800000">and</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">GER1000</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">MA1101R</span>
+<span style="color: #008000"># a more complex and match rule which only matches if at least one of the</span>
+<span style="color: #008000"># following modules &quot;CS1010&quot;, &quot;CS1010S&quot; or &quot;CS1010X&quot;, as well as the module</span>
+<span style="color: #008000"># &quot;DSA1101&quot;, are in the list of modules</span>
+<span style="color: #000000">- </span><span style="color: #800000">and</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #800000">or</span><span style="color: #000000">: [</span><span style="color: #0000FF">CS1010</span><span style="color: #000000">, </span><span style="color: #0000FF">CS1010S</span><span style="color: #000000">, </span><span style="color: #0000FF">CS1010X</span><span style="color: #000000">]</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">DSA1101</span>
+</code></pre>
+					<a href="#or-match-rule" id="or-match-rule" style="color: inherit; text-decoration: none;">
+						<h1>Or match rule</h1>
+					</a>
+					<p>An or match rule is an object with an <code>or</code> field assigned to an array of
+						match rules. For the match rule to be matched, <strong>at least one</strong> of the child
+					match rules must be matched.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #008000"># or match rule which matches either of the modules &quot;GER1000&quot; and &quot;MA1101R&quot;</span>
+<span style="color: #000000">- </span><span style="color: #800000">or</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">GER1000</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">MA1101R</span>
+<span style="color: #008000"># a more complex or match rule which only matches if either the module</span>
+<span style="color: #008000"># &quot;MA1102R&quot;, or both of the modules &quot;MA1511&quot; and &quot;MA1512&quot;, are in the list of</span>
+<span style="color: #008000"># modules</span>
+<span style="color: #000000">- </span><span style="color: #800000">or</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">MA1102R</span>
+<span style="color: #000000">  - </span><span style="color: #800000">and</span><span style="color: #000000">: [</span><span style="color: #0000FF">MA1511</span><span style="color: #000000">, </span><span style="color: #0000FF">MA15112</span><span style="color: #000000">]</span>
+</code></pre>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">

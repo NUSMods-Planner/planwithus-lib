@@ -65,6 +65,21 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This module reexports functions, schemas and types relating to the
+						<a href="satisfyrule_inequality.html#inequality">Inequality</a> type.</p>
+					</div>
+					<p>Only two types of inequality strings are allowed:</p>
+					<ol>
+						<li>&quot;at least&quot; inequalities (e.g. &quot;&gt;=32&quot;); and</li>
+						<li>&quot;at most&quot; inequalities (e.g. &quot;&lt;=16&quot;).</li>
+					</ol>
+					<p>The inequality string should start with either &quot;&lt;=&quot; or &quot;&gt;=&quot;, followed by a
+					positive integer.</p>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -128,16 +143,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/satisfyRule/inequality/index.ts#L4">satisfyRule/inequality/index.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/9f635f7/src/satisfyRule/inequality/index.ts#L25">satisfyRule/inequality/index.ts:25</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Parses an inequality into its sign and number.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>inequality: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The specified inequality.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="../enums/satisfyrule_inequality_types.inequalitysign.html" class="tsd-signature-type" data-tsd-kind="Enumeration">InequalitySign</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h4>
+							<p>A pair with the first element as the sign of the inequality and the
+							second element as the number of the inequality.</p>
 						</li>
 					</ul>
 				</section>

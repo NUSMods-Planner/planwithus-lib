@@ -65,6 +65,138 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This module reexports various functions, schemas and types relating to
+						blocks.</p>
+					</div>
+					<p>A <strong>block</strong> is used to express the metadata and logic of course
+						requirements. Blocks can be subdivided into multiple blocks which can be
+					reused in other course combinations.</p>
+					<a href="#metadata-fields" id="metadata-fields" style="color: inherit; text-decoration: none;">
+						<h2>Metadata Fields</h2>
+					</a>
+					<a href="#name-optional" id="name-optional" style="color: inherit; text-decoration: none;">
+						<h3><code>name</code> (optional)</h3>
+					</a>
+					<p>The <code>name</code> field is used to assign a name to a block. It can be used to store
+					the name of the course or a specific section of its requirements.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #800000">name</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;Data Science and Analytics (Hons)&quot;</span><span style="color: #000000"> </span><span style="color: #008000"># course name</span>
+<span style="color: #800000">name</span><span style="color: #000000">: </span><span style="color: #0000FF">Level-1000 modules</span><span style="color: #000000"> </span><span style="color: #008000"># human-readable identifier for child blocks</span>
+</code></pre>
+					<a href="#ay-optional" id="ay-optional" style="color: inherit; text-decoration: none;">
+						<h3><code>ay</code> (optional)</h3>
+					</a>
+					<p>The <code>ay</code> field is used to indicate the academic year of the course. Its value
+						should correspond to the calendar year of the first semester. For example, a
+						block representing course requirements for the AY21/22 cohort onwards should
+					have the <code>ay</code> field set to 2021.</p>
+					<p>It is only necessary to set the <code>ay</code> field for top-level blocks representing
+						courses. All child blocks are taken to have the same <code>ay</code> as their parent
+					block, unless specified otherwise.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #800000">ay</span><span style="color: #000000">: </span><span style="color: #098658">2020</span><span style="color: #000000"> </span><span style="color: #008000"># course requirements for the AY20/21 cohort</span>
+</code></pre>
+					<a href="#url-optional" id="url-optional" style="color: inherit; text-decoration: none;">
+						<h3><code>url</code> (optional)</h3>
+					</a>
+					<p>The <code>url</code> field is used to provide a <a href="https://en.wikipedia.org/wiki/URL">URL</a>
+					that links to the relevant course requirements.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #800000">url</span><span style="color: #000000">: </span><span style="color: #0000FF">https://www.science.nus.edu.sg/wp-content/uploads/2019/11/FacultyRequirements.pdf</span>
+</code></pre>
+					<a href="#info-optional" id="info-optional" style="color: inherit; text-decoration: none;">
+						<h3><code>info</code> (optional)</h3>
+					</a>
+					<p>The <code>info</code> field is used to alert the user to any important information. This
+						can be used in cases where the specified logic may not be sufficient to cover
+					the entirety of a course&#39;s requirements.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #800000">info</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;Please refer to the URL to verify that you meet the Faculty Requirements. Take note that some modules might fall under multiple subject groups.&quot;</span>
+</code></pre>
+					<a href="#logic-fields" id="logic-fields" style="color: inherit; text-decoration: none;">
+						<h2>Logic Fields</h2>
+					</a>
+					<p>The logic of a block can be viewed in three distinct stages: <code>assign</code>,
+					<code>match</code> and <code>satisfy</code>.</p>
+					<ol>
+						<li>Each block begins with a list of modules, which may be all the modules
+							listed on the planner (for top-level blocks), or a subset of these modules
+						that have been filtered out by other blocks (for child blocks).</li>
+						<li>These modules are assigned to the specified blocks in the <code>assign</code> stage.</li>
+						<li>Remaining unassigned modules are passed to the <code>match</code> stage where
+						matching modules are assigned to the current block.</li>
+						<li>Lastly, all assigned and matched modules are passed to the <code>satisfy</code> stage
+						to ensure that the modules match a set of criteria.</li>
+					</ol>
+					<p>Most blocks will have either an <code>assign</code> + <code>satisfy</code> stage or a <code>match</code> +
+						<code>satisfy</code> stage. In most cases, course requirements can be specified in a
+					straightforward manner using this three-stage logic flow.</p>
+					<a href="#assign-optional" id="assign-optional" style="color: inherit; text-decoration: none;">
+						<h3><code>assign</code> (optional)</h3>
+					</a>
+					<p>The <code>assign</code> field can take either a string, representing a block identifier,
+					or an array of block identifiers.</p>
+					<p>Modules passed to the block are assigned to each of the specified blocks in
+						the <code>assign</code> field from the first block to the last block, with every module
+					assigned to at most one block.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #800000">assign</span><span style="color: #000000">: </span><span style="color: #0000FF">ue</span><span style="color: #000000"> </span><span style="color: #008000"># a single block with identifier &quot;ue&quot;</span>
+<span style="color: #800000">assign</span><span style="color: #000000">: [</span><span style="color: #0000FF">ulr-2015</span><span style="color: #000000">, </span><span style="color: #0000FF">1k</span><span style="color: #000000">, </span><span style="color: #0000FF">2k</span><span style="color: #000000">, </span><span style="color: #0000FF">3k-4k</span><span style="color: #000000">, </span><span style="color: #0000FF">fos-2015</span><span style="color: #000000">, </span><span style="color: #0000FF">ue</span><span style="color: #000000">] </span><span style="color: #008000"># six blocks with priority</span>
+<span style="color: #000000">                                                </span><span style="color: #008000"># from &quot;ulr-2015&quot; to &quot;ue&quot;</span>
+</code></pre>
+					<a href="#match-optional" id="match-optional" style="color: inherit; text-decoration: none;">
+						<h3><code>match</code> (optional)</h3>
+					</a>
+					<p>After the <code>assign</code> stage, the remaining modules are passed to the <code>match</code>
+						stage which consists of a list of match rules. The <code>match</code> field can take
+						either a single match rule or an array of match rules. By default, modules
+					will be matched if they meet <strong>any</strong> of the specified match rules.</p>
+					<p>Please refer to the <a href="matchrule.html">matchRule</a> module for more information on match rules.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #800000">match</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #800000">and</span><span style="color: #000000">: </span><span style="color: #008000"># and match rule</span>
+<span style="color: #000000">    - </span><span style="color: #800000">or</span><span style="color: #000000">: [</span><span style="color: #0000FF">CS1010</span><span style="color: #000000">, </span><span style="color: #0000FF">CS1010S</span><span style="color: #000000">, </span><span style="color: #0000FF">CS1010X</span><span style="color: #000000">] </span><span style="color: #008000"># or match rule, taking in an array of</span>
+<span style="color: #000000">                                     </span><span style="color: #008000"># pattern match rules</span>
+<span style="color: #000000">    - </span><span style="color: #0000FF">DSA1101</span><span style="color: #000000"> </span><span style="color: #008000"># pattern match rule</span>
+<span style="color: #000000">  - </span><span style="color: #800000">or</span><span style="color: #000000">: </span><span style="color: #008000"># or match rule</span>
+<span style="color: #000000">    - </span><span style="color: #0000FF">CS2103</span><span style="color: #000000"> </span><span style="color: #008000"># pattern match rule</span>
+<span style="color: #000000">    </span><span style="color: #008000"># pattern match rule with info</span>
+<span style="color: #000000">    - </span><span style="color: #800000">pattern</span><span style="color: #000000">: </span><span style="color: #0000FF">CS2103T</span>
+<span style="color: #000000">      </span><span style="color: #800000">info</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;Students taking CS2103T Software Engineering must take CS2101 Effective Communication for Computing Professionals in the same semester.&quot;</span>
+<span style="color: #000000">  </span><span style="color: #008000"># pattern match rule with exclude</span>
+<span style="color: #000000">  - </span><span style="color: #800000">pattern</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;MA2xxx*&quot;</span>
+<span style="color: #000000">    </span><span style="color: #800000">exclude</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;MA23xx*&quot;</span><span style="color: #000000"> </span><span style="color: #008000"># this removes all modules matched by the previous</span>
+<span style="color: #000000">                       </span><span style="color: #008000"># pattern, &quot;MA2xxx*&quot; that match &quot;MA23xx*&quot;</span>
+</code></pre>
+					<a href="#satisfy-optional" id="satisfy-optional" style="color: inherit; text-decoration: none;">
+						<h3><code>satisfy</code> (optional)</h3>
+					</a>
+					<p>Lastly, the <code>satisfy</code> stage takes all modules that were assigned in the
+						<code>assign</code> stage or matched in the <code>match</code> stage and passes them to a list of
+						satisfy rules. The <code>satisfy</code> field can take either a single satisfy rule or
+						an array of satisfy rules. By default, a block with <strong>no <code>satisfy</code> rules</strong> is
+						taken to be satisfied and a block with <strong>multiple <code>satisfy</code> rules</strong> must
+					satisfy <strong>all</strong> of the rules.</p>
+					<p>Please refer to the <a href="satisfyrule.html">satisfyRule</a> module for more information on satisfy
+					rules.</p>
+					<p>Examples:</p>
+					<pre><code class="language-yaml"><span style="color: #800000">satisfy</span><span style="color: #000000">:</span>
+<span style="color: #000000">  - </span><span style="color: #0000FF">4k-above</span><span style="color: #000000"> </span><span style="color: #008000"># block ID satisfy rule</span>
+<span style="color: #000000">  - </span><span style="color: #800000">or</span><span style="color: #000000">: </span><span style="color: #008000"># or satisfy rule, with an array of satisfy rules</span>
+<span style="color: #000000">    - </span><span style="color: #0000FF">cs-hons-2020-alg/prim-match</span><span style="color: #000000"> </span><span style="color: #008000"># block ID satisfy rule</span>
+<span style="color: #000000">    - </span><span style="color: #0000FF">cs-hons-2020-ai/prim-match</span>
+<span style="color: #000000">  - </span><span style="color: #800000">mc</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;&gt;=12&quot;</span><span style="color: #000000"> </span><span style="color: #008000"># MC satisfy rule</span>
+</code></pre>
+					<a href="#child-blocks" id="child-blocks" style="color: inherit; text-decoration: none;">
+						<h2>Child blocks</h2>
+					</a>
+					<p>Blocks can contain other blocks, which are constructed in a similar fashion
+					to the top-level block.</p>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -78,12 +210,6 @@
 								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blocksatisfier" class="tsd-kind-icon">block<wbr>Satisfier</a></li>
 								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blockschema" class="tsd-kind-icon">block<wbr>Schema</a></li>
 								<li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blocktypeschema" class="tsd-kind-icon">block<wbr>Type<wbr>Schema</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Functions</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="block.html#decomposeblock" class="tsd-kind-icon">decompose<wbr>Block</a></li>
 							</ul>
 						</section>
 					</div>
@@ -122,35 +248,6 @@
 					Re-exports <a href="block_typeschemas.html#blocktypeschema">blockTypeSchema</a>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="decomposeblock" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> decompose<wbr>Block</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">decompose<wbr>Block<span class="tsd-signature-symbol">(</span>block<span class="tsd-signature-symbol">: </span><a href="block_types.html#block" class="tsd-signature-type" data-tsd-kind="Type alias">Block</a>, prefix<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="block_types.html#block" class="tsd-signature-type" data-tsd-kind="Type alias">Block</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="block_types.html#block" class="tsd-signature-type" data-tsd-kind="Type alias">Block</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/wei2912/planwithus-lib/blob/baa1971/src/block/index.ts#L3">block/index.ts:3</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>block: <a href="block_types.html#block" class="tsd-signature-type" data-tsd-kind="Type alias">Block</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> prefix: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="block_types.html#block" class="tsd-signature-type" data-tsd-kind="Type alias">Block</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="block_types.html#block" class="tsd-signature-type" data-tsd-kind="Type alias">Block</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
@@ -182,9 +279,6 @@
 					</li>
 					<li class=" tsd-kind-reference tsd-parent-kind-module">
 						<a href="block.html#blocktypeschema" class="tsd-kind-icon">block<wbr>Type<wbr>Schema</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="block.html#decomposeblock" class="tsd-kind-icon">decompose<wbr>Block</a>
 					</li>
 				</ul>
 			</nav>
