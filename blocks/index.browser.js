@@ -12,7 +12,7 @@ import ma_2019_second from "./second/ma-2019.yml";
 
 import ma_2019_minor from "./minor/ma-2019.yml";
 
-const loadBlock = (blockYaml: unknown) => {
+const loadBlock = (blockYaml) => {
   return parse(blockYaml);
 };
 
