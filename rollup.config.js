@@ -21,6 +21,6 @@ export default {
     yaml(),
     typescript(),
     nodeResolve(),
-    commonjs({ extensions: [".js", ".ts"] }),
+    commonjs(),
   ],
 };
