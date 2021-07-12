@@ -32,7 +32,7 @@ import type { Module } from "./module";
 import type { SatisfierResult } from "./satisfier";
 import { evaluateSatisfier } from "./satisfier";
 
-import { primary, second, minor } from "../blocks";
+import { primary, second, minor } from "../blocks/index";
 
 const constructDirectory = (files: Record<string, Block>): Directory => {
   const verifier = new Directory();
