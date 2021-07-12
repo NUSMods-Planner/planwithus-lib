@@ -25,32 +25,19 @@
  * @module
  */
 
-import fs from "fs/promises";
-import glob from "globby";
-import path from "path";
-
 import { Directory } from "./directory";
-import { parseYAML } from "./parser";
 import type { BlockId } from "./block/blockId";
-import { BLOCK_CLASSES, blockSatisfier } from "./block";
+import { blockSatisfier, Block } from "./block";
 import type { Module } from "./module";
 import type { SatisfierResult } from "./satisfier";
 import { evaluateSatisfier } from "./satisfier";
 
-const PATH_PREFIX = path.join(__dirname, "../blocks");
+import { primary, second, minor } from "../blocks";
 
-const loadBlocks = async (type: string): Promise<Directory> => {
-  const files = await glob(`${PATH_PREFIX}/${type}/**/*.yml`);
-  const fileContents = await Promise.all(
-    files.map((fileName) => fs.readFile(fileName, "utf8"))
-  );
-
+const constructDirectory = (files: Record<string, Block>): Directory => {
   const verifier = new Directory();
-  files.forEach((filename, i) =>
-    verifier.addBlock(
-      path.basename(filename).replace(/\.yml$/, ""),
-      parseYAML(fileContents[i])
-    )
+  Object.entries(files).forEach(([filename, block]) =>
+    verifier.addBlock(filename, block)
   );
   return verifier;
 };
@@ -61,11 +48,12 @@ const loadBlocks = async (type: string): Promise<Directory> => {
  *
  * @return An object with keys as block classes and values as block directories.
  */
-const initDirectories = async (): Promise<Record<string, Directory>> => {
-  const directories = await Promise.all(BLOCK_CLASSES.map(loadBlocks));
-  return Object.fromEntries(
-    BLOCK_CLASSES.map((prefix, i) => [prefix, directories[i]])
-  );
+const initDirectories = (): Record<string, Directory> => {
+  return {
+    primary: constructDirectory(primary),
+    second: constructDirectory(second),
+    minor: constructDirectory(minor),
+  };
 };
 
 /**
