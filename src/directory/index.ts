@@ -37,13 +37,8 @@ const decomposeBlock = (
  * blocks and block identifier resolution.
  */
 class Directory {
-  #blocks: Record<string, Block>;
-  #topLevelBlocks: Set<string>;
-
-  constructor() {
-    this.#blocks = {};
-    this.#topLevelBlocks = new Set();
-  }
+  private _blocks: Record<string, Block> = {};
+  private _topLevelBlocks: Set<string> = new Set();
 
   /**
    * Adds a block into the directory.
@@ -71,21 +66,21 @@ class Directory {
    */
   addBlock(prefix: string, block: Block, isTopLevel = true): void {
     const [mainBlock, flatSubblocks] = decomposeBlock(block);
-    if (prefix in Object.keys(this.#blocks)) {
+    if (prefix in Object.keys(this._blocks)) {
       throw new Error(`block '${prefix}' already exists`);
     }
 
-    this.#blocks[prefix] = mainBlock;
+    this._blocks[prefix] = mainBlock;
     Object.entries(flatSubblocks).forEach(([name, block]) => {
       const newName = prefix + name;
-      if (newName in Object.keys(this.#blocks)) {
+      if (newName in Object.keys(this._blocks)) {
         throw new Error(`block '${prefix}' already exists`);
       }
-      this.#blocks[newName] = block as Block;
+      this._blocks[newName] = block as Block;
     });
 
     if (isTopLevel) {
-      this.#topLevelBlocks.add(prefix);
+      this._topLevelBlocks.add(prefix);
     }
   }
 
@@ -108,10 +103,10 @@ class Directory {
    */
   find(prefix: string, id: BlockId): [BlockId, Block] {
     const prefixedId = prefix === "" ? id : [prefix, id].join("/");
-    if (Object.keys(this.#blocks).includes(id)) {
-      return [id, this.#blocks[id]];
-    } else if (Object.keys(this.#blocks).includes(prefixedId)) {
-      return [prefixedId, this.#blocks[prefixedId]];
+    if (Object.keys(this._blocks).includes(id)) {
+      return [id, this._blocks[id]];
+    } else if (Object.keys(this._blocks).includes(prefixedId)) {
+      return [prefixedId, this._blocks[prefixedId]];
     } else {
       throw new Error(
         id !== prefixedId
@@ -128,7 +123,7 @@ class Directory {
    * directory.
    */
   retrieveTopLevel(): BlockId[] {
-    return [...this.#topLevelBlocks];
+    return [...this._topLevelBlocks];
   }
 }
 
