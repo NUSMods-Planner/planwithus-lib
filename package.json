@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "JavaScript library for course requirements specification in plaNwithUS.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prepare": "husky install",
     "build": "ts-node src/",
@@ -47,7 +48,6 @@
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "fast-check": "^2.17.0",
-    "husky": "^7.0.1",
     "husky": "^7.0.0",
     "js-yaml": "^4.1.0",
     "lint-staged": "^11.0.0",
@@ -56,6 +56,7 @@
     "nyc": "^15.1.0",
     "prettier": "2.3.2",
     "rollup": "^2.53.1",
+    "rollup-plugin-ts": "^1.4.0",
     "ts-node": "^10.1.0",
     "tslib": "^2.1.0",
     "typedoc": "^0.21.4",
