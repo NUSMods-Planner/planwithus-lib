@@ -38,9 +38,11 @@ const decomposeBlock = (
  */
 class Directory {
   #blocks: Record<string, Block>;
+  #topLevelBlocks: Set<string>;
 
   constructor() {
     this.#blocks = {};
+    this.#topLevelBlocks = new Set();
   }
 
   /**
@@ -63,8 +65,11 @@ class Directory {
    * @param prefix A prefix string representing the full identifier of the
    * block.
    * @param block The block to be added to the directory.
+   * @param isTopLevel A flag indicating if the block is top level. (Top level
+   * blocks can be selected by users as "courses", while all other blocks are
+   * hidden.)
    */
-  addBlock(prefix: string, block: Block): void {
+  addBlock(prefix: string, block: Block, isTopLevel = true): void {
     const [mainBlock, flatSubblocks] = decomposeBlock(block);
     if (prefix in Object.keys(this.#blocks)) {
       throw new Error(`block '${prefix}' already exists`);
@@ -78,6 +83,10 @@ class Directory {
       }
       this.#blocks[newName] = block as Block;
     });
+
+    if (isTopLevel) {
+      this.#topLevelBlocks.add(prefix);
+    }
   }
 
   /**
@@ -110,6 +119,16 @@ class Directory {
           : `block '${id}' does not exist`
       );
     }
+  }
+
+  /**
+   * Retrieves all top level block identifiers in the directory.
+   *
+   * @return A list of full identifiers of all top level blocks in the
+   * directory.
+   */
+  retrieveTopLevel(): BlockId[] {
+    return [...this.#topLevelBlocks];
   }
 }
 
