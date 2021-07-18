@@ -73,11 +73,31 @@ const verifyPlan = (
 
 export { initDirectories, verifyPlan };
 
-export * from "./block";
-export * from "./directory";
-export * from "./matchRule";
-export * from "./module";
-export * from "./parser";
-export * from "./satisfier";
-export * from "./satisfyRule";
-export * from "./some";
+export type { Block } from "./block";
+export type {
+  AndMatchRule,
+  MatchRule,
+  OrMatchRule,
+  PatternMatchRule,
+} from "./matchRule";
+export type { Module } from "./module";
+export type {
+  Satisfier,
+  SatisfierAssign,
+  SatisfierBase,
+  SatisfierBranch,
+  SatisfierConstraint,
+  SatisfierFilter,
+  SatisfierLeafAssign,
+  SatisfierLeafConstraint,
+  SatisfierLeafFilter,
+  SatisfierReduce,
+  SatisfierResult,
+} from "./satisfier";
+export type {
+  AndSatisfyRule,
+  MCSatisfyRule,
+  OrSatisfyRule,
+  SatisfyRule,
+} from "./satisfyRule";
+export type { Some } from "./some";
