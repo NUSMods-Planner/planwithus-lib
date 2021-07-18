@@ -72,3 +72,12 @@ const verifyPlan = (
   evaluateSatisfier([], modules, blockSatisfier("", dir, blockId, blockId));
 
 export { initDirectories, verifyPlan };
+
+export * from "./block";
+export * from "./directory";
+export * from "./matchRule";
+export * from "./module";
+export * from "./parser";
+export * from "./satisfier";
+export * from "./satisfyRule";
+export * from "./some";
