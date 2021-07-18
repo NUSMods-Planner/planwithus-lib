@@ -1,0 +1,36 @@
+name: "Mathematics (Minor)"
+ay: 2019
+url: https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/minor-in-mathematics/
+assign: [1k, 2k, 3k-above]
+satisfy: [1k, 2k, 3k-above]
+
+1k:
+  name: Level-1000 modules
+  match:
+    - pattern: "MA1xxx*"
+      exclude: "MA1301*"
+    - "MA20xx*"
+    - CS1231
+    - CS1231S
+  satisfy:
+    - mc: ">=8"
+
+2k:
+  name: Level-2000 modules
+  match:
+    - pattern: "MA2xxx*"
+      exclude: "MA20xx*"
+    - ST2131
+  satisfy:
+    - mc: ">=8"
+
+3k-above:
+  name: Level-3000 and above modules
+  match:
+    - pattern: "MA3xxx*"
+      exclude: [MA3238, "MA33xx*"]
+    - pattern: "MA4xxx*"
+      exclude: MA4251
+    - "MA5xxx*"
+  satisfy:
+    - mc: ">=4"

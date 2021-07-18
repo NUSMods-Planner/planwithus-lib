@@ -1,0 +1,101 @@
+name: "Data Science and Analytics (Hons)"
+ay: 2017
+url: https://www.stat.nus.edu.sg/current-students/undergraduate-programme/programme-structure/
+assign: [ulr-2015, 1k, 2k, 3k-4k, fos-2015]
+satisfy: [ulr-2015, 1k, 2k, 3k-4k, fos-2015]
+
+1k:
+  name: Level-1000 modules
+  match:
+    - or: [CS1010, CS1010S, CS1010X]
+    - DSA1101
+    - or: [MA1101R, MA2001]
+    - or: [MA1102R, MA2002]
+  satisfy:
+    - mc: ">=16"
+
+2k:
+  name: Level-2000 modules
+  match:
+    - CS2040
+    - DSA2101
+    - DSA2102
+    - or: [MA2311, MA2104]
+    - or: [ST2131, MA2116, MA2216]
+    - ST2132
+  satisfy:
+    - mc: ">=24"
+
+3k-4k:
+  name: Level-3000 and 4000 modules
+  match:
+    - CS3244
+    - DSA3101
+    - DSA3102
+    - ST3131
+    - or: [DSA4199, DSA4299]
+  satisfy:
+    - mc: ">=20"
+    - list-ab
+
+  list-ab:
+    name: "List A/DSA426x & List B1/2"
+    assign: [a-dsa426x, b]
+    satisfy:
+      - mc: ">=24"
+      - 4k
+
+    4k:
+      match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+      satisfy:
+        - mc: ">=16"
+
+    a-dsa426x:
+      name: List A/DSA426x
+      assign: [a, dsa426x]
+      satisfy:
+        - mc: ">=8"
+
+      a:
+        name: List A - DSA modules
+        match: [DSA4211, DSA4212]
+
+      dsa426x:
+        name: DSA426x modules
+        match: "DSA426x"
+        satisfy:
+          - mc: "<=8"
+
+    b:
+      name: List B - DSA-recognised modules
+      assign: [b1, b2]
+      satisfy:
+        - mc: ">=8"
+
+      b1:
+        name: List B1 - DSA-recognised modules (no hidden pre-requisites)
+        match:
+          - MA3236
+          - MA3252
+          - ST3232
+          - ST3233
+          - ST3239
+          - ST3240
+          - ST3247
+          - ST3248
+          - ST4231
+          - ST4234
+          - ST4248
+
+      b2:
+        name: List B2 - DSA-recognised modules (with hidden pre-requisites)
+        match:
+          - CS3210
+          - CS3223
+          - CS3230
+          - CS4224
+          - CS4225
+          - CS4231
+          - CS4234
+          - MA4230
+          - MA4270

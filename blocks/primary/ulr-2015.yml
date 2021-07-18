@@ -1,0 +1,36 @@
+name: University Level Requirements
+ay: 2015
+url: https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/general-education/five-pillars
+assign: [geh, geq, ger, ges, get]
+satisfy:
+  - mc: ">=20"
+
+geh:
+  name: Human Cultures
+  match: "GEH*"
+  satisfy:
+    - mc: "<=4"
+
+geq:
+  name: Asking Questions
+  match: "GEQ*"
+  satisfy:
+    - mc: "<=4"
+
+ger:
+  name: Quantitative Reasoning
+  match: "GER*"
+  satisfy:
+    - mc: "<=4"
+
+ges:
+  name: Singapore Studies
+  match: "GES*"
+  satisfy:
+    - mc: "<=4"
+
+get:
+  name: Thinking and Expression
+  match: "GET*"
+  satisfy:
+    - mc: "<=4"

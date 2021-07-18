@@ -1,0 +1,107 @@
+name: "Computer Science (Hons)"
+ay: 2020
+url: https://www.comp.nus.edu.sg/programmes/ug/cs/curr/
+assign: [ulr-2015, found, bd, ind, it-prof, math-sci]
+satisfy: [ulr-2015, found, bd, ind, it-prof, math-sci]
+info: "Students without A-level or H2 Mathematics are required to complete the bridging module MA1301/X as part of the Unrestricted Electives."
+
+found:
+  name: Foundation
+  match:
+    - CS1101S
+    - CS1231S
+    - CS2030S
+    - CS2040S
+    - CS2100
+    - or:
+        - CS2103
+        - pattern: CS2103T
+          info: "Students taking CS2103T Software Engineering must take CS2101 Effective Communication for Computing Professionals in the same semester."
+    - CS2106
+    - CS3230
+  satisfy:
+    - mc: ">=32"
+
+bd:
+  name: Breadth & Depth
+  assign: [fa, cp, team]
+  satisfy:
+    - mc: ">=28"
+
+  fa:
+    name: Focus Areas
+    assign:
+      - cs-hons-2020-alg
+      - cs-hons-2020-ai
+    satisfy:
+      - 4k-above
+      - or:
+          - cs-hons-2020-alg/prim-match
+          - cs-hons-2020-ai/prim-match
+
+    4k-above:
+      name: Focus Areas (Level-4000 and above modules)
+      match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+      satisfy:
+        - mc: ">=12"
+
+  cp:
+    name: CP-coded modules
+    match: [CP3106, CP3209, CP4101, CP4106]
+    satisfy:
+      - mc: "<=12"
+
+  team:
+    name: Computer Systems Team Project
+    match:
+      - CS3203
+      - and: [CS3216, CS3217]
+      - and: [CS3281, CS3282]
+    satisfy:
+      - mc: ">=8"
+
+ind:
+  name: Industrial Experience Requirement
+  match: [CP3880, CP3200, CP3202, CP3107, CP3110, IS4010, TR3202]
+  satisfy:
+    - mc: ">=12"
+
+it-prof:
+  name: IT Professionalism
+  match: [IS1103, CS2101, ES2660]
+  satisfy:
+    - mc: ">=12"
+
+math-sci:
+  name: Mathematics & Sciences
+  match:
+    - MA1521
+    - MA1101R
+    - ST2334
+    - or:
+        - CM1121
+        - CM1131
+        - CM1417
+        - LSM1102
+        - LSM1105
+        - LSM1106
+        - LSM1301
+        - LSM1306
+        - PC1141
+        - PC1142
+        - PC1143
+        - PC1144
+        - PC1221
+        - PC1222
+        - PC1432
+        - CM1111
+        - CM1191
+        - CM1401
+        - CM1402
+        - CM1501
+        - LSM1303
+        - PC1421
+        - PC1431
+        - PC1433
+  satisfy:
+    - mc: ">=16"
