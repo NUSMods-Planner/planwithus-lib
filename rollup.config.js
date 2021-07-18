@@ -19,7 +19,9 @@ export default {
     }),
     json(),
     yaml(),
-    typescript(),
+    typescript({
+      tsconfig: "tsconfig.bundle.json",
+    }),
     nodeResolve(),
     commonjs(),
   ],
