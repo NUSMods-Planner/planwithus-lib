@@ -21,11 +21,38 @@ jobs:
       - run: npm run docs
       - run: npm run coverage-docs
 
+      - name: Upload bundle
+        uses: actions/upload-artifact@v2
+        with:
+          name: planwithus-lib-${{ github.sha }}-bundle
+          path: dist
+
       - name: Upload docs
         uses: actions/upload-artifact@v2
         with:
-          name: planwithus-lib-${{ github.sha }}
-          path: docs/
+          name: planwithus-lib-${{ github.sha }}-docs
+          path: docs
+
+  deploy-bundle:
+    needs: test-and-docs
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download build
+        uses: actions/download-artifact@v2
+        with:
+          name: planwithus-lib-${{ github.sha }}-bundle
+          path: dist
+
+      # Allow the `dist` files to be uploaded
+      - run: echo '' > .gitignore
+
+      - name: Deploy bundle
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          branch: bundle
+          folder: .
 
   deploy-gh-pages:
     needs: test-and-docs
@@ -36,8 +63,8 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v2
         with:
-          name: planwithus-lib-${{ github.sha }}
-          path: docs/
+          name: planwithus-lib-${{ github.sha }}-docs
+          path: docs
       - run: touch docs/.nojekyll
 
       - name: Deploy website
