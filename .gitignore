@@ -1,4 +1,6 @@
 **/*.js
+!rollup.config.js
+!*.browser.js
 docs
 
 # Logs

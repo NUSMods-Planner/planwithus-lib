@@ -17,7 +17,7 @@ describe("initDirectories", () => {
     initDirectories.should.not.throw());
 
   it("should produce primary, second & minor directories", async () => {
-    const directories = await initDirectories();
+    const directories = initDirectories();
     directories.should.have.property("primary");
     directories.should.have.property("second");
     directories.should.have.property("minor");
