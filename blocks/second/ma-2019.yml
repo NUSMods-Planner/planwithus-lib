@@ -1,5 +1,6 @@
 name: "Mathematics (2nd Major)"
 ay: 2019
+isSelectable: true
 url: https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/second-major-in-mathematics/
 assign: [1k, 2k, 3k-above]
 satisfy: [1k, 2k, 3k-above]

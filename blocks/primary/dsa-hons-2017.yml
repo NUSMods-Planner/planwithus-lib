@@ -1,5 +1,6 @@
 name: "Data Science and Analytics (Hons)"
 ay: 2017
+isSelectable: true
 url: https://www.stat.nus.edu.sg/current-students/undergraduate-programme/programme-structure/
 assign: [ulr-2015, 1k, 2k, 3k-4k, fos-2015]
 satisfy: [ulr-2015, 1k, 2k, 3k-4k, fos-2015]

@@ -10,8 +10,17 @@ const decomposeBlock = (block, prefix) => {
     if (prefix === undefined || prefix === null) {
         prefix = "";
     }
-    const { name, ay, assign, match, satisfy, url, info, ...subblocks } = block;
-    const mainBlock = { name, ay, assign, match, satisfy, url, info };
+    const { name, ay, assign, match, satisfy, url, info, isSelectable, ...subblocks } = block;
+    const mainBlock = {
+        name,
+        ay,
+        assign,
+        match,
+        satisfy,
+        url,
+        info,
+        isSelectable,
+    };
     const flatSubblocks = Object.entries(subblocks)
         .map(([sbName, sb]) => {
         const sbPrefix = [prefix, sbName].join("/");
@@ -31,7 +40,7 @@ const decomposeBlock = (block, prefix) => {
 class Directory {
     constructor() {
         this._blocks = {};
-        this._topLevelBlocks = new Set();
+        this._selectableBlocks = new Set();
     }
     /**
      * Adds a block into the directory.
@@ -53,26 +62,26 @@ class Directory {
      * @param prefix A prefix string representing the full identifier of the
      * block.
      * @param block The block to be added to the directory.
-     * @param isTopLevel A flag indicating if the block is top level. (Top level
-     * blocks can be selected by users as "courses", while all other blocks are
-     * hidden.)
      */
-    addBlock(prefix, block, isTopLevel = true) {
+    addBlock(prefix, block) {
         const [mainBlock, flatSubblocks] = decomposeBlock(block);
         if (prefix in Object.keys(this._blocks)) {
             throw new Error(`block '${prefix}' already exists`);
         }
         this._blocks[prefix] = mainBlock;
+        if (mainBlock.isSelectable === true) {
+            this._selectableBlocks.add(prefix);
+        }
         Object.entries(flatSubblocks).forEach(([name, block]) => {
             const newName = prefix + name;
             if (newName in Object.keys(this._blocks)) {
                 throw new Error(`block '${prefix}' already exists`);
             }
             this._blocks[newName] = block;
+            if (block.isSelectable === true) {
+                this._selectableBlocks.add(newName);
+            }
         });
-        if (isTopLevel) {
-            this._topLevelBlocks.add(prefix);
-        }
     }
     /**
      * Finds a block in the directory.
@@ -106,13 +115,13 @@ class Directory {
         }
     }
     /**
-     * Retrieves all top level block identifiers in the directory.
+     * Retrieves all selectable block identifiers in the directory.
      *
-     * @return A list of full identifiers of all top level blocks in the
+     * @return A list of full identifiers of all selectable blocks in the
      * directory.
      */
-    retrieveTopLevel() {
-        return [...this._topLevelBlocks];
+    retrieveSelectable() {
+        return [...this._selectableBlocks];
     }
 }
 
@@ -816,6 +825,11 @@ const blockSchema = {
                 type: "string",
                 nullable: true,
                 errorMessage: "property 'info' should be a string",
+            },
+            isSelectable: {
+                type: "boolean",
+                nullable: true,
+                errorMessage: "property 'isSelectable' should be a boolean",
             },
         },
         additionalProperties: blockRefSchema,
@@ -9293,6 +9307,7 @@ const parse = (block) => {
 
 var data$8 = { name:"Computer Science (Hons)",
   ay:2020,
+  isSelectable:true,
   url:"https://www.comp.nus.edu.sg/programmes/ug/cs/curr/",
   assign:[ "ulr-2015",
     "found",
@@ -9393,6 +9408,7 @@ var data$8 = { name:"Computer Science (Hons)",
     satisfy:[ { mc:">=16" } ] } };
 data$8.name;
 data$8.ay;
+data$8.isSelectable;
 data$8.url;
 data$8.assign;
 data$8.satisfy;
@@ -9468,6 +9484,7 @@ data$6.elec;
 
 var data$5 = { name:"Data Science and Analytics (Hons)",
   ay:2017,
+  isSelectable:true,
   url:"https://www.stat.nus.edu.sg/current-students/undergraduate-programme/programme-structure/",
   assign:[ "ulr-2015",
     "1k",
@@ -9556,6 +9573,7 @@ var data$5 = { name:"Data Science and Analytics (Hons)",
             "MA4270" ] } } } } };
 data$5.name;
 data$5.ay;
+data$5.isSelectable;
 data$5.url;
 data$5.assign;
 data$5.satisfy;
@@ -9634,6 +9652,7 @@ data$4.misc;
 
 var data$3 = { name:"Mathematics (Hons)",
   ay:2019,
+  isSelectable:true,
   url:"https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/ma-major/",
   assign:[ "ulr-2015",
     "1k",
@@ -9762,6 +9781,7 @@ var data$3 = { name:"Mathematics (Hons)",
       "ST4245" ] } };
 data$3.name;
 data$3.ay;
+data$3.isSelectable;
 data$3.url;
 data$3.assign;
 data$3.satisfy;
@@ -9806,6 +9826,7 @@ data$2.get;
 
 var data$1 = { name:"Mathematics (2nd Major)",
   ay:2019,
+  isSelectable:true,
   url:"https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/second-major-in-mathematics/",
   assign:[ "1k",
     "2k",
@@ -9858,12 +9879,14 @@ var data$1 = { name:"Mathematics (2nd Major)",
       satisfy:[ { mc:">=8" } ] } } };
 data$1.name;
 data$1.ay;
+data$1.isSelectable;
 data$1.url;
 data$1.assign;
 data$1.satisfy;
 
 var data = { name:"Mathematics (Minor)",
   ay:2019,
+  isSelectable:true,
   url:"https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/minor-in-mathematics/",
   assign:[ "1k",
     "2k",
@@ -9893,6 +9916,7 @@ var data = { name:"Mathematics (Minor)",
     satisfy:[ { mc:">=4" } ] } };
 data.name;
 data.ay;
+data.isSelectable;
 data.url;
 data.assign;
 data.satisfy;

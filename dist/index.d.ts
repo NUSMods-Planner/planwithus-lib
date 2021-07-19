@@ -211,6 +211,7 @@ type Block = {
     satisfy?: Some<SatisfyRule>;
     url?: string;
     info?: string;
+    isSelectable?: boolean;
     // the following line is used to prevent compilation errors due to the
     // oddities of JSONSchemaType
     [blockId: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -221,7 +222,7 @@ type Block = {
  */
 declare class Directory {
     private _blocks;
-    private _topLevelBlocks;
+    private _selectableBlocks;
     /**
      * Adds a block into the directory.
      *
@@ -242,11 +243,8 @@ declare class Directory {
      * @param prefix A prefix string representing the full identifier of the
      * block.
      * @param block The block to be added to the directory.
-     * @param isTopLevel A flag indicating if the block is top level. (Top level
-     * blocks can be selected by users as "courses", while all other blocks are
-     * hidden.)
      */
-    addBlock(prefix: string, block: Block, isTopLevel?: boolean): void;
+    addBlock(prefix: string, block: Block): void;
     /**
      * Finds a block in the directory.
      *
@@ -269,12 +267,12 @@ declare class Directory {
         Block
     ];
     /**
-     * Retrieves all top level block identifiers in the directory.
+     * Retrieves all selectable block identifiers in the directory.
      *
-     * @return A list of full identifiers of all top level blocks in the
+     * @return A list of full identifiers of all selectable blocks in the
      * directory.
      */
-    retrieveTopLevel(): BlockId[];
+    retrieveSelectable(): BlockId[];
 }
 /**
  * Initialises block directories with each directory corresponding to a block
