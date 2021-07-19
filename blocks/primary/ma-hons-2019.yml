@@ -1,5 +1,6 @@
 name: "Mathematics (Hons)"
 ay: 2019
+isSelectable: true
 url: https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/ma-major/
 assign: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015]
 satisfy: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015]
