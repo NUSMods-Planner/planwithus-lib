@@ -1,5 +1,6 @@
 import {
   array,
+  constant,
   constantFrom,
   integer,
   letrec,
@@ -23,6 +24,7 @@ const BLOCK_KEYWORDS = [
   "satisfy",
   "url",
   "info",
+  "isSelectable",
 ];
 
 const { block } = letrec((tie) => ({
@@ -36,6 +38,7 @@ const { block } = letrec((tie) => ({
         satisfy: some(satisfyRule, { maxLength: 5 }),
         url: webUrl(),
         info: string(),
+        isSelectable: constant(true),
       },
       { requiredKeys: [] }
     ),
