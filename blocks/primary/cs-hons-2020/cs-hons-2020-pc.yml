@@ -1,0 +1,30 @@
+name: Focus Area (Parallel Computing)
+assign: ["prim-match/prim", elec]
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=12"
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS3210
+      - CS3211
+      - CS4231
+      - CS4223
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
+
+elec:
+  name: Electives
+  match:
+    - CS5222
+    - CS5223
+    - CS5224
+    - CS5239
+    - CS5250

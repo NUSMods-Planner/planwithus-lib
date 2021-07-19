@@ -1,0 +1,30 @@
+name: Focus Area (Database Systems)
+assign: ["prim-match/prim", elec]
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=12"
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS2102
+      - CS3223
+      - CS4221
+      - CS4224
+      - CS4225
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
+
+elec:
+  name: Electives
+  match:
+    - CS4220
+    - CS5226
+    - CS5228
+    - CS5322
