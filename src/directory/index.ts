@@ -14,8 +14,27 @@ const decomposeBlock = (
     prefix = "";
   }
 
-  const { name, ay, assign, match, satisfy, url, info, ...subblocks } = block;
-  const mainBlock = { name, ay, assign, match, satisfy, url, info };
+  const {
+    name,
+    ay,
+    assign,
+    match,
+    satisfy,
+    url,
+    info,
+    isSelectable,
+    ...subblocks
+  } = block;
+  const mainBlock = {
+    name,
+    ay,
+    assign,
+    match,
+    satisfy,
+    url,
+    info,
+    isSelectable,
+  };
   const flatSubblocks = Object.entries(subblocks)
     .map(([sbName, sb]) => {
       const sbPrefix = [prefix, sbName].join("/");
@@ -38,7 +57,7 @@ const decomposeBlock = (
  */
 class Directory {
   private _blocks: Record<string, Block> = {};
-  private _topLevelBlocks: Set<string> = new Set();
+  private _selectableBlocks: Set<string> = new Set();
 
   /**
    * Adds a block into the directory.
@@ -60,28 +79,29 @@ class Directory {
    * @param prefix A prefix string representing the full identifier of the
    * block.
    * @param block The block to be added to the directory.
-   * @param isTopLevel A flag indicating if the block is top level. (Top level
-   * blocks can be selected by users as "courses", while all other blocks are
-   * hidden.)
    */
-  addBlock(prefix: string, block: Block, isTopLevel = true): void {
+  addBlock(prefix: string, block: Block): void {
     const [mainBlock, flatSubblocks] = decomposeBlock(block);
     if (prefix in Object.keys(this._blocks)) {
       throw new Error(`block '${prefix}' already exists`);
     }
 
     this._blocks[prefix] = mainBlock;
+    if (mainBlock.isSelectable === true) {
+      this._selectableBlocks.add(prefix);
+    }
+
     Object.entries(flatSubblocks).forEach(([name, block]) => {
       const newName = prefix + name;
       if (newName in Object.keys(this._blocks)) {
         throw new Error(`block '${prefix}' already exists`);
       }
-      this._blocks[newName] = block as Block;
-    });
 
-    if (isTopLevel) {
-      this._topLevelBlocks.add(prefix);
-    }
+      this._blocks[newName] = block as Block;
+      if (block.isSelectable === true) {
+        this._selectableBlocks.add(newName);
+      }
+    });
   }
 
   /**
@@ -117,13 +137,13 @@ class Directory {
   }
 
   /**
-   * Retrieves all top level block identifiers in the directory.
+   * Retrieves all selectable block identifiers in the directory.
    *
-   * @return A list of full identifiers of all top level blocks in the
+   * @return A list of full identifiers of all selectable blocks in the
    * directory.
    */
-  retrieveTopLevel(): BlockId[] {
-    return [...this._topLevelBlocks];
+  retrieveSelectable(): BlockId[] {
+    return [...this._selectableBlocks];
   }
 }
 
