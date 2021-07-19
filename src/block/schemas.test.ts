@@ -62,6 +62,7 @@ describe("blockSchema", () => {
         satisfy: 2,
         url: { abc: "def" },
         info: 42,
+        isSelectable: 32,
       },
       { instancePath: "/name", message: "property 'name' should be a string" },
       {
@@ -84,6 +85,10 @@ describe("blockSchema", () => {
           "property 'satisfy' should be either a satisfy rule or an array of satisfy rules",
       },
       { instancePath: "/url", message: "property 'url' should be a string" },
-      { instancePath: "/info", message: "property 'info' should be a string" }
+      { instancePath: "/info", message: "property 'info' should be a string" },
+      {
+        instancePath: "/isSelectable",
+        message: "property 'isSelectable' should be a boolean",
+      }
     ));
 });

@@ -64,6 +64,11 @@ const blockSchema: JSONSchemaType<Block> = {
         nullable: true,
         errorMessage: "property 'info' should be a string",
       },
+      isSelectable: {
+        type: "boolean",
+        nullable: true,
+        errorMessage: "property 'isSelectable' should be a boolean",
+      },
     },
     additionalProperties: blockRefSchema,
   },

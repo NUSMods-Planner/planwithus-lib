@@ -56,6 +56,16 @@
  * info: "Please refer to the URL to verify that you meet the Faculty Requirements. Take note that some modules might fall under multiple subject groups."
  * ```
  *
+ * ### `isSelectable` (optional)
+ *
+ * The `isSelectable` field is used to mark a block as selectable in the GUI. By
+ * default, `isSelectable` is taken to be false if not specified otherwise.
+ *
+ * Examples:
+ * ```yaml
+ * isSelectable: true
+ * ```
+ *
  * ## Logic Fields
  *
  * The logic of a block can be viewed in three distinct stages: `assign`,

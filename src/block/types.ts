@@ -11,6 +11,7 @@ type Block = {
   satisfy?: Some<SatisfyRule>;
   url?: string;
   info?: string;
+  isSelectable?: boolean;
   // the following line is used to prevent compilation errors due to the
   // oddities of JSONSchemaType
   [blockId: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
