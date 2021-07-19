@@ -1,0 +1,33 @@
+name: Focus Area (Networking and Distributed Systems)
+assign: ["prim-match/prim", elec]
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=12"
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS2105
+      - CS3103
+      - CS4222
+      - CS4226
+      - CS4231
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
+
+elec:
+  name: Electives
+  match:
+    - CS3237
+    - CS4344
+    - CS5223
+    - CS5224
+    - CS5229
+    - CS5248
+    - CS5321

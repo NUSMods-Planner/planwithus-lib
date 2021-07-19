@@ -1,0 +1,38 @@
+name: Focus Area (Computer Security)
+assign: ["prim-match/prim", elec]
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=12"
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS2107
+      - CS3235
+      - CS4236
+      - CS4238
+      - CS4239
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
+
+elec:
+  name: Electives
+  match:
+    - CS3221
+    - CS4257
+    - CS4276
+    - CS5231
+    - CS5250
+    - CS5321
+    - CS5322
+    - CS5331
+    - CS5332
+    - IFS4101
+    - IFS4102
+    - IFS4103

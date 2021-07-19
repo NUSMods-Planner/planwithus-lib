@@ -1,0 +1,26 @@
+name: Focus Area (Multimedia Information Retrieval)
+assign: ["prim-match/prim", elec]
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=12"
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS2108
+      - CS3245
+      - CS4242
+      - CS4248
+      - CS4347
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
+
+elec:
+  name: Electives
+  match: [CS5246, CS5241]

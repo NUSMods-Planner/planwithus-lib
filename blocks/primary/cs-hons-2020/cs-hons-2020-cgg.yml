@@ -1,0 +1,37 @@
+name: Focus Area (Computer Graphics and Games)
+assign: ["prim-match/prim", elec]
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=12"
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS3241
+      - CS3242
+      - CS3247
+      - CS4247
+      - CS4350
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
+
+elec:
+  name: Electives
+  match:
+    - CS3218
+    - CS3240
+    - CS3249
+    - CS4240
+    - CS4243
+    - CS4249
+    - CS4351
+    - CS5237
+    - CS5240
+    - CS5343
+    - CS5346
