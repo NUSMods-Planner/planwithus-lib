@@ -9862,8 +9862,7 @@ var data$9 = { name:"Electrical Engineering (Hons)",
   elec:{ name:"Technical Electives",
     assign:[ "ee-hons-2021-robotics/spec/elec",
       "ee-hons-2021-iot/spec/core",
-      "ee-hons-2021-iot/spec/elec",
-      "ee-hons-2021-de/minor/elec" ],
+      "ee-hons-2021-iot/spec/elec" ],
     satisfy:[ { mc:">=8" },
       { mc:"<=8" } ] } };
 data$9.name;
