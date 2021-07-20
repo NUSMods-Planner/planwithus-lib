@@ -2073,7 +2073,7 @@ const codegen_1 = codegen;
 const util_1 = util;
 const names_1 = names$1;
 exports.keywordError = {
-    message: ({ keyword }) => codegen_1.str `should pass "${keyword}" keyword validation`,
+    message: ({ keyword }) => codegen_1.str `must pass "${keyword}" keyword validation`,
 };
 exports.keyword$DataError = {
     message: ({ keyword, schemaType }) => schemaType
