@@ -1,0 +1,41 @@
+name: "Electrical Engineering (Hons) with Internet of Things (IoT) specialisation"
+ay: 2021
+isSelectable: true
+url: https://www.eng.nus.edu.sg/ece/undergraduate/electrical-engineering/new-specializations-and-minor/new-specialization-internet-of-things-iot/
+assign:
+  - ulr-2021
+  - ee-hons-2021/common
+  - ee-hons-2021/core
+  - ee-hons-2021/major
+  - spec
+satisfy:
+  - ulr-2021
+  - ee-hons-2021/common
+  - ee-hons-2021/core
+  - ee-hons-2021/major
+  - spec
+
+spec:
+  name: Specialisation (IoT)
+  info: "You may either read 12 MCs of IoT electives and complete a FYP in the area of IoT, or read 20 MCs of IoT electives. Please refer to the curriculum for more details."
+  assign: [core, elec]
+  satisfy:
+    - mc: ">=12"
+
+  core:
+    name: Core modules
+    match: [CS3237, EE4211, EE4409]
+
+  elec:
+    name: Electives
+    match:
+      - or:
+          - C4222
+          - EE5132
+      - EE4204
+      - EE4218
+      - CS3244
+      - CS4276
+      - CS5272
+      - pattern: CP4106
+        info: "CP4106 Computing Project should be linked to IoT in order to fulfil the specialisation requirements."

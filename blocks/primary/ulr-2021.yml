@@ -1,0 +1,42 @@
+name: University Level Requirements
+ay: 2021
+url: https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/general-education/faqs-for-students-admitted-from-ay2021-22
+assign: [gec, gex, gea, gei, gess, gen]
+satisfy:
+  - mc: ">=24"
+
+gec:
+  name: Cultures and Connections
+  match: "GEC*"
+  satisfy:
+    - mc: "<=4"
+
+gex:
+  name: Critique and Expression
+  match: "GEX*"
+  satisfy:
+    - mc: "<=4"
+
+gea:
+  name: Data Literacy
+  match: "GEA*"
+  satisfy:
+    - mc: "<=4"
+
+gei:
+  name: Digital Literacy
+  match: "GEI*"
+  satisfy:
+    - mc: "<=4"
+
+gess:
+  name: Singapore Studies
+  match: "GESS*"
+  satisfy:
+    - mc: "<=4"
+
+gen:
+  name: Communities and Engagement
+  match: "GEN*"
+  satisfy:
+    - mc: "<=4"
