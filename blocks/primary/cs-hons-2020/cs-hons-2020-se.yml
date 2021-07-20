@@ -1,0 +1,32 @@
+name: Focus Area (Software Engineering)
+assign: ["prim-match/prim", elec]
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=8" # CS2103/T fulfils primary requirements
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS3219
+      - CS4211
+      - CS4218
+      - CS4239
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
+
+elec:
+  name: Electives
+  match:
+    - CS3216
+    - CS3217
+    - CS3226
+    - CS3234
+    - CS5219
+    - CS5232
+    - CS5272

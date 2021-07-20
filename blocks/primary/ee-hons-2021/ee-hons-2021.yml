@@ -1,0 +1,63 @@
+name: "Electrical Engineering (Hons)"
+ay: 2021
+isSelectable: true
+url: https://www.eng.nus.edu.sg/ece/undergraduate/electrical-engineering/ee-curriculum-structure-ay2021-22/
+assign: [ulr-2021, common, core, major, elec]
+satisfy: [ulr-2021, common, core, major, elec]
+
+common:
+  name: Common Curriculum
+  info: "The 'Creating Narratives' requirement is TBC. Please refer to the curriculum for more details."
+  match:
+    - DTK1234
+    - EG1311
+    - IE2141
+    - EE2211
+    - EG2501
+    - PF1101
+    - or:
+        - EE4002D
+        - EE4002R
+  satisfy:
+    - mc:
+        ">=32" # to be updated to 36 when the Creating Narratives requirement
+        # is confirmed
+    - mc: "<=32"
+
+core:
+  name: Engineering Core
+  match:
+    - MA1511
+    - MA1512
+    - MA1508E
+    - EG2401A
+    - EG3611A
+  satisfy:
+    - mc: ">=20"
+
+major:
+  name: Major Programme
+  match:
+    - EE1111A
+    - EE2111A
+    - EE2012
+    - EE2023
+    - or:
+        - EE2026
+        - EE2028
+    - EE2027
+    - EE2022
+    - PC2020
+  satisfy:
+    - mc: ">=40"
+
+elec:
+  name: Technical Electives
+  assign:
+    - ee-hons-2021-robotics/spec/elec
+    - ee-hons-2021-iot/spec/core
+    - ee-hons-2021-iot/spec/elec
+    - ee-hons-2021-de/minor/elec
+  satisfy:
+    - mc: ">=8"
+    - mc: "<=8"

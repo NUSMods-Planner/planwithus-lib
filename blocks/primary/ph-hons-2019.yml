@@ -1,0 +1,84 @@
+name: "Physics (Hons)"
+ay: 2019
+isSelectable: true
+url: https://www.physics.nus.edu.sg/student/major-in-physics-before-ay2021-22/
+assign: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015]
+satisfy: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015]
+
+1k:
+  name: Level-1000 modules
+  match: [PC1141, PC1142, PC1143, PC1144, MA1101R, MA1102R]
+  satisfy:
+    - mc: ">=24"
+
+2k:
+  name: Level-2000 modules
+  match: [PC2130, PC2131, PC2132, PC2134, PC2193, PC2230]
+  satisfy:
+    - mc: ">=24"
+
+3k-4k:
+  name: Level-3000 and above modules
+  # 4k electives can be taken in place of 3k electives
+  assign: [3k-core, 3k-elec, 4k-core, 4k-elec]
+  satisfy:
+    - mc: ">=49"
+    - mc: "<=52"
+
+  3k-core:
+    name: Level-3000 core modules
+    match: [PC3130, PC3193]
+    satisfy:
+      - mc: ">=8"
+
+  3k-elec:
+    name: Level-3000 electives
+    match:
+      - PC3231
+      - PC3232
+      - PC3233
+      - PC3235
+      - PC3236
+      - PC3238
+      - PC3241
+      - PC3242
+      - PC3243
+      - PC3246
+      - PC3247
+      - PC3251
+      - PC3267
+      - PC3270
+      - PC3274
+      - PC3239
+      - PC3288
+      - PC3289
+      - PC3294
+      - PC3295
+
+  4k-core:
+    name: Level-4000 core modules
+    match: PC4199
+    satisfy:
+      - mc: ">=12"
+
+  4k-elec:
+    name: Level-4000 electives
+    match:
+      - PC4228
+      - PC4230
+      - PC4236
+      - PC4240
+      - PC4241
+      - PC4242
+      - PC4243
+      - PC4245
+      - PC4246
+      - PC4248
+      - PC4249
+      - PC4253
+      - PC4259
+      - PC4262
+      - PC4264
+      - PC4267
+      - PC4268
+      - PC4274

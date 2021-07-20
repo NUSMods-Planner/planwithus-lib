@@ -1,0 +1,39 @@
+name: "Electrical Engineering (Hons) with Robotics specialisation"
+ay: 2021
+isSelectable: true
+url: https://www.eng.nus.edu.sg/ece/undergraduate/electrical-engineering/new-specializations-and-minor/new-specialisation-robotics/
+assign:
+  - ulr-2021
+  - ee-hons-2021/common
+  - ee-hons-2021/core
+  - ee-hons-2021/major
+  - spec
+satisfy:
+  - ulr-2021
+  - ee-hons-2021/common
+  - ee-hons-2021/core
+  - ee-hons-2021/major
+  - spec
+
+spec:
+  name: Specialisation (Robotics)
+  info: "You may either read 12 MCs of Robotics electives and complete a FYP in the area of Robotics, or read 20 MCs of Robotics electives. Please refer to the curriculum for more details."
+  assign: elec
+  satisfy:
+    - mc: ">=12"
+
+  elec:
+    name: Electives
+    match:
+      - BN4203
+      - BN4601
+      - or:
+          - EE3305
+          - ME3243
+      - EE4305
+      - EE4308
+      - EE4309
+      - EE4705
+      - ME4242
+      - ME4245
+      - ME5406

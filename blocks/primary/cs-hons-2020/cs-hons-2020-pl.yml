@@ -1,0 +1,31 @@
+name: Focus Area (Programming Languages)
+assign: ["prim-match/prim", elec]
+
+prim-match:
+  assign: prim
+  satisfy:
+    - mc: ">=12"
+    - 4k
+
+  prim:
+    name: Primaries
+    match:
+      - CS2104
+      - CS3211
+      - CS4212
+      - CS4215
+
+  4k:
+    match: ["*4xxx*", "*5xxx*", "*6xxx*"]
+    satisfy:
+      - mc: ">=4"
+
+elec:
+  name: Electives
+  match:
+    - CS3234
+    - CS4216
+    - CS5232
+    - CS5214
+    - CS5215
+    - CS5218
