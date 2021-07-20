@@ -9305,7 +9305,7 @@ const parse = (block) => {
     return block;
 };
 
-var data$8 = { name:"Computer Science (Hons)",
+var data$l = { name:"Computer Science (Hons)",
   ay:2020,
   isSelectable:true,
   url:"https://www.comp.nus.edu.sg/programmes/ug/cs/curr/",
@@ -9424,18 +9424,18 @@ var data$8 = { name:"Computer Science (Hons)",
           "PC1431",
           "PC1433" ] } ],
     satisfy:[ { mc:">=16" } ] } };
-data$8.name;
-data$8.ay;
-data$8.isSelectable;
-data$8.url;
-data$8.assign;
-data$8.satisfy;
-data$8.info;
-data$8.found;
-data$8.bd;
-data$8.ind;
+data$l.name;
+data$l.ay;
+data$l.isSelectable;
+data$l.url;
+data$l.assign;
+data$l.satisfy;
+data$l.info;
+data$l.found;
+data$l.bd;
+data$l.ind;
 
-var data$7 = { name:"Focus Area (Artificial Intelligence)",
+var data$k = { name:"Focus Area (Artificial Intelligence)",
   assign:[ "prim-match/prim",
     "elec" ],
   "prim-match":{ assign:"prim",
@@ -9464,11 +9464,11 @@ var data$7 = { name:"Focus Area (Artificial Intelligence)",
       "CS5260",
       "CS5340",
       "CS5339" ] } };
-data$7.name;
-data$7.assign;
-data$7.elec;
+data$k.name;
+data$k.assign;
+data$k.elec;
 
-var data$6 = { name:"Focus Area (Algorithms & Theory)",
+var data$j = { name:"Focus Area (Algorithms & Theory)",
   assign:[ "prim-match/prim",
     "elec" ],
   "prim-match":{ assign:"prim",
@@ -9496,11 +9496,230 @@ var data$6 = { name:"Focus Area (Algorithms & Theory)",
       "CS5237",
       "CS5238",
       "CS5330" ] } };
-data$6.name;
-data$6.assign;
-data$6.elec;
+data$j.name;
+data$j.assign;
+data$j.elec;
 
-var data$5 = { name:"Data Science and Analytics (Hons)",
+var data$i = { name:"Focus Area (Computer Graphics and Games)",
+  assign:[ "prim-match/prim",
+    "elec" ],
+  "prim-match":{ assign:"prim",
+    satisfy:[ { mc:">=12" },
+      "4k" ],
+    prim:{ name:"Primaries",
+      match:[ "CS3241",
+        "CS3242",
+        "CS3247",
+        "CS4247",
+        "CS4350" ] },
+    "4k":{ match:[ "*4xxx*",
+        "*5xxx*",
+        "*6xxx*" ],
+      satisfy:[ { mc:">=4" } ] } },
+  elec:{ name:"Electives",
+    match:[ "CS3218",
+      "CS3240",
+      "CS3249",
+      "CS4240",
+      "CS4243",
+      "CS4249",
+      "CS4351",
+      "CS5237",
+      "CS5240",
+      "CS5343",
+      "CS5346" ] } };
+data$i.name;
+data$i.assign;
+data$i.elec;
+
+var data$h = { name:"Focus Area (Computer Security)",
+  assign:[ "prim-match/prim",
+    "elec" ],
+  "prim-match":{ assign:"prim",
+    satisfy:[ { mc:">=12" },
+      "4k" ],
+    prim:{ name:"Primaries",
+      match:[ "CS2107",
+        "CS3235",
+        "CS4236",
+        "CS4238",
+        "CS4239" ] },
+    "4k":{ match:[ "*4xxx*",
+        "*5xxx*",
+        "*6xxx*" ],
+      satisfy:[ { mc:">=4" } ] } },
+  elec:{ name:"Electives",
+    match:[ "CS3221",
+      "CS4257",
+      "CS4276",
+      "CS5231",
+      "CS5250",
+      "CS5321",
+      "CS5322",
+      "CS5331",
+      "CS5332",
+      "IFS4101",
+      "IFS4102",
+      "IFS4103" ] } };
+data$h.name;
+data$h.assign;
+data$h.elec;
+
+var data$g = { name:"Focus Area (Database Systems)",
+  assign:[ "prim-match/prim",
+    "elec" ],
+  "prim-match":{ assign:"prim",
+    satisfy:[ { mc:">=12" },
+      "4k" ],
+    prim:{ name:"Primaries",
+      match:[ "CS2102",
+        "CS3223",
+        "CS4221",
+        "CS4224",
+        "CS4225" ] },
+    "4k":{ match:[ "*4xxx*",
+        "*5xxx*",
+        "*6xxx*" ],
+      satisfy:[ { mc:">=4" } ] } },
+  elec:{ name:"Electives",
+    match:[ "CS4220",
+      "CS5226",
+      "CS5228",
+      "CS5322" ] } };
+data$g.name;
+data$g.assign;
+data$g.elec;
+
+var data$f = { name:"Focus Area (Multimedia Information Retrieval)",
+  assign:[ "prim-match/prim",
+    "elec" ],
+  "prim-match":{ assign:"prim",
+    satisfy:[ { mc:">=12" },
+      "4k" ],
+    prim:{ name:"Primaries",
+      match:[ "CS2108",
+        "CS3245",
+        "CS4242",
+        "CS4248",
+        "CS4347" ] },
+    "4k":{ match:[ "*4xxx*",
+        "*5xxx*",
+        "*6xxx*" ],
+      satisfy:[ { mc:">=4" } ] } },
+  elec:{ name:"Electives",
+    match:[ "CS5246",
+      "CS5241" ] } };
+data$f.name;
+data$f.assign;
+data$f.elec;
+
+var data$e = { name:"Focus Area (Networking and Distributed Systems)",
+  assign:[ "prim-match/prim",
+    "elec" ],
+  "prim-match":{ assign:"prim",
+    satisfy:[ { mc:">=12" },
+      "4k" ],
+    prim:{ name:"Primaries",
+      match:[ "CS2105",
+        "CS3103",
+        "CS4222",
+        "CS4226",
+        "CS4231" ] },
+    "4k":{ match:[ "*4xxx*",
+        "*5xxx*",
+        "*6xxx*" ],
+      satisfy:[ { mc:">=4" } ] } },
+  elec:{ name:"Electives",
+    match:[ "CS3237",
+      "CS4344",
+      "CS5223",
+      "CS5224",
+      "CS5229",
+      "CS5248",
+      "CS5321" ] } };
+data$e.name;
+data$e.assign;
+data$e.elec;
+
+var data$d = { name:"Focus Area (Parallel Computing)",
+  assign:[ "prim-match/prim",
+    "elec" ],
+  "prim-match":{ assign:"prim",
+    satisfy:[ { mc:">=12" },
+      "4k" ],
+    prim:{ name:"Primaries",
+      match:[ "CS3210",
+        "CS3211",
+        "CS4231",
+        "CS4223" ] },
+    "4k":{ match:[ "*4xxx*",
+        "*5xxx*",
+        "*6xxx*" ],
+      satisfy:[ { mc:">=4" } ] } },
+  elec:{ name:"Electives",
+    match:[ "CS5222",
+      "CS5223",
+      "CS5224",
+      "CS5239",
+      "CS5250" ] } };
+data$d.name;
+data$d.assign;
+data$d.elec;
+
+var data$c = { name:"Focus Area (Programming Languages)",
+  assign:[ "prim-match/prim",
+    "elec" ],
+  "prim-match":{ assign:"prim",
+    satisfy:[ { mc:">=12" },
+      "4k" ],
+    prim:{ name:"Primaries",
+      match:[ "CS2104",
+        "CS3211",
+        "CS4212",
+        "CS4215" ] },
+    "4k":{ match:[ "*4xxx*",
+        "*5xxx*",
+        "*6xxx*" ],
+      satisfy:[ { mc:">=4" } ] } },
+  elec:{ name:"Electives",
+    match:[ "CS3234",
+      "CS4216",
+      "CS5232",
+      "CS5214",
+      "CS5215",
+      "CS5218" ] } };
+data$c.name;
+data$c.assign;
+data$c.elec;
+
+var data$b = { name:"Focus Area (Software Engineering)",
+  assign:[ "prim-match/prim",
+    "elec" ],
+  "prim-match":{ assign:"prim",
+    satisfy:[ { mc:">=8" },
+      "4k" ],
+    prim:{ name:"Primaries",
+      match:[ "CS3219",
+        "CS4211",
+        "CS4218",
+        "CS4239" ] },
+    "4k":{ match:[ "*4xxx*",
+        "*5xxx*",
+        "*6xxx*" ],
+      satisfy:[ { mc:">=4" } ] } },
+  elec:{ name:"Electives",
+    match:[ "CS3216",
+      "CS3217",
+      "CS3226",
+      "CS3234",
+      "CS5219",
+      "CS5232",
+      "CS5272" ] } };
+data$b.name;
+data$b.assign;
+data$b.elec;
+
+var data$a = { name:"Data Science and Analytics (Hons)",
   ay:2017,
   isSelectable:true,
   url:"https://www.stat.nus.edu.sg/current-students/undergraduate-programme/programme-structure/",
@@ -9589,14 +9808,155 @@ var data$5 = { name:"Data Science and Analytics (Hons)",
             "CS4234",
             "MA4230",
             "MA4270" ] } } } } };
-data$5.name;
-data$5.ay;
-data$5.isSelectable;
-data$5.url;
-data$5.assign;
-data$5.satisfy;
+data$a.name;
+data$a.ay;
+data$a.isSelectable;
+data$a.url;
+data$a.assign;
+data$a.satisfy;
 
-var data$4 = { name:"Faculty of Science Requirements",
+var data$9 = { name:"Electrical Engineering (Hons)",
+  ay:2021,
+  isSelectable:true,
+  url:"https://www.eng.nus.edu.sg/ece/undergraduate/electrical-engineering/ee-curriculum-structure-ay2021-22/",
+  assign:[ "ulr-2021",
+    "common",
+    "core",
+    "major",
+    "elec" ],
+  satisfy:[ "ulr-2021",
+    "common",
+    "core",
+    "major",
+    "elec" ],
+  common:{ name:"Common Curriculum",
+    info:"The 'Creating Narratives' requirement is TBC. Please refer to the curriculum for more details.",
+    match:[ "DTK1234",
+      "EG1311",
+      "IE2141",
+      "EE2211",
+      "EG2501",
+      "PF1101",
+      { or:[ "EE4002D",
+          "EE4002R" ] } ],
+    satisfy:[ { mc:">=32" },
+      { mc:"<=32" } ] },
+  core:{ name:"Engineering Core",
+    match:[ "MA1511",
+      "MA1512",
+      "MA1508E",
+      "EG2401A",
+      "EG3611A" ],
+    satisfy:[ { mc:">=20" } ] },
+  major:{ name:"Major Programme",
+    match:[ "EE1111A",
+      "EE2111A",
+      "EE2012",
+      "EE2023",
+      { or:[ "EE2026",
+          "EE2028" ] },
+      "EE2027",
+      "EE2022",
+      "PC2020" ],
+    satisfy:[ { mc:">=40" } ] },
+  elec:{ name:"Technical Electives",
+    assign:[ "ee-hons-2021-robotics/spec/elec",
+      "ee-hons-2021-iot/spec/core",
+      "ee-hons-2021-iot/spec/elec",
+      "ee-hons-2021-de/minor/elec" ],
+    satisfy:[ { mc:">=8" },
+      { mc:"<=8" } ] } };
+data$9.name;
+data$9.ay;
+data$9.isSelectable;
+data$9.url;
+data$9.assign;
+data$9.satisfy;
+data$9.common;
+data$9.core;
+data$9.major;
+data$9.elec;
+
+var data$8 = { name:"Electrical Engineering (Hons) with Internet of Things (IoT) specialisation",
+  ay:2021,
+  isSelectable:true,
+  url:"https://www.eng.nus.edu.sg/ece/undergraduate/electrical-engineering/new-specializations-and-minor/new-specialization-internet-of-things-iot/",
+  assign:[ "ulr-2021",
+    "ee-hons-2021/common",
+    "ee-hons-2021/core",
+    "ee-hons-2021/major",
+    "spec" ],
+  satisfy:[ "ulr-2021",
+    "ee-hons-2021/common",
+    "ee-hons-2021/core",
+    "ee-hons-2021/major",
+    "spec" ],
+  spec:{ name:"Specialisation (IoT)",
+    info:"You may either read 12 MCs of IoT electives and complete a FYP in the area of IoT, or read 20 MCs of IoT electives. Please refer to the curriculum for more details.",
+    assign:[ "core",
+      "elec" ],
+    satisfy:[ { mc:">=12" } ],
+    core:{ name:"Core modules",
+      match:[ "CS3237",
+        "EE4211",
+        "EE4409" ] },
+    elec:{ name:"Electives",
+      match:[ { or:[ "C4222",
+            "EE5132" ] },
+        "EE4204",
+        "EE4218",
+        "CS3244",
+        "CS4276",
+        "CS5272",
+        { pattern:"CP4106",
+          info:"CP4106 Computing Project should be linked to IoT in order to fulfil the specialisation requirements." } ] } } };
+data$8.name;
+data$8.ay;
+data$8.isSelectable;
+data$8.url;
+data$8.assign;
+data$8.satisfy;
+data$8.spec;
+
+var data$7 = { name:"Electrical Engineering (Hons) with Robotics specialisation",
+  ay:2021,
+  isSelectable:true,
+  url:"https://www.eng.nus.edu.sg/ece/undergraduate/electrical-engineering/new-specializations-and-minor/new-specialisation-robotics/",
+  assign:[ "ulr-2021",
+    "ee-hons-2021/common",
+    "ee-hons-2021/core",
+    "ee-hons-2021/major",
+    "spec" ],
+  satisfy:[ "ulr-2021",
+    "ee-hons-2021/common",
+    "ee-hons-2021/core",
+    "ee-hons-2021/major",
+    "spec" ],
+  spec:{ name:"Specialisation (Robotics)",
+    info:"You may either read 12 MCs of Robotics electives and complete a FYP in the area of Robotics, or read 20 MCs of Robotics electives. Please refer to the curriculum for more details.",
+    assign:"elec",
+    satisfy:[ { mc:">=12" } ],
+    elec:{ name:"Electives",
+      match:[ "BN4203",
+        "BN4601",
+        { or:[ "EE3305",
+            "ME3243" ] },
+        "EE4305",
+        "EE4308",
+        "EE4309",
+        "EE4705",
+        "ME4242",
+        "ME4245",
+        "ME5406" ] } } };
+data$7.name;
+data$7.ay;
+data$7.isSelectable;
+data$7.url;
+data$7.assign;
+data$7.satisfy;
+data$7.spec;
+
+var data$6 = { name:"Faculty of Science Requirements",
   ay:2015,
   url:"https://www.science.nus.edu.sg/wp-content/uploads/2019/11/FacultyRequirements.pdf",
   assign:[ "comp",
@@ -9656,19 +10016,19 @@ var data$4 = { name:"Faculty of Science Requirements",
       "SP4263",
       "SP4264",
       "SP4265" ] } };
-data$4.name;
-data$4.ay;
-data$4.url;
-data$4.assign;
-data$4.info;
-data$4.comp;
-data$4.chem;
-data$4.life;
-data$4.mss;
-data$4.phy;
-data$4.misc;
+data$6.name;
+data$6.ay;
+data$6.url;
+data$6.assign;
+data$6.info;
+data$6.comp;
+data$6.chem;
+data$6.life;
+data$6.mss;
+data$6.phy;
+data$6.misc;
 
-var data$3 = { name:"Mathematics (Hons)",
+var data$5 = { name:"Mathematics (Hons)",
   ay:2019,
   isSelectable:true,
   url:"https://www.math.nus.edu.sg/undergraduates/major-minor-programmes/cohort-2020-2021-and-earlier/ma-major/",
@@ -9797,17 +10157,110 @@ var data$3 = { name:"Mathematics (Hons)",
       "PC5274",
       "ST4238",
       "ST4245" ] } };
-data$3.name;
-data$3.ay;
-data$3.isSelectable;
-data$3.url;
-data$3.assign;
-data$3.satisfy;
-data$3.ii;
-data$3.iii;
-data$3.iv;
+data$5.name;
+data$5.ay;
+data$5.isSelectable;
+data$5.url;
+data$5.assign;
+data$5.satisfy;
+data$5.ii;
+data$5.iii;
+data$5.iv;
 
-var data$2 = { name:"University Level Requirements",
+var data$4 = { name:"Physics (Hons)",
+  ay:2019,
+  isSelectable:true,
+  url:"https://www.physics.nus.edu.sg/student/major-in-physics-before-ay2021-22/",
+  assign:[ "ulr-2015",
+    "1k",
+    "2k",
+    "3k",
+    "4k",
+    "fos-2015" ],
+  satisfy:[ "ulr-2015",
+    "1k",
+    "2k",
+    "3k",
+    "4k",
+    "fos-2015" ],
+  "1k":{ name:"Level-1000 modules",
+    match:[ "PC1141",
+      "PC1142",
+      "PC1143",
+      "PC1144",
+      "MA1101R",
+      "MA1102R" ],
+    satisfy:[ { mc:">=24" } ] },
+  "2k":{ name:"Level-2000 modules",
+    match:[ "PC2130",
+      "PC2131",
+      "PC2132",
+      "PC2134",
+      "PC2193",
+      "PC2230" ],
+    satisfy:[ { mc:">=24" } ] },
+  "3k-4k":{ name:"Level-3000 and above modules",
+    assign:[ "3k-core",
+      "3k-elec",
+      "4k-core",
+      "4k-elec" ],
+    satisfy:[ { mc:">=49" },
+      { mc:"<=52" } ],
+    "3k-core":{ name:"Level-3000 core modules",
+      match:[ "PC3130",
+        "PC3193" ],
+      satisfy:[ { mc:">=8" } ] },
+    "3k-elec":{ name:"Level-3000 electives",
+      match:[ "PC3231",
+        "PC3232",
+        "PC3233",
+        "PC3235",
+        "PC3236",
+        "PC3238",
+        "PC3241",
+        "PC3242",
+        "PC3243",
+        "PC3246",
+        "PC3247",
+        "PC3251",
+        "PC3267",
+        "PC3270",
+        "PC3274",
+        "PC3239",
+        "PC3288",
+        "PC3289",
+        "PC3294",
+        "PC3295" ] },
+    "4k-core":{ name:"Level-4000 core modules",
+      match:"PC4199",
+      satisfy:[ { mc:">=12" } ] },
+    "4k-elec":{ name:"Level-4000 electives",
+      match:[ "PC4228",
+        "PC4230",
+        "PC4236",
+        "PC4240",
+        "PC4241",
+        "PC4242",
+        "PC4243",
+        "PC4245",
+        "PC4246",
+        "PC4248",
+        "PC4249",
+        "PC4253",
+        "PC4259",
+        "PC4262",
+        "PC4264",
+        "PC4267",
+        "PC4268",
+        "PC4274" ] } } };
+data$4.name;
+data$4.ay;
+data$4.isSelectable;
+data$4.url;
+data$4.assign;
+data$4.satisfy;
+
+var data$3 = { name:"University Level Requirements",
   ay:2015,
   url:"https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/general-education/five-pillars",
   assign:[ "geh",
@@ -9831,16 +10284,56 @@ var data$2 = { name:"University Level Requirements",
   get:{ name:"Thinking and Expression",
     match:"GET*",
     satisfy:[ { mc:"<=4" } ] } };
+data$3.name;
+data$3.ay;
+data$3.url;
+data$3.assign;
+data$3.satisfy;
+data$3.geh;
+data$3.geq;
+data$3.ger;
+data$3.ges;
+data$3.get;
+
+var data$2 = { name:"University Level Requirements",
+  ay:2021,
+  url:"https://www.nus.edu.sg/registrar/academic-information-policies/undergraduate-students/general-education/faqs-for-students-admitted-from-ay2021-22",
+  assign:[ "gec",
+    "gex",
+    "gea",
+    "gei",
+    "gess",
+    "gen" ],
+  satisfy:[ { mc:">=24" } ],
+  gec:{ name:"Cultures and Connections",
+    match:"GEC*",
+    satisfy:[ { mc:"<=4" } ] },
+  gex:{ name:"Critique and Expression",
+    match:"GEX*",
+    satisfy:[ { mc:"<=4" } ] },
+  gea:{ name:"Data Literacy",
+    match:"GEA*",
+    satisfy:[ { mc:"<=4" } ] },
+  gei:{ name:"Digital Literacy",
+    match:"GEI*",
+    satisfy:[ { mc:"<=4" } ] },
+  gess:{ name:"Singapore Studies",
+    match:"GESS*",
+    satisfy:[ { mc:"<=4" } ] },
+  gen:{ name:"Communities and Engagement",
+    match:"GEN*",
+    satisfy:[ { mc:"<=4" } ] } };
 data$2.name;
 data$2.ay;
 data$2.url;
 data$2.assign;
 data$2.satisfy;
-data$2.geh;
-data$2.geq;
-data$2.ger;
-data$2.ges;
-data$2.get;
+data$2.gec;
+data$2.gex;
+data$2.gea;
+data$2.gei;
+data$2.gess;
+data$2.gen;
 
 var data$1 = { name:"Mathematics (2nd Major)",
   ay:2019,
@@ -9944,13 +10437,26 @@ const loadBlock = (blockYaml) => {
 };
 
 const primary = {
-  ["cs-hons-2020"]: loadBlock(data$8),
-  ["cs-hons-2020-ai"]: loadBlock(data$7),
-  ["cs-hons-2020-alg"]: loadBlock(data$6),
-  ["dsa-hons-2017"]: loadBlock(data$5),
-  ["fos-2015"]: loadBlock(data$4),
-  ["ma-hons-2019"]: loadBlock(data$3),
-  ["ulr-2015"]: loadBlock(data$2),
+  ["cs-hons-2020"]: loadBlock(data$l),
+  ["cs-hons-2020-ai"]: loadBlock(data$k),
+  ["cs-hons-2020-alg"]: loadBlock(data$j),
+  ["cs-hons-2020-cgg"]: loadBlock(data$i),
+  ["cs-hons-2020-cs"]: loadBlock(data$h),
+  ["cs-hons-2020-ds"]: loadBlock(data$g),
+  ["cs-hons-2020-mir"]: loadBlock(data$f),
+  ["cs-hons-2020-nds"]: loadBlock(data$e),
+  ["cs-hons-2020-pc"]: loadBlock(data$d),
+  ["cs-hons-2020-pl"]: loadBlock(data$c),
+  ["cs-hons-2020-se"]: loadBlock(data$b),
+  ["ee-hons-2021-"]: loadBlock(data$9),
+  ["ee-hons-2021-iot"]: loadBlock(data$8),
+  ["ee-hons-2021-robotics"]: loadBlock(data$7),
+  ["dsa-hons-2017"]: loadBlock(data$a),
+  ["fos-2015"]: loadBlock(data$6),
+  ["ma-hons-2019"]: loadBlock(data$5),
+  ["ph-hons-2019"]: loadBlock(data$4),
+  ["ulr-2015"]: loadBlock(data$3),
+  ["ulr-2021"]: loadBlock(data$2),
 };
 
 const second = {
