@@ -41,7 +41,7 @@ export const primary = {
   ["cs-hons-2020-pc"]: loadBlock(cs_hons_2020_pc),
   ["cs-hons-2020-pl"]: loadBlock(cs_hons_2020_pl),
   ["cs-hons-2020-se"]: loadBlock(cs_hons_2020_se),
-  ["ee-hons-2021-"]: loadBlock(ee_hons_2021),
+  ["ee-hons-2021"]: loadBlock(ee_hons_2021),
   ["ee-hons-2021-iot"]: loadBlock(ee_hons_2021_iot),
   ["ee-hons-2021-robotics"]: loadBlock(ee_hons_2021_robotics),
   ["dsa-hons-2017"]: loadBlock(dsa_hons_2017),

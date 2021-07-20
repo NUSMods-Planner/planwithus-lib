@@ -10448,7 +10448,7 @@ const primary = {
   ["cs-hons-2020-pc"]: loadBlock(data$d),
   ["cs-hons-2020-pl"]: loadBlock(data$c),
   ["cs-hons-2020-se"]: loadBlock(data$b),
-  ["ee-hons-2021-"]: loadBlock(data$9),
+  ["ee-hons-2021"]: loadBlock(data$9),
   ["ee-hons-2021-iot"]: loadBlock(data$8),
   ["ee-hons-2021-robotics"]: loadBlock(data$7),
   ["dsa-hons-2017"]: loadBlock(data$a),
