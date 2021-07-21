@@ -2,8 +2,8 @@ name: "Physics (Hons)"
 ay: 2019
 isSelectable: true
 url: https://www.physics.nus.edu.sg/student/major-in-physics-before-ay2021-22/
-assign: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015]
-satisfy: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015]
+assign: [ulr-2015, 1k, 2k, 3k-4k, fos-2015]
+satisfy: [ulr-2015, 1k, 2k, 3k-4k, fos-2015]
 
 1k:
   name: Level-1000 modules
