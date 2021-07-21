@@ -9817,7 +9817,6 @@ data$a.satisfy;
 
 var data$9 = { name:"Electrical Engineering (Hons)",
   ay:2021,
-  isSelectable:true,
   url:"https://www.eng.nus.edu.sg/ece/undergraduate/electrical-engineering/ee-curriculum-structure-ay2021-22/",
   assign:[ "ulr-2021",
     "common",
@@ -9867,7 +9866,6 @@ var data$9 = { name:"Electrical Engineering (Hons)",
       { mc:"<=8" } ] } };
 data$9.name;
 data$9.ay;
-data$9.isSelectable;
 data$9.url;
 data$9.assign;
 data$9.satisfy;
