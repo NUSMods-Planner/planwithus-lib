@@ -30,7 +30,7 @@ satisfy: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015]
       - or: [MA2216, MA2116, ST2131]
 
   2k-add:
-    assign: [ii, iii, iv]
+    assign: [ma-hons-2019/ii, ma-hons-2019/iii, ma-hons-2019/iv]
     satisfy:
       - mc: "<=5" # 1 module that is <= 5 MCs
 
@@ -58,13 +58,13 @@ satisfy: [ulr-2015, 1k, 2k, 3k, 4k, fos-2015]
       - mc: ">=12"
 
   3k-add:
-    assign: [iii, iv]
+    assign: [ma-hons-2019/iii, ma-hons-2019/iv]
     satisfy:
       - mc: "<=10" # 2 modules that are <= 5 MCs each
 
 4k:
   name: Level-4000 modules
-  assign: [ma4, iv]
+  assign: [ma4, ma-hons-2019/iv]
   satisfy:
     - mc: ">=20"
 
