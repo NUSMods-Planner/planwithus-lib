@@ -1,6 +1,5 @@
 name: "Electrical Engineering (Hons)"
 ay: 2021
-isSelectable: true
 url: https://www.eng.nus.edu.sg/ece/undergraduate/electrical-engineering/ee-curriculum-structure-ay2021-22/
 assign: [ulr-2021, common, core, major, elec]
 satisfy: [ulr-2021, common, core, major, elec]
