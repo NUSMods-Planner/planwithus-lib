@@ -33,7 +33,7 @@ satisfy: [1k, 2k, 3k-above]
       - mc: ">=10" # if MA1513 is taken
 
   1k-add:
-    assign: [ma-hons-2019/ii, ma-hons-2019/iii, ma-hons-2019/iv]
+    assign: [ma-2019/ii, ma-2019/iii, ma-2019/iv]
 
 2k:
   name: Level-2000 modules
@@ -48,7 +48,7 @@ satisfy: [1k, 2k, 3k-above]
 
 3k-above:
   name: Level-3000 and above modules
-  assign: [ma-hons-2019/iii, ma-hons-2019/iv]
+  assign: [ma-2019/iii, ma-2019/iv]
   satisfy:
     - mc: ">=12"
     - ma-match
@@ -58,3 +58,61 @@ satisfy: [1k, 2k, 3k-above]
     match: "MA*"
     satisfy:
       - mc: ">=8"
+
+ii:
+  name: List II
+  match:
+    - pattern: MA2288
+      info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
+    - pattern: MA2289
+      info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
+    - pattern: "MA2xxx*"
+      exclude: "MA23xx*"
+    - PC2130
+    - PC2132
+    - ST2132
+    - EC2101
+
+iii:
+  name: List III
+  match:
+    - pattern: MA3288
+      info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
+    - pattern: MA3289
+      info: "At most one Mathematics UROPS module may be used to fulfil the requirements of Major in Mathematics."
+    - pattern: "MA3xxx*"
+      exclude: "MA33xx*"
+    - BSE3703
+    - CS3230
+    - CS3231
+    - CS3234
+    - DSA3102
+    - EC3101
+    - EC3303
+    - PC3130
+    - PC3236
+    - PC3238
+    - ST3131
+    - ST3236
+
+iv:
+  name: List IV
+  match:
+    - "MA4xxx*"
+    - "MA5xxx*"
+    - "MA6xxx*"
+    - CS4232
+    - CS4234
+    - CS4236
+    - CS5230
+    - CS5237
+    - DSA4211
+    - DSA4212
+    - EC4301
+    - EC5104
+    - EC5104R
+    - PC4248
+    - PC4274
+    - PC5274
+    - ST4238
+    - ST4245
