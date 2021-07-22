@@ -1,0 +1,50 @@
+name: "Statistics (2nd Major)"
+ay: 2019
+isSelectable: true
+url: https://www.stat.nus.edu.sg/current-students/undergraduate-programme/programme-structure/
+assign: [1k, 2k, 3k-above]
+satisfy:
+  - 1k
+  - 2k
+  - 3k-above
+  - mc: ">=40"
+  - mc: "<=42"
+
+1k:
+  name: Level-1000 modules
+  match:
+    - or: [CS1010, CS1010E, CS1010J, CS1010S, CS1010X, IT1007]
+    - or: [ST1131, ST1232]
+    - or: [MA1101R, MA2001, MA1508E, MA1513]
+    - or:
+        - MA1102R
+        - MA2002
+        - MA1505
+        - MA1507
+        - and: [MA1511, MA1512]
+        - MA1521
+  satisfy:
+    - mc: ">=14" # if MA1513 is used
+    - mc: "<=16"
+
+2k:
+  name: Level-2000 modules
+  match:
+    - or: [ST2131, MA2216, MA2116, ST2334]
+    - ST2132
+    - ST2137
+    - or: [MA2311, MA2104, MA2108, MA2108S]
+  satisfy:
+    - mc: ">=16"
+    - mc: "<=16"
+
+3k-above:
+  name: Level-3000 and above modules
+  match:
+    - ST3131
+    - pattern: ST32xx
+      exclude: ST328x
+    - pattern: ST42xx
+      exclude: ST4288
+  satisfy:
+    - mc: ">=8"
