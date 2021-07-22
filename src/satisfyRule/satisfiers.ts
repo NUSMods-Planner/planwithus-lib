@@ -67,7 +67,7 @@ const orSatisfyRuleSatisfier = (
     satisfyRuleSatisfier(prefix, dir, [ref, i].join("/"), rule)
   ),
   reduce: (results) => ({
-    isSatisfied: results.every(({ isSatisfied }) => isSatisfied),
+    isSatisfied: results.some(({ isSatisfied }) => isSatisfied),
   }),
   message: "modules were not satisfied by any rule",
 });
