@@ -74,7 +74,7 @@ const matchRuleSatisfier = (ref: string, match: Some<MatchRule>): Satisfier => {
   } else if ("or" in match) {
     return orMatchRuleSatisfier([ref, "or"].join("/"), match);
   } else {
-    throw new Error("match rule(s) is (are) not well-defined");
+    throw new Error("match rule is not well-defined");
   }
 };
 
