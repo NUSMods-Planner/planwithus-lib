@@ -232,7 +232,7 @@ const matchRuleSatisfier = (ref, match) => {
         return orMatchRuleSatisfier([ref, "or"].join("/"), match);
     }
     else {
-        throw new Error("match rule(s) is (are) not well-defined");
+        throw new Error("match rule is not well-defined");
     }
 };
 
@@ -602,7 +602,7 @@ const satisfyRuleSatisfier = (prefix, dir, ref, satisfy) => {
         return orSatisfyRuleSatisfier(prefix, dir, [ref, "or"].join("/"), satisfy);
     }
     else {
-        throw new Error("satisfy rule(s) is (are) not well-defined");
+        throw new Error("satisfy rule is not well-defined");
     }
 };
 

@@ -94,7 +94,7 @@ const satisfyRuleSatisfier = (
   } else if ("or" in satisfy) {
     return orSatisfyRuleSatisfier(prefix, dir, [ref, "or"].join("/"), satisfy);
   } else {
-    throw new Error("satisfy rule(s) is (are) not well-defined");
+    throw new Error("satisfy rule is not well-defined");
   }
 };
 
