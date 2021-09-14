@@ -1,249 +1,37 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>planwithus-lib</title>
-	<meta name="description" content="Documentation for planwithus-lib">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">planwithus-lib</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>planwithus-lib</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#planwithus-lib" id="planwithus-lib" style="color: inherit; text-decoration: none;">
-					<h1>planwithus-lib</h1>
-				</a>
-				<p><code>planwithus-lib</code> is a JavaScript library for course requirements specification and validation in plaNwithUS.</p>
-				<p>It is written in Typescript and uses <a href="https://ajv.js.org/">ajv</a>, a JSON Schema validator, along with <a href="https://github.com/nodeca/js-yaml">js-yaml</a> to parse course requirements in <a href="https://yaml.org/">YAML</a> format. The use of YAML ensures that course requirements can be written in a human friendly manner.</p>
-				<a href="#setup" id="setup" style="color: inherit; text-decoration: none;">
-					<h2>Setup</h2>
-				</a>
-				<p><code>planwithus-lib</code> requires Node 16. To install the required dependencies, run the following command in the root of the project directory:</p>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>planwithus-lib</title><meta name="description" content="Documentation for planwithus-lib"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">planwithus-lib</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>planwithus-lib</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#planwithus-lib" id="planwithus-lib" style="color: inherit; text-decoration: none;">
+  <h1>planwithus-lib</h1>
+</a>
+<p><code>planwithus-lib</code> is a JavaScript library for course requirements specification and validation in plaNwithUS.</p>
+<p>It is written in Typescript and uses <a href="https://ajv.js.org/">ajv</a>, a JSON Schema validator, along with <a href="https://github.com/nodeca/js-yaml">js-yaml</a> to parse course requirements in <a href="https://yaml.org/">YAML</a> format. The use of YAML ensures that course requirements can be written in a human friendly manner.</p>
+
+<a href="#setup" id="setup" style="color: inherit; text-decoration: none;">
+  <h2>Setup</h2>
+</a>
+<p><code>planwithus-lib</code> requires Node 16. To install the required dependencies, run the following command in the root of the project directory:</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">install</span>
 </code></pre>
-				<p>To build the repository, run:</p>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">run</span><span style="color: #000000"> </span><span style="color: #001080">build</span>
+<p>To build the repository, run:</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">build</span>
 </code></pre>
-				<p>This will call a script which runs the TypeScript compiler on the source code. Lastly, to test the code, run:</p>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">run</span><span style="color: #000000"> </span><span style="color: #001080">coverage</span>
+<p>This will call a script which runs the TypeScript compiler on the source code. Lastly, to test the code, run:</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">coverage</span>
 </code></pre>
-				<a href="#block-format" id="block-format" style="color: inherit; text-decoration: none;">
-					<h2>Block Format</h2>
-				</a>
-				<p>In <code>planwithus-lib</code>, course requirements are specified using the <a href="https://yaml.org/">YAML</a> format and validated by schemas written in <a href="https://json-schema.org/">JSON Schema</a>.</p>
-				<p>For more details on the course requirement specification, please refer to the documentation for <a href="https://wei2912.github.io/planwithus-lib/docs/modules/index.html">index.ts</a>. While the specification is meant to be exhaustive, it is likely that users will not require all of these constructs to build up their course requirements. Users are recommended to learn the syntax by referring to any of the <a href="https://github.com/wei2912/planwithus-lib/tree/main/blocks">existing blocks</a> and looking at how similar courses are implemented. For further assistance, users may also ask questions <a href="https://github.com/wei2912/planwithus-lib/discussions">on the Discussions forum</a>.</p>
-				<p>As with any YAML file, comments can be added to the files using the <code>#</code> symbol, which will cause <code>planwithus-lib</code> to ignore everything on the same line after the <code>#</code> symbol.</p>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h2>Documentation</h2>
-				</a>
-				<p>The latest documentation of the <code>main</code> branch generated by <a href="https://typedoc.org/">TypeDoc</a> can be accessed at <a href="https://wei2912.github.io/planwithus-lib/index.html">https://wei2912.github.io/planwithus-lib/index.html</a>.</p>
-				<a href="#test-report" id="test-report" style="color: inherit; text-decoration: none;">
-					<h2>Test Report</h2>
-				</a>
-				<p>The latest test report of the <code>main</code> branch generated by <a href="https://github.com/adamgruber/mochawesome">mochawesome</a> can be accessed at <a href="https://wei2912.github.io/planwithus-lib/mochawesome.html">https://wei2912.github.io/planwithus-lib/mochawesome.html</a>.</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Modules</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/block.html">block</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/block_blockId.html">block/block<wbr>Id</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/block_blockId_types.html">block/block<wbr>Id/types</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/block_satisfiers.html">block/satisfiers</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/block_schemas.html">block/schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/block_typeSchemas.html">block/type<wbr>Schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/block_types.html">block/types</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/directory.html">directory</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule.html">match<wbr>Rule</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_pattern.html">match<wbr>Rule/pattern</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_pattern_satisfiers.html">match<wbr>Rule/pattern/satisfiers</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_pattern_schemas.html">match<wbr>Rule/pattern/schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_pattern_typeSchemas.html">match<wbr>Rule/pattern/type<wbr>Schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_pattern_types.html">match<wbr>Rule/pattern/types</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_satisfiers.html">match<wbr>Rule/satisfiers</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_schemas.html">match<wbr>Rule/schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_typeSchemas.html">match<wbr>Rule/type<wbr>Schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/matchRule_types.html">match<wbr>Rule/types</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/module.html">module</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/module_types.html">module/types</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/parser.html">parser</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfier.html">satisfier</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfier_types.html">satisfier/types</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule.html">satisfy<wbr>Rule</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_inequality.html">satisfy<wbr>Rule/inequality</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_inequality_satisfiers.html">satisfy<wbr>Rule/inequality/satisfiers</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_inequality_schemas.html">satisfy<wbr>Rule/inequality/schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_inequality_typeSchemas.html">satisfy<wbr>Rule/inequality/type<wbr>Schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_inequality_types.html">satisfy<wbr>Rule/inequality/types</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_satisfiers.html">satisfy<wbr>Rule/satisfiers</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_schemas.html">satisfy<wbr>Rule/schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_typeSchemas.html">satisfy<wbr>Rule/type<wbr>Schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/satisfyRule_types.html">satisfy<wbr>Rule/types</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/some.html">some</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/some_schemas.html">some/schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/some_typeSchemas.html">some/type<wbr>Schemas</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/some_types.html">some/types</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+
+<a href="#block-format" id="block-format" style="color: inherit; text-decoration: none;">
+  <h2>Block Format</h2>
+</a>
+<p>In <code>planwithus-lib</code>, course requirements are specified using the <a href="https://yaml.org/">YAML</a> format and validated by schemas written in <a href="https://json-schema.org/">JSON Schema</a>.</p>
+<p>For more details on the course requirement specification, please refer to the documentation for <a href="https://wei2912.github.io/planwithus-lib/docs/modules/index.html">index.ts</a>. While the specification is meant to be exhaustive, it is likely that users will not require all of these constructs to build up their course requirements. Users are recommended to learn the syntax by referring to any of the <a href="https://github.com/wei2912/planwithus-lib/tree/main/blocks">existing blocks</a> and looking at how similar courses are implemented. For further assistance, users may also ask questions <a href="https://github.com/wei2912/planwithus-lib/discussions">on the Discussions forum</a>.</p>
+<p>As with any YAML file, comments can be added to the files using the <code>#</code> symbol, which will cause <code>planwithus-lib</code> to ignore everything on the same line after the <code>#</code> symbol.</p>
+
+<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+  <h2>Documentation</h2>
+</a>
+<p>The latest documentation of the <code>main</code> branch generated by <a href="https://typedoc.org/">TypeDoc</a> can be accessed at <a href="https://wei2912.github.io/planwithus-lib/index.html">https://wei2912.github.io/planwithus-lib/index.html</a>.</p>
+
+<a href="#test-report" id="test-report" style="color: inherit; text-decoration: none;">
+  <h2>Test Report</h2>
+</a>
+<p>The latest test report of the <code>main</code> branch generated by <a href="https://github.com/adamgruber/mochawesome">mochawesome</a> can be accessed at <a href="https://wei2912.github.io/planwithus-lib/mochawesome.html">https://wei2912.github.io/planwithus-lib/mochawesome.html</a>.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-type-alias"><a href="modules.html#AndMatchRule" class="tsd-kind-icon">And<wbr/>Match<wbr/>Rule</a></li><li class="tsd-kind-type-alias"><a href="modules.html#AndSatisfyRule" class="tsd-kind-icon">And<wbr/>Satisfy<wbr/>Rule</a></li><li class="tsd-kind-type-alias"><a href="modules.html#Block" class="tsd-kind-icon">Block</a></li><li class="tsd-kind-type-alias"><a href="modules.html#MCSatisfyRule" class="tsd-kind-icon">MCSatisfy<wbr/>Rule</a></li><li class="tsd-kind-type-alias"><a href="modules.html#MatchRule" class="tsd-kind-icon">Match<wbr/>Rule</a></li><li class="tsd-kind-type-alias"><a href="modules.html#Module" class="tsd-kind-icon">Module</a></li><li class="tsd-kind-type-alias"><a href="modules.html#OrMatchRule" class="tsd-kind-icon">Or<wbr/>Match<wbr/>Rule</a></li><li class="tsd-kind-type-alias"><a href="modules.html#OrSatisfyRule" class="tsd-kind-icon">Or<wbr/>Satisfy<wbr/>Rule</a></li><li class="tsd-kind-type-alias"><a href="modules.html#PatternMatchRule" class="tsd-kind-icon">Pattern<wbr/>Match<wbr/>Rule</a></li><li class="tsd-kind-type-alias"><a href="modules.html#Satisfier" class="tsd-kind-icon">Satisfier</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierAssign" class="tsd-kind-icon">Satisfier<wbr/>Assign</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierBase" class="tsd-kind-icon">Satisfier<wbr/>Base</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierBranch" class="tsd-kind-icon">Satisfier<wbr/>Branch</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierConstraint" class="tsd-kind-icon">Satisfier<wbr/>Constraint</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierFilter" class="tsd-kind-icon">Satisfier<wbr/>Filter</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierLeafAssign" class="tsd-kind-icon">Satisfier<wbr/>Leaf<wbr/>Assign</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierLeafConstraint" class="tsd-kind-icon">Satisfier<wbr/>Leaf<wbr/>Constraint</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierLeafFilter" class="tsd-kind-icon">Satisfier<wbr/>Leaf<wbr/>Filter</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierReduce" class="tsd-kind-icon">Satisfier<wbr/>Reduce</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfierResult" class="tsd-kind-icon">Satisfier<wbr/>Result</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SatisfyRule" class="tsd-kind-icon">Satisfy<wbr/>Rule</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#Some" class="tsd-kind-icon">Some</a></li><li class="tsd-kind-function"><a href="modules.html#initDirectories" class="tsd-kind-icon">init<wbr/>Directories</a></li><li class="tsd-kind-function"><a href="modules.html#verifyPlan" class="tsd-kind-icon">verify<wbr/>Plan</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
