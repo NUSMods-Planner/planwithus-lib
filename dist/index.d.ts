@@ -290,4 +290,5 @@ declare const initDirectories: () => Record<string, Directory>;
  * @return An object representing the result of a study plan verification.
  */
 declare const verifyPlan: (modules: Module[], dir: Directory, blockId: BlockId) => SatisfierResult;
-export { initDirectories, verifyPlan, Block, AndMatchRule, MatchRule, OrMatchRule, PatternMatchRule, Module, Satisfier, SatisfierAssign, SatisfierBase, SatisfierBranch, SatisfierConstraint, SatisfierFilter, SatisfierLeafAssign, SatisfierLeafConstraint, SatisfierLeafFilter, SatisfierReduce, SatisfierResult, AndSatisfyRule, MCSatisfyRule, OrSatisfyRule, SatisfyRule, Some };
+export { initDirectories, verifyPlan };
+export type { Block, AndMatchRule, MatchRule, OrMatchRule, PatternMatchRule, Module, Satisfier, SatisfierAssign, SatisfierBase, SatisfierBranch, SatisfierConstraint, SatisfierFilter, SatisfierLeafAssign, SatisfierLeafConstraint, SatisfierLeafFilter, SatisfierReduce, SatisfierResult, AndSatisfyRule, MCSatisfyRule, OrSatisfyRule, SatisfyRule, Some };
