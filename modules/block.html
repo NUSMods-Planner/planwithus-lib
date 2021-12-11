@@ -1,0 +1,126 @@
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>block | planwithus-lib</title><meta name="description" content="Documentation for planwithus-lib"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script async src="../assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">planwithus-lib</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><ul class="tsd-breadcrumb"><li><a href="../modules.html">planwithus-lib</a></li><li><a href="block.html">block</a></li></ul><h1>Module block</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><section class="tsd-panel tsd-comment"><div class="tsd-comment tsd-typography"><div class="lead">
+<p>This module reexports various functions, schemas and types relating to
+blocks.</p>
+</div><div><p>A <strong>block</strong> is used to express the metadata and logic of course
+requirements. Blocks can be subdivided into multiple blocks which can be
+reused in other course combinations.</p>
+
+<a href="#metadata-fields" id="metadata-fields" style="color: inherit; text-decoration: none;">
+  <h2>Metadata Fields</h2>
+</a>
+
+<a href="#name-optional" id="name-optional" style="color: inherit; text-decoration: none;">
+  <h3><code>name</code> (optional)</h3>
+</a>
+<p>The <code>name</code> field is used to assign a name to a block. It can be used to store
+the name of the course or a specific section of its requirements.</p>
+<p>Examples:</p>
+<pre><code class="language-yaml"><span class="hl-2">name</span><span class="hl-1">: </span><span class="hl-3">&quot;Data Science and Analytics (Hons)&quot;</span><span class="hl-1"> </span><span class="hl-4"># course name</span><br/><span class="hl-2">name</span><span class="hl-1">: </span><span class="hl-5">Level-1000 modules</span><span class="hl-1"> </span><span class="hl-4"># human-readable identifier for child blocks</span>
+</code></pre>
+
+<a href="#ay-optional" id="ay-optional" style="color: inherit; text-decoration: none;">
+  <h3><code>ay</code> (optional)</h3>
+</a>
+<p>The <code>ay</code> field is used to indicate the academic year of the course. Its value
+should correspond to the calendar year of the first semester. For example, a
+block representing course requirements for the AY21/22 cohort onwards should
+have the <code>ay</code> field set to 2021.</p>
+<p>It is only necessary to set the <code>ay</code> field for top-level blocks representing
+courses. All child blocks are taken to have the same <code>ay</code> as their parent
+block, unless specified otherwise.</p>
+<p>Examples:</p>
+<pre><code class="language-yaml"><span class="hl-2">ay</span><span class="hl-1">: </span><span class="hl-6">2020</span><span class="hl-1"> </span><span class="hl-4"># course requirements for the AY20/21 cohort</span>
+</code></pre>
+
+<a href="#url-optional" id="url-optional" style="color: inherit; text-decoration: none;">
+  <h3><code>url</code> (optional)</h3>
+</a>
+<p>The <code>url</code> field is used to provide a <a href="https://en.wikipedia.org/wiki/URL">URL</a>
+that links to the relevant course requirements.</p>
+<p>Examples:</p>
+<pre><code class="language-yaml"><span class="hl-2">url</span><span class="hl-1">: </span><span class="hl-5">https://www.science.nus.edu.sg/wp-content/uploads/2019/11/FacultyRequirements.pdf</span>
+</code></pre>
+
+<a href="#info-optional" id="info-optional" style="color: inherit; text-decoration: none;">
+  <h3><code>info</code> (optional)</h3>
+</a>
+<p>The <code>info</code> field is used to alert the user to any important information. This
+can be used in cases where the specified logic may not be sufficient to cover
+the entirety of a course&#39;s requirements.</p>
+<p>Examples:</p>
+<pre><code class="language-yaml"><span class="hl-2">info</span><span class="hl-1">: </span><span class="hl-3">&quot;Please refer to the URL to verify that you meet the Faculty Requirements. Take note that some modules might fall under multiple subject groups.&quot;</span>
+</code></pre>
+
+<a href="#isselectable-optional" id="isselectable-optional" style="color: inherit; text-decoration: none;">
+  <h3><code>isSelectable</code> (optional)</h3>
+</a>
+<p>The <code>isSelectable</code> field is used to mark a block as selectable in the GUI. By
+default, <code>isSelectable</code> is taken to be false if not specified otherwise.</p>
+<p>Examples:</p>
+<pre><code class="language-yaml"><span class="hl-2">isSelectable</span><span class="hl-1">: </span><span class="hl-7">true</span>
+</code></pre>
+
+<a href="#logic-fields" id="logic-fields" style="color: inherit; text-decoration: none;">
+  <h2>Logic Fields</h2>
+</a>
+<p>The logic of a block can be viewed in three distinct stages: <code>assign</code>,
+<code>match</code> and <code>satisfy</code>.</p>
+<ol>
+<li>Each block begins with a list of modules, which may be all the modules
+listed on the planner (for top-level blocks), or a subset of these modules
+that have been filtered out by other blocks (for child blocks).</li>
+<li>These modules are assigned to the specified blocks in the <code>assign</code> stage.</li>
+<li>Remaining unassigned modules are passed to the <code>match</code> stage where
+matching modules are assigned to the current block.</li>
+<li>Lastly, all assigned and matched modules are passed to the <code>satisfy</code> stage
+to ensure that the modules match a set of criteria.</li>
+</ol>
+<p>Most blocks will have either an <code>assign</code> + <code>satisfy</code> stage or a <code>match</code> +
+<code>satisfy</code> stage. In most cases, course requirements can be specified in a
+straightforward manner using this three-stage logic flow.</p>
+
+<a href="#assign-optional" id="assign-optional" style="color: inherit; text-decoration: none;">
+  <h3><code>assign</code> (optional)</h3>
+</a>
+<p>The <code>assign</code> field can take either a string, representing a block identifier,
+or an array of block identifiers.</p>
+<p>Modules passed to the block are assigned to each of the specified blocks in
+the <code>assign</code> field from the first block to the last block, with every module
+assigned to at most one block.</p>
+<p>Examples:</p>
+<pre><code class="language-yaml"><span class="hl-2">assign</span><span class="hl-1">: </span><span class="hl-5">ue</span><span class="hl-1"> </span><span class="hl-4"># a single block with identifier &quot;ue&quot;</span><br/><span class="hl-2">assign</span><span class="hl-1">: [</span><span class="hl-5">ulr-2015</span><span class="hl-1">, </span><span class="hl-5">1k</span><span class="hl-1">, </span><span class="hl-5">2k</span><span class="hl-1">, </span><span class="hl-5">3k-4k</span><span class="hl-1">, </span><span class="hl-5">fos-2015</span><span class="hl-1">, </span><span class="hl-5">ue</span><span class="hl-1">] </span><span class="hl-4"># six blocks with priority</span><br/><span class="hl-1">                                                </span><span class="hl-4"># from &quot;ulr-2015&quot; to &quot;ue&quot;</span>
+</code></pre>
+
+<a href="#match-optional" id="match-optional" style="color: inherit; text-decoration: none;">
+  <h3><code>match</code> (optional)</h3>
+</a>
+<p>After the <code>assign</code> stage, the remaining modules are passed to the <code>match</code>
+stage which consists of a list of match rules. The <code>match</code> field can take
+either a single match rule or an array of match rules. By default, modules
+will be matched if they meet <strong>any</strong> of the specified match rules.</p>
+<p>Please refer to the <a href="matchRule.html">matchRule</a> module for more information on match rules.</p>
+<p>Examples:</p>
+<pre><code class="language-yaml"><span class="hl-2">match</span><span class="hl-1">:</span><br/><span class="hl-1">  - </span><span class="hl-2">and</span><span class="hl-1">: </span><span class="hl-4"># and match rule</span><br/><span class="hl-1">    - </span><span class="hl-2">or</span><span class="hl-1">: [</span><span class="hl-5">CS1010</span><span class="hl-1">, </span><span class="hl-5">CS1010S</span><span class="hl-1">, </span><span class="hl-5">CS1010X</span><span class="hl-1">] </span><span class="hl-4"># or match rule, taking in an array of</span><br/><span class="hl-1">                                     </span><span class="hl-4"># pattern match rules</span><br/><span class="hl-1">    - </span><span class="hl-5">DSA1101</span><span class="hl-1"> </span><span class="hl-4"># pattern match rule</span><br/><span class="hl-1">  - </span><span class="hl-2">or</span><span class="hl-1">: </span><span class="hl-4"># or match rule</span><br/><span class="hl-1">    - </span><span class="hl-5">CS2103</span><span class="hl-1"> </span><span class="hl-4"># pattern match rule</span><br/><span class="hl-1">    </span><span class="hl-4"># pattern match rule with info</span><br/><span class="hl-1">    - </span><span class="hl-2">pattern</span><span class="hl-1">: </span><span class="hl-5">CS2103T</span><br/><span class="hl-1">      </span><span class="hl-2">info</span><span class="hl-1">: </span><span class="hl-3">&quot;Students taking CS2103T Software Engineering must take CS2101 Effective Communication for Computing Professionals in the same semester.&quot;</span><br/><span class="hl-1">  </span><span class="hl-4"># pattern match rule with exclude</span><br/><span class="hl-1">  - </span><span class="hl-2">pattern</span><span class="hl-1">: </span><span class="hl-3">&quot;MA2xxx*&quot;</span><br/><span class="hl-1">    </span><span class="hl-2">exclude</span><span class="hl-1">: </span><span class="hl-3">&quot;MA23xx*&quot;</span><span class="hl-1"> </span><span class="hl-4"># this removes all modules matched by the previous</span><br/><span class="hl-1">                       </span><span class="hl-4"># pattern, &quot;MA2xxx*&quot; that match &quot;MA23xx*&quot;</span>
+</code></pre>
+
+<a href="#satisfy-optional" id="satisfy-optional" style="color: inherit; text-decoration: none;">
+  <h3><code>satisfy</code> (optional)</h3>
+</a>
+<p>Lastly, the <code>satisfy</code> stage takes all modules that were assigned in the
+<code>assign</code> stage or matched in the <code>match</code> stage and passes them to a list of
+satisfy rules. The <code>satisfy</code> field can take either a single satisfy rule or
+an array of satisfy rules. By default, a block with <strong>no <code>satisfy</code> rules</strong> is
+taken to be satisfied and a block with <strong>multiple <code>satisfy</code> rules</strong> must
+satisfy <strong>all</strong> of the rules.</p>
+<p>Please refer to the <a href="satisfyRule.html">satisfyRule</a> module for more information on satisfy
+rules.</p>
+<p>Examples:</p>
+<pre><code class="language-yaml"><span class="hl-2">satisfy</span><span class="hl-1">:</span><br/><span class="hl-1">  - </span><span class="hl-5">4k-above</span><span class="hl-1"> </span><span class="hl-4"># block ID satisfy rule</span><br/><span class="hl-1">  - </span><span class="hl-2">or</span><span class="hl-1">: </span><span class="hl-4"># or satisfy rule, with an array of satisfy rules</span><br/><span class="hl-1">    - </span><span class="hl-5">cs-hons-2020-alg/prim-match</span><span class="hl-1"> </span><span class="hl-4"># block ID satisfy rule</span><br/><span class="hl-1">    - </span><span class="hl-5">cs-hons-2020-ai/prim-match</span><br/><span class="hl-1">  - </span><span class="hl-2">mc</span><span class="hl-1">: </span><span class="hl-3">&quot;&gt;=12&quot;</span><span class="hl-1"> </span><span class="hl-4"># MC satisfy rule</span>
+</code></pre>
+
+<a href="#child-blocks" id="child-blocks" style="color: inherit; text-decoration: none;">
+  <h2>Child blocks</h2>
+</a>
+<p>Blocks can contain other blocks, which are constructed in a similar fashion
+to the top-level block.</p>
+</div></div></section><section class="tsd-panel-group tsd-index-group"><h2>Index</h2><section class="tsd-panel tsd-index-panel"><div class="tsd-index-content"><section class="tsd-index-section "><h3>References</h3><ul class="tsd-index-list"><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#BLOCK_CLASSES" class="tsd-kind-icon">BLOCK_<wbr/>CLASSES</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#Block" class="tsd-kind-icon">Block</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#BlockClass" class="tsd-kind-icon">Block<wbr/>Class</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blockSatisfier" class="tsd-kind-icon">block<wbr/>Satisfier</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blockSchema" class="tsd-kind-icon">block<wbr/>Schema</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blockTypeSchema" class="tsd-kind-icon">block<wbr/>Type<wbr/>Schema</a></li></ul></section></div></section></section><section class="tsd-panel-group tsd-member-group "><h2>References</h2><section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-module"><a name="BLOCK_CLASSES" class="tsd-anchor"></a><h3>BLOCK_<wbr/>CLASSES</h3>Re-exports <a href="block_types.html#BLOCK_CLASSES">BLOCK_CLASSES</a></section><section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-module"><a name="Block" class="tsd-anchor"></a><h3>Block</h3>Re-exports <a href="block_types.html#Block">Block</a></section><section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-module"><a name="BlockClass" class="tsd-anchor"></a><h3>Block<wbr/>Class</h3>Re-exports <a href="../enums/block_types.BlockClass.html">BlockClass</a></section><section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-module"><a name="blockSatisfier" class="tsd-anchor"></a><h3>block<wbr/>Satisfier</h3>Re-exports <a href="block_satisfiers.html#blockSatisfier">blockSatisfier</a></section><section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-module"><a name="blockSchema" class="tsd-anchor"></a><h3>block<wbr/>Schema</h3>Re-exports <a href="block_schemas.html#blockSchema">blockSchema</a></section><section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-module"><a name="blockTypeSchema" class="tsd-anchor"></a><h3>block<wbr/>Type<wbr/>Schema</h3>Re-exports <a href="block_typeSchemas.html#blockTypeSchema">blockTypeSchema</a></section></section></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class=""><a href="../modules.html">Modules</a></li><li class="current tsd-kind-module"><a href="block.html">block</a></li><li class=" tsd-kind-module"><a href="block_blockId.html">block/block<wbr/>Id</a></li><li class=" tsd-kind-module"><a href="block_blockId_types.html">block/block<wbr/>Id/types</a></li><li class=" tsd-kind-module"><a href="block_satisfiers.html">block/satisfiers</a></li><li class=" tsd-kind-module"><a href="block_schemas.html">block/schemas</a></li><li class=" tsd-kind-module"><a href="block_typeSchemas.html">block/type<wbr/>Schemas</a></li><li class=" tsd-kind-module"><a href="block_types.html">block/types</a></li><li class=" tsd-kind-module"><a href="directory.html">directory</a></li><li class=" tsd-kind-module"><a href="index.html">index</a></li><li class=" tsd-kind-module"><a href="matchRule.html">match<wbr/>Rule</a></li><li class=" tsd-kind-module"><a href="matchRule_pattern.html">match<wbr/>Rule/pattern</a></li><li class=" tsd-kind-module"><a href="matchRule_pattern_satisfiers.html">match<wbr/>Rule/pattern/satisfiers</a></li><li class=" tsd-kind-module"><a href="matchRule_pattern_schemas.html">match<wbr/>Rule/pattern/schemas</a></li><li class=" tsd-kind-module"><a href="matchRule_pattern_typeSchemas.html">match<wbr/>Rule/pattern/type<wbr/>Schemas</a></li><li class=" tsd-kind-module"><a href="matchRule_pattern_types.html">match<wbr/>Rule/pattern/types</a></li><li class=" tsd-kind-module"><a href="matchRule_satisfiers.html">match<wbr/>Rule/satisfiers</a></li><li class=" tsd-kind-module"><a href="matchRule_schemas.html">match<wbr/>Rule/schemas</a></li><li class=" tsd-kind-module"><a href="matchRule_typeSchemas.html">match<wbr/>Rule/type<wbr/>Schemas</a></li><li class=" tsd-kind-module"><a href="matchRule_types.html">match<wbr/>Rule/types</a></li><li class=" tsd-kind-module"><a href="module.html">module</a></li><li class=" tsd-kind-module"><a href="module_types.html">module/types</a></li><li class=" tsd-kind-module"><a href="parser.html">parser</a></li><li class=" tsd-kind-module"><a href="satisfier.html">satisfier</a></li><li class=" tsd-kind-module"><a href="satisfier_types.html">satisfier/types</a></li><li class=" tsd-kind-module"><a href="satisfyRule.html">satisfy<wbr/>Rule</a></li><li class=" tsd-kind-module"><a href="satisfyRule_inequality.html">satisfy<wbr/>Rule/inequality</a></li><li class=" tsd-kind-module"><a href="satisfyRule_inequality_satisfiers.html">satisfy<wbr/>Rule/inequality/satisfiers</a></li><li class=" tsd-kind-module"><a href="satisfyRule_inequality_schemas.html">satisfy<wbr/>Rule/inequality/schemas</a></li><li class=" tsd-kind-module"><a href="satisfyRule_inequality_typeSchemas.html">satisfy<wbr/>Rule/inequality/type<wbr/>Schemas</a></li><li class=" tsd-kind-module"><a href="satisfyRule_inequality_types.html">satisfy<wbr/>Rule/inequality/types</a></li><li class=" tsd-kind-module"><a href="satisfyRule_satisfiers.html">satisfy<wbr/>Rule/satisfiers</a></li><li class=" tsd-kind-module"><a href="satisfyRule_schemas.html">satisfy<wbr/>Rule/schemas</a></li><li class=" tsd-kind-module"><a href="satisfyRule_typeSchemas.html">satisfy<wbr/>Rule/type<wbr/>Schemas</a></li><li class=" tsd-kind-module"><a href="satisfyRule_types.html">satisfy<wbr/>Rule/types</a></li><li class=" tsd-kind-module"><a href="some.html">some</a></li><li class=" tsd-kind-module"><a href="some_schemas.html">some/schemas</a></li><li class=" tsd-kind-module"><a href="some_typeSchemas.html">some/type<wbr/>Schemas</a></li><li class=" tsd-kind-module"><a href="some_types.html">some/types</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#BLOCK_CLASSES" class="tsd-kind-icon">BLOCK_<wbr/>CLASSES</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#Block" class="tsd-kind-icon">Block</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#BlockClass" class="tsd-kind-icon">Block<wbr/>Class</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blockSatisfier" class="tsd-kind-icon">block<wbr/>Satisfier</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blockSchema" class="tsd-kind-icon">block<wbr/>Schema</a></li><li class="tsd-kind-reference tsd-parent-kind-module"><a href="block.html#blockTypeSchema" class="tsd-kind-icon">block<wbr/>Type<wbr/>Schema</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li><li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li><li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li><li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="../assets/main.js"></script></body></html>
