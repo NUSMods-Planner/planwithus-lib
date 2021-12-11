@@ -65,7 +65,6 @@ jobs:
         with:
           name: planwithus-lib-${{ github.sha }}-docs
           path: docs
-      - run: touch docs/.nojekyll
 
       - name: Deploy website
         uses: JamesIves/github-pages-deploy-action@4.1.3
