@@ -54,7 +54,7 @@
     "mochawesome": "^6.3.0",
     "nyc": "^15.1.0",
     "prettier": "2.4.0",
-    "rollup": "^2.56.3",
+    "rollup": "^2.61.1",
     "rollup-plugin-ts": "^2.0.4",
     "ts-node": "^10.2.1",
     "tslib": "^2.3.1",
